@@ -59,6 +59,12 @@ Adoption models define how projects select a KDD baseline and profile, tailor lo
 
 - [KDD Adoption and Conformance Model](docs/40-adoption/adoption-and-conformance-model.md) — invariant core, Minimal and Extended profiles, tailoring, assessment requirements, evidence package, declaration, and adoption paths for KSeF_2, 3ksef, and future projects.
 
+### 50 — Governance evidence
+
+Governance evidence records reviews and decisions about the methodology itself. It is informative or evidential unless an artifact explicitly declares normative status.
+
+- [AUD-001 — KDD 0.1 Cross-Document Consistency Review](docs/50-governance/audits/AUD-001-kdd-0.1-consistency-review.md) — completed self-review of structure, terminology, authority, metadata, and baseline readiness.
+
 ## Core dependency
 
 ~~~text
