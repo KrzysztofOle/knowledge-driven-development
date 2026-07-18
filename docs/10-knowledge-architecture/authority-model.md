@@ -1,17 +1,17 @@
-# KDD Knowledge Authority Model
+# KGAID Knowledge Authority Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Artifact Model](artifact-model.md),
-[KDD Knowledge Lifecycle](knowledge-lifecycle.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Artifact Model](artifact-model.md),
+[KGAID Knowledge Lifecycle](knowledge-lifecycle.md)
 
 ## 1. Purpose
 
 This document defines who may propose, review, accept, realize, verify, change
-and retire knowledge in Knowledge-Driven Development (KDD). It also defines
+and retire knowledge in Knowledge-Governed AI-Assisted Development (KGAID). It also defines
 source authority, delegation, conflict resolution and the authority boundaries
 between humans, AI and automation.
 
@@ -305,7 +305,7 @@ acceptance.
 
 ## 11. Separation of duties
 
-For high-risk, regulated, security-sensitive or production-critical work, KDD
+For high-risk, regulated, security-sensitive or production-critical work, KGAID
 recommends proportionate separation:
 
 - proposal author and final acceptor are different;
@@ -425,7 +425,7 @@ Push or release
 → requires separate authority where project governance requires it
 ```
 
-KDD generalizes this pattern. It does not require these specific AI products,
+KGAID generalizes this pattern. It does not require these specific AI products,
 tools or role names. It requires human ownership of normative decisions and
 risk, explicit delegated execution scope, and bounded evidence.
 
