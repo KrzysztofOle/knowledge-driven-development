@@ -3,12 +3,12 @@
 **Proposal status:** Accepted  
 **Knowledge status:** Accepted  
 **Version:** 1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Created:** 2026-07-18  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
 **Owner:** Knowledge Steward  
-**Decision authority:** Krzysztof Olejnik — KDD Methodology Owner  
+**Decision authority:** Krzysztof Olejnik — KGAID Methodology Owner  
 **Proposed by:** Human–ChatGPT collaboration  
 **Depends on:** [AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review](../audits/AUD-002-knowledge-driven-development-landscape-review.md)  
 **Normative effect:** Establishes the official methodology identity and authorizes controlled documentation migration
@@ -33,7 +33,7 @@ The grammatically clearer English form would be:
 
 > Knowledge- and AI-Driven Development
 
-This form is not recommended because **AI-driven** suggests that AI directs the project. That conflicts with the accepted KDD principle that AI assists while humans retain consequential decision authority. It also retains **Driven Development**, which remains close to the earlier Knowledge Driven Development name.
+This form is not recommended because **AI-driven** suggests that AI directs the project. That conflicts with the accepted KGAID principle that AI assists while humans retain consequential decision authority. It also retains **Driven Development**, which remains close to the earlier Knowledge Driven Development name.
 
 ## 3. Candidate Comparison
 
@@ -61,11 +61,11 @@ The abbreviation treats **AI** as one semantic element:
 - **AI** — AI-Assisted;
 - **D** — Development.
 
-### Proposed descriptor
+### Accepted descriptor
 
 > An open, human-governed methodology in which accepted knowledge guides and constrains AI-assisted software development from product intent to verified operation.
 
-### Proposed short proposition
+### Accepted short proposition
 
 > Knowledge governs the work. AI assists the work. Humans authorize the work.
 
@@ -105,20 +105,21 @@ Following acceptance:
 
 **Rationale:** The name distinguishes the methodology from earlier Knowledge Driven Development usage and accurately states that governed knowledge constrains the process while AI assists and humans retain authority.
 
-## 8. Acceptance Criteria
+## 8. Acceptance Assessment
 
-The name may be accepted when the Methodology Owner confirms that:
+The Methodology Owner confirmed that:
 
-- it represents knowledge, AI assistance, and human authority accurately;
-- it is sufficiently distinct from the earlier KDD methodology;
+- the name represents knowledge, AI assistance, and human authority accurately;
+- it is sufficiently distinct from the earlier KDD methodology for continued methodology development;
 - its length and abbreviation are usable;
-- a broader name, acronym, domain, repository, and trademark review does not reveal an unacceptable conflict;
 - the migration scope is understood;
-- the proposed descriptor is accepted or revised.
+- the descriptor and short proposition are accepted.
+
+A broader name, acronym, domain, repository, and trademark review remains an open assurance activity and may trigger a later review if it reveals an unacceptable conflict.
 
 ## 9. Migration Scope
 
-Acceptance would require a controlled migration across:
+The controlled migration covers:
 
 - repository name and description;
 - root README;
