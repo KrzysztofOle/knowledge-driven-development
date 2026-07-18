@@ -1,9 +1,9 @@
 # KDD Verification and Evidence Model
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
-**Proposed:** 2026-07-18  
+**Accepted:** 2026-07-18  
 **Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Artifact Model](../10-knowledge-architecture/artifact-model.md), [KDD Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md), [KDD Delivery Increment Model](../20-methodology/delivery-increment-model.md)  
 **Realizes principles:** P1, P5–P11
 
