@@ -1,15 +1,17 @@
 # Methodology Identity Proposal
 
-**Proposal status:** Draft  
-**Knowledge status:** Proposed  
+**Proposal status:** Accepted  
+**Knowledge status:** Accepted  
 **Version:** 1  
 **Project:** Knowledge-Driven Development  
 **Created:** 2026-07-18  
+**Accepted:** 2026-07-18  
+**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
 **Owner:** Knowledge Steward  
 **Decision authority:** Krzysztof Olejnik — KDD Methodology Owner  
 **Proposed by:** Human–ChatGPT collaboration  
 **Depends on:** [AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review](../audits/AUD-002-knowledge-driven-development-landscape-review.md)  
-**Normative effect:** None until explicitly accepted by the Methodology Owner
+**Normative effect:** Establishes the official methodology identity and authorizes controlled documentation migration
 
 ## 1. Purpose
 
@@ -46,9 +48,9 @@ This form is not recommended because **AI-driven** suggests that AI directs the 
 
 Search absence is not proof of legal or global availability. This was not a trademark clearance.
 
-## 4. Recommended Working Identity
+## 4. Accepted Identity
 
-### Knowledge-Governed AI-Assisted Development
+### Knowledge-Governed AI-Assisted Development (KGAID)
 
 **Working abbreviation:** **KGAID**
 
@@ -87,7 +89,7 @@ The scope remains broader than coding. It covers product framing, domain underst
 
 ## 6. Relationship to the Previous Name
 
-If accepted:
+Following acceptance:
 
 - **Knowledge Driven Development** and **KDD** become the historical working name of this repository;
 - **knowledge-driven development** may remain a descriptive phrase where it is clearly not presented as a proprietary or uniquely coined name;
@@ -95,7 +97,15 @@ If accepted:
 - the new identity must not imply ownership of the earlier KDD term or methodology;
 - repository content remains subject to a separate licensing decision.
 
-## 7. Acceptance Criteria
+## 7. Decision Record
+
+**Decision:** Accept **Knowledge-Governed AI-Assisted Development (KGAID)** as the official methodology name.
+
+**Human decision:** Krzysztof Olejnik accepted the name on 2026-07-18.
+
+**Rationale:** The name distinguishes the methodology from earlier Knowledge Driven Development usage and accurately states that governed knowledge constrains the process while AI assists and humans retain authority.
+
+## 8. Acceptance Criteria
 
 The name may be accepted when the Methodology Owner confirms that:
 
@@ -106,7 +116,7 @@ The name may be accepted when the Methodology Owner confirms that:
 - the migration scope is understood;
 - the proposed descriptor is accepted or revised.
 
-## 8. Migration Scope After Acceptance
+## 9. Migration Scope
 
 Acceptance would require a controlled migration across:
 
@@ -120,4 +130,4 @@ Acceptance would require a controlled migration across:
 - baseline, release, and license preparation;
 - prior-use acknowledgment and changelog.
 
-No migration should begin while this proposal remains Draft.
+Acceptance authorizes a controlled documentation migration. Renaming the GitHub repository remains a separate decision because it changes external addresses and integrations.
