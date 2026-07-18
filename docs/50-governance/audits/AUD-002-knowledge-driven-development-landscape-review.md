@@ -259,3 +259,20 @@ No option is accepted by this audit. Naming is a human product and governance de
 This disposition does not reject the methodology content. It recognizes that the repository has developed a substantial Human–AI governance and verification synthesis while using a name already assigned to materially related prior work.
 
 The correct next task is not license selection. It is a human decision about distinctive identity, made with transparent attribution and preserved evidence.
+
+
+## 13. Post-Audit Human Decision
+
+**Decision date:** 2026-07-18  
+**Decision authority:** Krzysztof Olejnik — KDD Methodology Owner  
+**Decision:** Accept **Knowledge-Governed AI-Assisted Development (KGAID)** as the official methodology identity.
+
+This decision implements Identity Option A: a distinctive new name. The earlier name **Knowledge-Driven Development (KDD)** remains in this audit as historical evidence and as the exact name of prior work reviewed here.
+
+**Resolution status:**
+
+- the naming blocker for an unqualified KDD public baseline is resolved by human decision;
+- controlled migration of methodology documents to KGAID is authorized;
+- the repository slug is not changed by this decision and requires separate migration review;
+- license selection remains a separate open decision;
+- broader trademark and naming clearance remains outside this audit.
