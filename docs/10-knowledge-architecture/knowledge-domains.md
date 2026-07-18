@@ -1,19 +1,19 @@
-# KDD Knowledge Domains Model
+# KGAID Knowledge Domains Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Artifact Model](artifact-model.md),
-[KDD Knowledge Lifecycle](knowledge-lifecycle.md),
-[KDD Knowledge Authority Model](authority-model.md),
-[KDD Knowledge Traceability Model](traceability-model.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Artifact Model](artifact-model.md),
+[KGAID Knowledge Lifecycle](knowledge-lifecycle.md),
+[KGAID Knowledge Authority Model](authority-model.md),
+[KGAID Knowledge Traceability Model](traceability-model.md)
 
 ## 1. Purpose
 
 This document defines the semantic domains of knowledge used by
-Knowledge-Driven Development (KDD). Each domain answers a distinct class of
+Knowledge-Governed AI-Assisted Development (KGAID). Each domain answers a distinct class of
 questions, owns a distinct meaning and has an accountable authority.
 
 A knowledge domain is not necessarily a directory, phase, team or document.
@@ -21,7 +21,7 @@ It is a responsibility boundary. A small project may store several domains in
 one file, while a large project may use separate repositories. The semantic
 separation must remain visible in both cases.
 
-KDD preserves the derivation order:
+KGAID preserves the derivation order:
 
 > Product and business knowledge precede architecture. Architecture precedes
 > contracts. Contracts precede implementation. Evidence supports claims about
@@ -46,7 +46,7 @@ The downward flow represents derivation. The return from Operations and
 Evolution to Product and Business starts a new knowledge lifecycle. It does not
 silently modify accepted upstream artifacts.
 
-Multiple capabilities may move through these domains concurrently. KDD is not a
+Multiple capabilities may move through these domains concurrently. KGAID is not a
 requirement to complete every product artifact before implementation begins.
 The selected increment must have sufficient accepted upstream knowledge.
 
@@ -60,7 +60,7 @@ This domain answers:
 - Who owns and accepts knowledge?
 - How is knowledge created, changed and retired?
 - What authority boundaries apply to humans, AI and automation?
-- Which KDD profile and governance rules does the project use?
+- Which KGAID profile and governance rules does the project use?
 - How are versions, baselines and risks governed?
 
 ### 3.2 Typical knowledge
@@ -68,7 +68,7 @@ This domain answers:
 - manifesto;
 - `PRN` artifacts;
 - project governance;
-- selected KDD profile;
+- selected KGAID profile;
 - knowledge architecture;
 - lifecycle and authority rules;
 - versioning and baseline rules;
@@ -605,7 +605,7 @@ Both supply evidence, but their environments, authority and limitations differ.
 
 ## 16. Incomplete knowledge and incremental delivery
 
-KDD does not require a complete description of the whole product before any
+KGAID does not require a complete description of the whole product before any
 implementation starts.
 
 For the selected increment, it requires a sufficient knowledge chain:
