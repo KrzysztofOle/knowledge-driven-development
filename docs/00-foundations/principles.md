@@ -1,17 +1,17 @@
-# KDD Principles
+# KGAID Principles
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Scope and Boundaries](scope-and-boundaries.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Scope and Boundaries](scope-and-boundaries.md)
 
 ## 1. Purpose
 
-This document defines the foundational principles of Knowledge-Driven Development (KDD).
+This document defines the foundational principles of Knowledge-Governed AI-Assisted Development (KGAID).
 
-The principles govern how the methodology is designed, interpreted, adopted, and evolved. They are normative: a KDD process, practice, artifact, profile, or tool must remain consistent with them.
+The principles govern how the methodology is designed, interpreted, adopted, and evolved. They are normative: a KGAID process, practice, artifact, profile, or tool must remain consistent with them.
 
 The principles are intentionally independent of programming language, framework, architectural style, repository platform, delivery method, and AI provider.
 
@@ -19,11 +19,11 @@ The principles are intentionally independent of programming language, framework,
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** express the strength of a rule:
 
-- **MUST** and **MUST NOT** define requirements necessary for consistency with KDD;
+- **MUST** and **MUST NOT** define requirements necessary for consistency with KGAID;
 - **SHOULD** and **SHOULD NOT** define strong recommendations that may be departed from when the reason is explicit;
 - **MAY** defines an optional practice.
 
-A project may tailor how a principle is realized, but it must not reverse the principle's meaning while claiming KDD conformance.
+A project may tailor how a principle is realized, but it must not reverse the principle's meaning while claiming KGAID conformance.
 
 ## 3. Foundational Principles
 
@@ -81,7 +81,7 @@ This principle does not require complete business knowledge before architecture 
 - code MUST NOT be used to bypass a required architectural decision;
 - discoveries made during implementation MUST be fed back into architectural knowledge.
 
-Architecture in KDD means the set of significant decisions, not a mandatory collection of diagrams or a separate design phase.
+Architecture in KGAID means the set of significant decisions, not a mandatory collection of diagrams or a separate design phase.
 
 ### P5. Contracts precede the code that realizes them
 
@@ -154,7 +154,7 @@ The required formality depends on risk, number of consumers, reversibility, and 
 - divergence MUST be investigated against product intent, authority, contracts, and evidence;
 - operational discoveries SHOULD feed back into assumptions, decisions, requirements, and designs.
 
-KDD does not require every artifact to change with every commit. It requires material inconsistency to be prevented, detected, and resolved.
+KGAID does not require every artifact to change with every commit. It requires material inconsistency to be prevented, detected, and resolved.
 
 ### P10. AI assists; humans remain accountable
 
@@ -174,7 +174,7 @@ KDD does not require every artifact to change with every commit. It requires mat
 
 ### P11. Rigor is proportional to risk and uncertainty
 
-**Statement:** The cost and formality of KDD practices MUST be proportionate to the consequences of error, uncertainty, reversibility, lifetime, and coordination needs.
+**Statement:** The cost and formality of KGAID practices MUST be proportionate to the consequences of error, uncertainty, reversibility, lifetime, and coordination needs.
 
 **Rationale:** Too little rigor hides risk; too much rigor delays learning and produces knowledge that is expensive but unused.
 
@@ -195,7 +195,7 @@ KDD does not require every artifact to change with every commit. It requires mat
 **Consequences:**
 
 - methodology rules MUST describe required capabilities and relationships before prescribing realizations;
-- tool-specific automation MAY support KDD but MUST NOT become the only explanation of project meaning;
+- tool-specific automation MAY support KGAID but MUST NOT become the only explanation of project meaning;
 - identifiers, formats, and links SHOULD support portability and long-term discovery;
 - generated artifacts MUST preserve provenance and remain reviewable outside the generating tool when their authority requires it;
 - replacing a tool SHOULD NOT silently change the semantic meaning or authority of knowledge.
@@ -261,7 +261,7 @@ Failure signals require investigation. They do not automatically determine which
 
 ## 7. Application Rule
 
-Every normative KDD element SHOULD identify which principles it realizes.
+Every normative KGAID element SHOULD identify which principles it realizes.
 
 Every proposed change to the methodology MUST be checked against all principles. A change that contradicts a principle requires one of the following:
 
@@ -269,4 +269,4 @@ Every proposed change to the methodology MUST be checked against all principles.
 - explicit tailoring within an adopting project,
 - or a separately accepted revision of this document.
 
-No subordinate KDD document may silently redefine these principles.
+No subordinate KGAID document may silently redefine these principles.
