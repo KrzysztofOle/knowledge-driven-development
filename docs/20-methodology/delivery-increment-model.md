@@ -1,16 +1,16 @@
-# KDD Delivery Increment Model
+# KGAID Delivery Increment Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Artifact Model](../10-knowledge-architecture/artifact-model.md), [KDD Process Model](process-model.md), [KDD AI Execution Task Contract](ai-execution-task-contract.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Artifact Model](../10-knowledge-architecture/artifact-model.md), [KGAID Process Model](process-model.md), [KGAID AI Execution Task Contract](ai-execution-task-contract.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
 **Realizes principles:** P1–P11
 
 ## 1. Purpose
 
-This document defines the KDD Delivery Increment: the bounded unit through which accepted product and project knowledge is transformed into an integrated, verified, and reviewable result.
+This document defines the KGAID Delivery Increment: the bounded unit through which accepted product and project knowledge is transformed into an integrated, verified, and reviewable result.
 
 It explains:
 
@@ -28,7 +28,7 @@ The model is independent of planning method, programming language, architecture 
 
 ## 2. Definition
 
-A **Delivery Increment**, represented by the KDD artifact type **INC**, is a bounded unit selected for realization that:
+A **Delivery Increment**, represented by the KGAID artifact type **INC**, is a bounded unit selected for realization that:
 
 - serves an accepted product outcome, external obligation, risk reduction, migration, operational need, or explicit learning goal;
 - has an identifiable scope and non-goals;
@@ -64,7 +64,7 @@ One increment may contain several execution tasks. Completion of every task does
 
 ## 4. Increment Types
 
-KDD recognizes several useful increment intents.
+KGAID recognizes several useful increment intents.
 
 | Type | Intended result |
 | --- | --- |
@@ -77,7 +77,7 @@ KDD recognizes several useful increment intents.
 | **Operational increment** | Improves observability, reliability, recoverability, security operations, support, or cost control. |
 | **Corrective increment** | Corrects a verified defect, incident cause, security weakness, or contract violation. |
 
-The type does not change KDD authority, traceability, or evidence rules.
+The type does not change KGAID authority, traceability, or evidence rules.
 
 An enabling increment MUST state the downstream capability or constraint it enables. A learning increment MUST state the decision its evidence is intended to support. An activity such as “refactor module” is not a sufficient increment outcome unless the required system property and evidence are explicit.
 
@@ -151,7 +151,7 @@ A material Increment artifact SHOULD contain or reference:
 - knowledge status;
 - delivery status;
 - verification status;
-- applicable KDD version and profile.
+- applicable KGAID version and profile.
 
 ### 7.2 Intent
 
@@ -216,7 +216,7 @@ A material Increment artifact SHOULD contain or reference:
 
 ## 8. Independent State Axes
 
-KDD maintains three primary state axes for an increment.
+KGAID maintains three primary state axes for an increment.
 
 ### 8.1 Knowledge status
 
@@ -356,7 +356,7 @@ An accepted increment may be decomposed into:
 - verification tasks;
 - migration, rollout, and operational tasks.
 
-Every material AI execution task SHOULD use the accepted [KDD AI Execution Task Contract](ai-execution-task-contract.md).
+Every material AI execution task SHOULD use the accepted [KGAID AI Execution Task Contract](ai-execution-task-contract.md).
 
 A task MUST:
 
@@ -497,7 +497,7 @@ The Verification Authority determines whether evidence supports the claim. The H
 
 ## 16. Completion and Decision Semantics
 
-KDD distinguishes:
+KGAID distinguishes:
 
 | Claim | Required condition |
 | --- | --- |
@@ -616,7 +616,7 @@ Operational success does not retroactively prove that every design claim was cor
 - Version:
 - Owner:
 - Increment type:
-- KDD profile:
+- KGAID profile:
 - Product Authority:
 - Delivery Authority:
 - Verification Authority:
@@ -768,7 +768,7 @@ The following indicate likely increment failure:
 
 ## 23. Conformance
 
-A project conforms to this model when, for a declared KDD version and profile:
+A project conforms to this model when, for a declared KGAID version and profile:
 
 - each material increment has a stable identity, owner, outcome, scope, and completion claim;
 - the increment derives from accepted product and business knowledge;
