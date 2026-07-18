@@ -1,17 +1,17 @@
-# KDD Human–AI Collaboration Model
+# KGAID Human–AI Collaboration Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Process Model](process-model.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Process Model](process-model.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
 **Realizes principles:** P1, P6–P12  
-**Operationalized by:** [KDD AI Execution Task Contract](ai-execution-task-contract.md)
+**Operationalized by:** [KGAID AI Execution Task Contract](ai-execution-task-contract.md)
 
 ## 1. Purpose
 
-This document defines how humans and AI collaborate in Knowledge-Driven Development (KDD).
+This document defines how humans and AI collaborate in Knowledge-Governed AI-Assisted Development (KGAID).
 
 It specifies:
 
@@ -48,7 +48,7 @@ Human accountability does not require a human to perform every action manually. 
 
 ## 3. Collaboration Objectives
 
-Human–AI collaboration in KDD SHOULD:
+Human–AI collaboration in KGAID SHOULD:
 
 - improve the quality and speed of knowledge work;
 - preserve product and decision context;
@@ -112,7 +112,7 @@ Accepted knowledge, implementation, derived artifacts, trace links, and evidence
 
 ## 5. Collaboration Modes
 
-KDD defines four collaboration modes. They describe execution scope, not authority rank.
+KGAID defines four collaboration modes. They describe execution scope, not authority rank.
 
 | Mode | AI activity | Typical use | Human interaction |
 | --- | --- | --- | --- |
@@ -203,13 +203,13 @@ A large context dump is not automatically a good context package. AI SHOULD be t
 
 ## 7. Instruction and Knowledge Precedence
 
-AI MUST interpret instructions within the KDD authority model.
+AI MUST interpret instructions within the KGAID authority model.
 
 The default precedence is:
 
 ~~~text
 binding external obligations
-→ accepted KDD and project governance
+→ accepted KGAID and project governance
 → accepted product and domain knowledge
 → accepted requirements, architecture, and contracts
 → explicit task delegation
@@ -481,7 +481,7 @@ Authorization for implementation does not imply authorization for deployment, pu
 
 ## 18. Human–AI Orchestrator–AI Executor Pattern
 
-KDD defines a controlled three-role collaboration pattern for work in which one AI helps a human govern knowledge and another AI performs implementation.
+KGAID defines a controlled three-role collaboration pattern for work in which one AI helps a human govern knowledge and another AI performs implementation.
 
 The generic roles are:
 
@@ -778,7 +778,7 @@ Failure signals require investigation and correction of context, delegation, aut
 
 ## 24. Conformance
 
-A project conforms to this collaboration model when, for its declared KDD profile and scope:
+A project conforms to this collaboration model when, for its declared KGAID profile and scope:
 
 - material AI work has an identifiable objective, context, and delegation;
 - authoritative and working knowledge are distinguishable;
