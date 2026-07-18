@@ -449,7 +449,7 @@ A conformance model must specify:
 - profile and version,
 - known deviations.
 
-The detailed conformance model is outside the scope of this document and will be defined as a separate part of the methodology.
+The detailed requirements, profiles, evidence, assessment, and declaration rules are defined in the [KDD Adoption and Conformance Model](../40-adoption/adoption-and-conformance-model.md).
 
 ## 17. Scope Change Rule
 
