@@ -10,9 +10,11 @@ KDD treats knowledge as the primary project asset. Code is a realization of acce
 flowchart TD
     A["00 Foundations"] --> B["10 Knowledge Architecture"]
     B --> C["20 Methodology"]
-    C --> D["Adopting projects"]
-    D --> E["Operational evidence and learning"]
-    E --> C
+    C --> D["30 Quality"]
+    D --> E["Adopting projects"]
+    E --> F["Operational evidence and learning"]
+    F --> D
+    F --> C
 ~~~
 
 The numbered directories express dependency of meaning, not a mandatory waterfall schedule.
@@ -43,6 +45,12 @@ The methodology composes accepted knowledge models into an end-to-end way of wor
 - [KDD Human–AI Collaboration Model](docs/20-methodology/human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
 - [KDD AI Execution Task Contract](docs/20-methodology/ai-execution-task-contract.md) — the bounded, human-authorized task passed from a Knowledge and Review AI to an Execution AI.
 - [KDD Delivery Increment Model](docs/20-methodology/delivery-increment-model.md) — the governed unit that connects accepted product knowledge, execution tasks, integration, evidence, baseline, and human acceptance.
+
+### 30 — Quality
+
+Quality models define how claims are verified, how evidence is interpreted, and how limitations constrain completion, baseline, release, and outcome decisions.
+
+- [KDD Verification and Evidence Model](docs/30-quality/verification-and-evidence-model.md) — claim-first verification, evidence strength and boundaries, independence, invalidation, and the Human–ChatGPT–Codex verification flow.
 
 ## Core dependency
 
