@@ -1,22 +1,22 @@
-# KDD Scope and Boundaries
+# KGAID Scope and Boundaries
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
 
 ## 1. Purpose
 
-This document defines what Knowledge-Driven Development (KDD) is, what problems it addresses, where its responsibility begins and ends, and what it deliberately does not prescribe.
+This document defines what Knowledge-Governed AI-Assisted Development (KGAID) is, what problems it addresses, where its responsibility begins and ends, and what it deliberately does not prescribe.
 
 It establishes the boundary within which the methodology, its knowledge architecture, processes, roles, practices, and conformance rules may evolve.
 
 ## 2. Definition
 
-Knowledge-Driven Development is an open, universal methodology for developing software systems through collaboration between people and AI.
+Knowledge-Governed AI-Assisted Development is an open, universal methodology for developing software systems through collaboration between people and AI.
 
-KDD organizes the creation, validation, use, and evolution of:
+KGAID organizes the creation, validation, use, and evolution of:
 
 - product and business knowledge,
 - decisions and their rationale,
@@ -28,7 +28,7 @@ KDD organizes the creation, validation, use, and evolution of:
 
 Its purpose is to lead a project from product vision to a working and evolving system while preserving the context needed to understand why the system exists, how it should behave, and why it was built in a particular way.
 
-KDD is independent of:
+KGAID is independent of:
 
 - programming language,
 - application framework,
@@ -39,7 +39,7 @@ KDD is independent of:
 - deployment model,
 - organization size.
 
-## 3. Problem Addressed by KDD
+## 3. Problem Addressed by KGAID
 
 Modern teams can produce code faster than they can build, validate, and retain shared understanding.
 
@@ -57,11 +57,11 @@ Common failure modes include:
 - AI making or concealing decisions that require human authority,
 - accumulated knowledge becoming difficult to discover, trust, or maintain.
 
-KDD addresses these failures by treating explicit, traceable, and verifiable knowledge as the primary project asset. Code is an important result of that knowledge, but it is not its sole source.
+KGAID addresses these failures by treating explicit, traceable, and verifiable knowledge as the primary project asset. Code is an important result of that knowledge, but it is not its sole source.
 
 ## 4. Mission
 
-The mission of KDD is to make software development:
+The mission of KGAID is to make software development:
 
 - intentional,
 - knowledge-driven,
@@ -73,7 +73,7 @@ The mission of KDD is to make software development:
 - proportional to project risk,
 - accountable to human decision-makers.
 
-KDD should help a team answer, at any meaningful point in the project:
+KGAID should help a team answer, at any meaningful point in the project:
 
 1. What problem are we solving?
 2. What knowledge supports the current direction?
@@ -85,7 +85,7 @@ KDD should help a team answer, at any meaningful point in the project:
 
 ## 5. Intended Audience
 
-KDD is intended for:
+KGAID is intended for:
 
 - product owners and business stakeholders,
 - domain experts,
@@ -97,13 +97,13 @@ KDD is intended for:
 - teams using AI assistants in software delivery,
 - organizations seeking a repeatable method for human–AI collaboration.
 
-A project may adopt KDD with one person performing several roles. The methodology defines responsibilities and authority, not mandatory job titles or team size.
+A project may adopt KGAID with one person performing several roles. The methodology defines responsibilities and authority, not mandatory job titles or team size.
 
 ## 6. Areas Within Scope
 
 ### 6.1 Product framing
 
-KDD covers the transformation of an initial idea into an explicit product direction, including:
+KGAID covers the transformation of an initial idea into an explicit product direction, including:
 
 - vision,
 - problem statement,
@@ -116,7 +116,7 @@ KDD covers the transformation of an initial idea into an explicit product direct
 
 ### 6.2 Knowledge management
 
-KDD defines how project knowledge is:
+KGAID defines how project knowledge is:
 
 - identified,
 - captured,
@@ -132,7 +132,7 @@ This includes artifact types, lifecycle states, authority levels, provenance, ow
 
 ### 6.3 Domain understanding and requirements
 
-KDD covers the development of shared understanding of the business and problem domain, including:
+KGAID covers the development of shared understanding of the business and problem domain, including:
 
 - terminology,
 - domain concepts and rules,
@@ -144,7 +144,7 @@ KDD covers the development of shared understanding of the business and problem d
 
 ### 6.4 Architecture and contracts
 
-KDD covers the knowledge required before and during implementation, including:
+KGAID covers the knowledge required before and during implementation, including:
 
 - architectural drivers,
 - system boundaries,
@@ -155,11 +155,11 @@ KDD covers the knowledge required before and during implementation, including:
 - dependency and integration constraints,
 - threat, risk, and failure considerations.
 
-KDD requires business knowledge to inform architecture, architecture to shape implementation, and explicit contracts to precede the code that realizes them whenever the risk and cost justify formalization.
+KGAID requires business knowledge to inform architecture, architecture to shape implementation, and explicit contracts to precede the code that realizes them whenever the risk and cost justify formalization.
 
 ### 6.5 Human–AI collaboration
 
-KDD defines how AI may support:
+KGAID defines how AI may support:
 
 - exploration and synthesis,
 - knowledge extraction,
@@ -175,7 +175,7 @@ It also defines boundaries for AI participation, including required context, pro
 
 ### 6.6 Delivery and implementation
 
-KDD connects accepted knowledge to executable work by defining:
+KGAID connects accepted knowledge to executable work by defining:
 
 - readiness conditions,
 - implementation context,
@@ -184,11 +184,11 @@ KDD connects accepted knowledge to executable work by defining:
 - proportional quality controls,
 - handling of discoveries made during implementation.
 
-KDD does not prescribe a programming technique. It requires implementation work to remain aligned with authoritative knowledge and to feed validated discoveries back into that knowledge.
+KGAID does not prescribe a programming technique. It requires implementation work to remain aligned with authoritative knowledge and to feed validated discoveries back into that knowledge.
 
 ### 6.7 Verification and evidence
 
-KDD covers the production and evaluation of evidence that a result conforms to accepted knowledge, including:
+KGAID covers the production and evaluation of evidence that a result conforms to accepted knowledge, including:
 
 - reviews,
 - tests,
@@ -201,7 +201,7 @@ Evidence must be interpreted within its actual scope. A passing local check is n
 
 ### 6.8 Operations and learning
 
-KDD includes the knowledge produced after deployment, including:
+KGAID includes the knowledge produced after deployment, including:
 
 - operational constraints,
 - observability and service expectations,
@@ -212,9 +212,9 @@ KDD includes the knowledge produced after deployment, including:
 
 A working system is part of the knowledge feedback loop, not the end of knowledge development.
 
-## 7. What KDD Is Not
+## 7. What KGAID Is Not
 
-KDD is not:
+KGAID is not:
 
 - a software framework or programming model,
 - a required architectural style,
@@ -228,22 +228,22 @@ KDD is not:
 - a guarantee or certificate of software quality,
 - a demand to document every thought or implementation detail.
 
-KDD does not equate document volume with knowledge quality. The required rigor and artifact depth must be proportional to uncertainty, risk, reversibility, lifetime, and impact.
+KGAID does not equate document volume with knowledge quality. The required rigor and artifact depth must be proportional to uncertainty, risk, reversibility, lifetime, and impact.
 
-## 8. KDD and the Adopting Project
+## 8. KGAID and the Adopting Project
 
-KDD defines a methodology. An adopting project owns its product-specific knowledge and delivery decisions.
+KGAID defines a methodology. An adopting project owns its product-specific knowledge and delivery decisions.
 
 ```mermaid
 flowchart LR
-    KDD["KDD methodology"] --> P["Adopting project"]
+    KGAID["KGAID methodology"] --> P["Adopting project"]
     P --> K["Project knowledge"]
     K --> S["Working system"]
     S --> E["Operational evidence"]
     E --> K
 ```
 
-KDD may define:
+KGAID may define:
 
 - types of knowledge that should exist,
 - lifecycle and authority rules,
@@ -261,17 +261,17 @@ The adopting project determines:
 - its implementation technologies,
 - its delivery process and operational environment,
 - the proportional depth of each artifact,
-- which optional KDD practices it adopts.
+- which optional KGAID practices it adopts.
 
-Project-specific conclusions must not silently become universal KDD rules. They may inform the methodology only after their applicability has been evaluated beyond the original project context.
+Project-specific conclusions must not silently become universal KGAID rules. They may inform the methodology only after their applicability has been evaluated beyond the original project context.
 
 ## 9. Method and Tool Boundary
 
-KDD describes capabilities, relationships, and decision rules rather than mandating specific tools.
+KGAID describes capabilities, relationships, and decision rules rather than mandating specific tools.
 
 Examples:
 
-| KDD concern | Possible realization |
+| KGAID concern | Possible realization |
 |---|---|
 | Authoritative knowledge | Markdown, wiki, knowledge graph, document system |
 | Traceability | Links, identifiers, metadata, repository automation |
@@ -280,7 +280,7 @@ Examples:
 | Evidence | CI reports, review records, test results, audit artifacts |
 | AI support | IDE assistant, chat system, agent workflow, local model |
 
-A tool may automate a KDD practice, but the tool is not the methodology. Switching tools should not invalidate the meaning or authority of project knowledge.
+A tool may automate a KGAID practice, but the tool is not the methodology. Switching tools should not invalidate the meaning or authority of project knowledge.
 
 ## 10. Human and AI Boundary
 
@@ -321,7 +321,7 @@ The required level of human review increases with consequence, uncertainty, irre
 
 ## 11. Relationship to Other Methods
 
-KDD is designed to coexist with established practices and methods.
+KGAID is designed to coexist with established practices and methods.
 
 It may be used with, among others:
 
@@ -336,13 +336,13 @@ It may be used with, among others:
 - Kanban,
 - risk and compliance frameworks.
 
-KDD does not replace these methods. It provides a knowledge architecture and an end-to-end reasoning structure that can connect them.
+KGAID does not replace these methods. It provides a knowledge architecture and an end-to-end reasoning structure that can connect them.
 
-Where another method defines a specialized practice more deeply, KDD should reference or integrate that practice rather than duplicate it without need.
+Where another method defines a specialized practice more deeply, KGAID should reference or integrate that practice rather than duplicate it without need.
 
 ## 12. Adoption Profiles
 
-KDD must support at least two levels of adoption.
+KGAID must support at least two levels of adoption.
 
 ### 12.1 Minimal profile
 
@@ -369,13 +369,13 @@ The extended profile is suitable for long-lived, regulated, distributed, safety-
 - controlled lifecycle transitions,
 - durable audit and operational evidence.
 
-Profiles change the degree of rigor, not the foundational principles of KDD.
+Profiles change the degree of rigor, not the foundational principles of KGAID.
 
 Detailed profile definitions and conformance levels will be established separately.
 
 ## 13. Success Criteria for the Methodology
 
-KDD is successful when an adopting team can:
+KGAID is successful when an adopting team can:
 
 - understand the product intent without reconstructing it from code,
 - distinguish authoritative knowledge from proposals and observations,
@@ -388,27 +388,27 @@ KDD is successful when an adopting team can:
 - change tools without losing the project’s reasoning structure,
 - learn from implementation and operations without erasing prior context.
 
-KDD should reduce avoidable rework caused by missing or inconsistent knowledge. It should not create documentation work whose cost exceeds its decision, coordination, verification, or learning value.
+KGAID should reduce avoidable rework caused by missing or inconsistent knowledge. It should not create documentation work whose cost exceeds its decision, coordination, verification, or learning value.
 
 ## 14. Origin and Role of KSeF_2
 
-The KSeF_2 project is an important empirical source for KDD. It demonstrates practices and structures from which the methodology is being extracted and generalized.
+The KSeF_2 project is an important empirical source for KGAID. It demonstrates practices and structures from which the methodology is being extracted and generalized.
 
-KSeF_2 is not a normative source for KDD.
+KSeF_2 is not a normative source for KGAID.
 
 Therefore:
 
-- KSeF_2 artifacts may inspire KDD concepts,
+- KSeF_2 artifacts may inspire KGAID concepts,
 - lessons from KSeF_2 should be recorded with provenance,
 - project-specific choices must be evaluated before generalization,
-- KDD rules must remain applicable beyond KSeF_2,
+- KGAID rules must remain applicable beyond KSeF_2,
 - future projects may challenge and improve conclusions derived from KSeF_2.
 
-KDD evolves through evidence from multiple projects, deliberate review, and human acceptance.
+KGAID evolves through evidence from multiple projects, deliberate review, and human acceptance.
 
 ## 15. Repository Boundary
 
-The KDD repository may contain:
+The KGAID repository may contain:
 
 - foundations and principles,
 - the knowledge architecture,
@@ -432,15 +432,15 @@ Normative methodology content must be distinguishable from:
 
 ## 16. Conformance Boundary
 
-A project may claim KDD conformance only against a defined version and profile of the methodology.
+A project may claim KGAID conformance only against a defined version and profile of the methodology.
 
 Conformance must not be inferred merely from:
 
 - using AI,
 - storing documentation with code,
 - adopting selected terminology,
-- copying KDD templates,
-- referencing the KDD repository.
+- copying KGAID templates,
+- referencing the KGAID repository.
 
 A conformance model must specify:
 
@@ -450,11 +450,11 @@ A conformance model must specify:
 - profile and version,
 - known deviations.
 
-The detailed requirements, profiles, evidence, assessment, and declaration rules are defined in the [KDD Adoption and Conformance Model](../40-adoption/adoption-and-conformance-model.md).
+The detailed requirements, profiles, evidence, assessment, and declaration rules are defined in the [KGAID Adoption and Conformance Model](../40-adoption/adoption-and-conformance-model.md).
 
 ## 17. Scope Change Rule
 
-A proposed addition to KDD belongs within the methodology only when it:
+A proposed addition to KGAID belongs within the methodology only when it:
 
 1. addresses knowledge-driven software development across more than one specific project context,
 2. preserves human accountability,
