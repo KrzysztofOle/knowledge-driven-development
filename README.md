@@ -11,10 +11,11 @@ flowchart TD
     A["00 Foundations"] --> B["10 Knowledge Architecture"]
     B --> C["20 Methodology"]
     C --> D["30 Quality"]
-    D --> E["Adopting projects"]
-    E --> F["Operational evidence and learning"]
-    F --> D
-    F --> C
+    D --> E["40 Adoption"]
+    E --> F["Adopting projects"]
+    F --> G["Operational evidence and learning"]
+    G --> D
+    G --> C
 ~~~
 
 The numbered directories express dependency of meaning, not a mandatory waterfall schedule.
@@ -51,6 +52,12 @@ The methodology composes accepted knowledge models into an end-to-end way of wor
 Quality models define how claims are verified, how evidence is interpreted, and how limitations constrain completion, baseline, release, and outcome decisions.
 
 - [KDD Verification and Evidence Model](docs/30-quality/verification-and-evidence-model.md) — claim-first verification, evidence strength and boundaries, independence, invalidation, and the Human–ChatGPT–Codex verification flow.
+
+### 40 — Adoption
+
+Adoption models define how projects select a KDD baseline and profile, tailor local realization, demonstrate conformance, and maintain an evidence-based declaration.
+
+- [KDD Adoption and Conformance Model](docs/40-adoption/adoption-and-conformance-model.md) — invariant core, Minimal and Extended profiles, tailoring, assessment requirements, evidence package, declaration, and adoption paths for KSeF_2, 3ksef, and future projects.
 
 ## Core dependency
 
