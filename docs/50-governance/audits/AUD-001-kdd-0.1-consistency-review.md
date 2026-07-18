@@ -470,7 +470,7 @@ The repository has a coherent foundation. The next work should normalize and gov
 ## 15. Post-Audit Remediation Status
 
 **Updated:** 2026-07-18  
-**Current decision owner:** Krzysztof Olejnik — KDD Methodology Owner
+**Current decision owner:** Krzysztof Olejnik — KGAID Methodology Owner
 
 ### 15.1 AUD-001-D01 — Decided
 
@@ -499,8 +499,15 @@ AUD-001-F01 remains open until the methodology-document metadata profile is defi
 
 ### 15.4 Remaining Phase 1 decisions
 
-- **AUD-001-D02:** choose the KDD license;
+- **AUD-001-D02:** choose the KGAID license;
 - **AUD-001-D03:** choose methodology versioning and release policy;
 - **AUD-001-D04:** decide whether future acceptance is recorded per document, through an exact acceptance manifest, or both.
 
 A follow-up verification MUST use the current repository state rather than treating this status section as evidence by itself.
+
+
+### 15.5 Methodology identity decision
+
+On 2026-07-18, Krzysztof Olejnik accepted **Knowledge-Governed AI-Assisted Development (KGAID)** as the official methodology identity after AUD-002 confirmed prior use of the earlier name.
+
+AUD-001 remains titled as a KDD 0.1 audit because it is historical evidence for the baseline reviewed at that time. Current normative documents use KGAID.
