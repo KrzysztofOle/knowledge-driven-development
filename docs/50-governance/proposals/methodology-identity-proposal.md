@@ -52,7 +52,7 @@ Search absence is not proof of legal or global availability. This was not a trad
 
 ### Knowledge-Governed AI-Assisted Development (KGAID)
 
-**Working abbreviation:** **KGAID**
+**Official abbreviation:** **KGAID**
 
 The abbreviation treats **AI** as one semantic element:
 
