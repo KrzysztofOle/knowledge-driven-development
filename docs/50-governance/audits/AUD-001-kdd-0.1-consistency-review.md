@@ -466,3 +466,41 @@ The follow-up SHOULD:
 This disposition applies only to the public KDD 0.1 baseline claim. It does not reject the methodology content or prevent continued development and project-level experimentation.
 
 The repository has a coherent foundation. The next work should normalize and govern the knowledge already created rather than add another methodology model.
+
+## 15. Post-Audit Remediation Status
+
+**Updated:** 2026-07-18  
+**Current decision owner:** Krzysztof Olejnik — KDD Methodology Owner
+
+### 15.1 AUD-001-D01 — Decided
+
+The durable human role is recorded as:
+
+> **Krzysztof Olejnik — KDD Methodology Owner**
+
+The title identifies ownership of methodology decisions. It does not assert infallibility, certification, or personal expert authority.
+
+### 15.2 AUD-001-F02 — Resolved after the audited baseline
+
+All 14 accepted normative documents now record the exact human and durable role in **Accepted by** metadata.
+
+Remediation commits span:
+
+- first update: 73e9c12a3b16bd4bc64603e5caf90a428a946d3b;
+- final update: ed135c09e42e9784b5bdd8231d2147b3925d68d5.
+
+This resolution applies to the repository state after the baseline reviewed by AUD-001. The original audit evidence remains unchanged and historically correct for commit c3d58f509ed2b2e91a1d74de2e9e1d5eeba8a4ab.
+
+### 15.3 AUD-001-F01 — Partially remediated
+
+Acceptance provenance is now present, but the remaining Artifact Model minimum metadata fields are not yet normalized across all normative documents.
+
+AUD-001-F01 remains open until the methodology-document metadata profile is defined and applied.
+
+### 15.4 Remaining Phase 1 decisions
+
+- **AUD-001-D02:** choose the KDD license;
+- **AUD-001-D03:** choose methodology versioning and release policy;
+- **AUD-001-D04:** decide whether future acceptance is recorded per document, through an exact acceptance manifest, or both.
+
+A follow-up verification MUST use the current repository state rather than treating this status section as evidence by itself.
