@@ -4,6 +4,7 @@
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
 **Accepted:** 2026-07-18  
+**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
 **Depends on:** [KDD Artifact Model](artifact-model.md),
 [KDD Knowledge Lifecycle](knowledge-lifecycle.md),
 [KDD Knowledge Authority Model](authority-model.md)
