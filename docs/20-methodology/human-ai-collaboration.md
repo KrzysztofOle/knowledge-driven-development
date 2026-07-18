@@ -477,7 +477,185 @@ Ambiguous, broad, unresolved, or unexpectedly expanded targets MUST cause escala
 
 Authorization for implementation does not imply authorization for deployment, publication, communication, deletion, or production mutation.
 
-## 18. Multiple AI Collaborators
+## 18. Human–AI Orchestrator–AI Executor Pattern
+
+KDD defines a controlled three-role collaboration pattern for work in which one AI helps a human govern knowledge and another AI performs implementation.
+
+The generic roles are:
+
+| Role | Responsibility | KSeF_2 realization |
+| --- | --- | --- |
+| **Human Decision Authority** | Establishes intent with the Knowledge AI, approves consequential scope, decides unresolved trade-offs, accepts the final result and risk. | Human project owner. |
+| **Knowledge and Review AI** | Helps frame the work, prepares the execution task, preserves accepted context, reviews the executor's result, detects deviations, and prepares decisions for the human. | ChatGPT. |
+| **Execution AI** | Implements the bounded task, runs checks, produces evidence, and reports discoveries without changing accepted meaning. | Codex. |
+
+Product names are an example, not a methodology requirement. Another adopting project may use different AI systems or tools while preserving the three responsibilities.
+
+### 18.1 Controlled flow
+
+~~~mermaid
+sequenceDiagram
+    participant H as Human
+    participant K as Knowledge AI
+    participant E as Execution AI
+
+    H->>K: Establish objective and constraints
+    K->>H: Propose task contract
+    H->>K: Accept scope and delegation
+    K->>E: Send bounded context package
+    E->>E: Implement and test
+    E->>K: Return change and evidence
+    K->>K: Inspect result against task contract
+    alt Correction remains within accepted scope
+        K->>E: Request correction
+        E->>K: Return corrected result and evidence
+    else New decision or boundary change
+        K->>H: Escalate decision packet
+        H->>K: Decide or revise scope
+    end
+    K->>H: Report review and recommendation
+    H->>H: Accept, reject, or request revision
+~~~
+
+The complete flow is:
+
+1. the Human and Knowledge AI establish what should be achieved, why it matters, what is in scope, and what must remain unchanged;
+2. the Knowledge AI converts that agreement into a bounded task contract and context package for the Execution AI;
+3. the Human accepts consequential scope and authorizes the delegation;
+4. the Execution AI implements and tests within the accepted boundary;
+5. the Execution AI returns the actual change, test results, evidence, limitations, assumptions, and discoveries;
+6. the Knowledge AI reviews the result against the accepted task contract and authoritative project knowledge;
+7. the Knowledge AI may request corrections that remain within the accepted scope;
+8. any required change to product intent, business meaning, architecture, contract, security, compatibility, evidence scope, or risk returns to the Human;
+9. the Knowledge AI presents the reviewed result and recommendation;
+10. the Human accepts, rejects, limits, or requests revision of the result.
+
+The prompt sent to the Execution AI is a transport form of the task contract. A conversational prompt alone SHOULD NOT be the only durable record when the task is consequential.
+
+### 18.2 Control layers
+
+The pattern creates three error-detection layers:
+
+| Layer | Control |
+| --- | --- |
+| **Execution control** | The Execution AI inspects current state, follows accepted constraints, performs self-review, runs tests, and reports bounded evidence. |
+| **Knowledge review control** | The Knowledge AI compares the actual implementation and evidence with the human-approved task, project knowledge, architecture, and contracts. |
+| **Human decision control** | The Human evaluates the reviewed outcome, unresolved trade-offs, limitations, and residual risk before final acceptance. |
+
+These layers reduce the chance that one participant's mistake becomes accepted project state. They do not guarantee correctness.
+
+The Knowledge AI and Execution AI may share incorrect assumptions, incomplete sources, or correlated model behavior. For high-risk work, the project SHOULD add proportionate independent controls such as specialist human review, a separately prepared verification procedure, a different AI context or model, independent tests, security analysis, or verification in another environment.
+
+### 18.3 Separation between orchestration and execution
+
+The Knowledge AI owns continuity of the collaboration context but does not become the human decision authority.
+
+It SHOULD:
+
+- preserve the human-approved objective and scope;
+- identify authoritative project knowledge;
+- translate the objective into explicit implementation constraints and acceptance criteria;
+- give the Execution AI only the authority needed for the task;
+- inspect the actual diff, artifacts, test output, and evidence rather than relying only on the executor's summary;
+- distinguish implementation defects from discoveries that challenge upstream knowledge;
+- maintain traceability between the accepted task, delegated execution, implementation revision, evidence, review, and human decision;
+- prevent a correction loop from silently expanding scope.
+
+The Execution AI SHOULD:
+
+- verify current repository and environment state before changing it;
+- implement only within the delegated scope;
+- preserve unrelated work;
+- test against the declared acceptance criteria;
+- expose failures, partial results, skipped checks, and limitations;
+- stop when a required correction changes an accepted boundary;
+- return enough evidence for the Knowledge AI and Human to evaluate the result.
+
+The Human SHOULD:
+
+- participate in defining the objective and consequential constraints;
+- resolve product, business, architecture, contract, compatibility, security, and risk decisions;
+- evaluate the Knowledge AI's review critically rather than treating it as automatic approval;
+- make the final acceptance decision for the declared result and scope.
+
+### 18.4 Correction loop
+
+The Knowledge AI MAY send a result back to the Execution AI without an additional human decision when the correction:
+
+- is necessary to meet already accepted acceptance criteria;
+- remains inside accepted product, architecture, contract, security, and compatibility boundaries;
+- does not broaden external effects;
+- does not accept new risk;
+- remains reversible and within the original delegation.
+
+The Knowledge AI MUST escalate when the proposed correction would:
+
+- change what the product should do;
+- change business meaning or a normative requirement;
+- create or supersede a significant architecture decision;
+- change contract semantics or compatibility;
+- weaken a control or evidence criterion;
+- expand the implementation or deployment scope materially;
+- introduce or accept new residual risk;
+- require authority not contained in the original delegation.
+
+Repeated correction without convergence SHOULD trigger escalation with evidence of the attempts and the unresolved cause.
+
+### 18.5 Review input
+
+The Execution AI's narrative report is not sufficient review input by itself.
+
+The Knowledge AI SHOULD have access, as applicable, to:
+
+- the human-approved objective and task contract;
+- authoritative requirements, architecture decisions, and contracts;
+- the actual changed artifacts or diff;
+- repository and dependency state;
+- commands and checks executed;
+- raw or reproducible test results;
+- static, security, compatibility, and quality evidence;
+- known limitations and unresolved failures;
+- discoveries made during implementation.
+
+When the Knowledge AI cannot inspect material implementation or evidence, it MUST label its review as limited and MUST NOT recommend a broader acceptance claim.
+
+### 18.6 Traceability chain
+
+A consequential use of the pattern SHOULD preserve this chain:
+
+~~~text
+human-approved objective and scope
+→ Knowledge AI task contract
+→ delegation to Execution AI
+→ implementation revision
+→ execution evidence
+→ Knowledge AI review
+→ human acceptance or rejection
+~~~
+
+Each link may be implemented through repository references, identifiers, workflow metadata, or another durable mechanism. The chain must preserve meaning even when a specific AI tool or conversation is unavailable.
+
+### 18.7 Variants
+
+The three responsibilities may be realized in several ways:
+
+- two different AI products, such as ChatGPT and Codex;
+- two isolated contexts of one AI product;
+- one AI orchestrator and several specialized execution agents;
+- a human acting as Knowledge and Review authority with an Execution AI;
+- separate AI systems for task preparation and result review.
+
+Combining roles reduces independence. When one AI both prepares, executes, and reviews its own task in the same context, the project SHOULD treat the review as self-review and add human or independent verification proportionate to risk.
+
+The required invariant is not the number of tools. It is the separation and visibility of:
+
+- human decision authority;
+- knowledge orchestration and result review;
+- bounded execution;
+- evidence;
+- final human acceptance.
+
+## 19. Multiple AI Collaborators
 
 A human or AI orchestrator MAY divide work among several AI collaborators when the delegation permits it.
 
@@ -501,7 +679,7 @@ An AI orchestrator:
 
 AI-to-AI summaries are derived knowledge. They MUST retain links to authoritative sources and MUST NOT silently become normative through repetition.
 
-## 19. Failure and Recovery
+## 20. Failure and Recovery
 
 When execution fails or becomes unsafe, AI SHOULD:
 
@@ -520,7 +698,7 @@ AI MUST NOT claim completion when required evidence is unavailable or when it ca
 
 Repeated retry SHOULD be bounded. Lack of progress, inconsistent state, or increasing uncertainty requires a changed approach or human direction.
 
-## 20. Accepted Automation Policies
+## 21. Accepted Automation Policies
 
 Policy automation under mode C3 may perform predefined actions without case-by-case human approval only when authorized humans have accepted:
 
@@ -539,9 +717,9 @@ Automation executes the accepted policy. It cannot reinterpret the policy to bro
 
 A material policy change returns to proposal, review, and human acceptance.
 
-## 21. Minimal and Extended Application
+## 22. Minimal and Extended Application
 
-### 21.1 Minimal application
+### 22.1 Minimal application
 
 For low-risk, reversible work, the collaboration record may be a concise task description and result report.
 
@@ -556,7 +734,7 @@ It SHOULD still make clear:
 - evidence;
 - any decision that remains with the human.
 
-### 21.2 Extended application
+### 22.2 Extended application
 
 For high-risk, regulated, production-critical, security-sensitive, or externally consequential work, collaboration SHOULD include:
 
@@ -573,7 +751,7 @@ For high-risk, regulated, production-critical, security-sensitive, or externally
 
 The same authority boundary applies in both profiles.
 
-## 22. Failure Signals
+## 23. Failure Signals
 
 The following conditions indicate likely failure of the collaboration model:
 
@@ -589,11 +767,14 @@ The following conditions indicate likely failure of the collaboration model:
 - permission to edit is treated as permission to deploy or publish;
 - untrusted content changes active instructions;
 - several AI collaborators repeat the same unsupported claim until it appears authoritative;
+- the Knowledge AI reviews only the Execution AI's summary without inspecting material changes or evidence;
+- corrections between AI systems silently expand the human-approved scope;
+- the Human treats the Knowledge AI's recommendation as automatic final acceptance;
 - no human can identify responsibility for a consequential result.
 
 Failure signals require investigation and correction of context, delegation, authority, process, or evidence.
 
-## 23. Conformance
+## 24. Conformance
 
 A project conforms to this collaboration model when, for its declared KDD profile and scope:
 
@@ -610,6 +791,8 @@ A project conforms to this collaboration model when, for its declared KDD profil
 - untrusted content cannot expand authority;
 - external and destructive actions require exact authorization;
 - multi-AI delegation does not expand authority or erase provenance;
+- when the orchestrator–executor pattern is used, the human-approved task, execution, evidence, AI review, and human acceptance remain distinguishable and traceable;
+- the reviewing AI inspects the actual result and evidence or explicitly limits its review claim;
 - failures and partial results are reported accurately;
 - automation follows a human-accepted and reviewable policy.
 
