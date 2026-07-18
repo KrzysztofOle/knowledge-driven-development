@@ -1,11 +1,11 @@
-# KDD AI Execution Task Contract
+# KGAID AI Execution Task Contract
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Process Model](process-model.md), [KDD Human–AI Collaboration Model](human-ai-collaboration.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Process Model](process-model.md), [KGAID Human–AI Collaboration Model](human-ai-collaboration.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
 **Realizes principles:** P1, P4–P11
 
 ## 1. Purpose
@@ -41,11 +41,11 @@ An **AI Execution Task Contract** is a versioned, bounded delegation package tha
 
 The contract converts accepted project knowledge into an executable unit without transferring human decision authority to AI.
 
-It is an operational delegation contract. It is not a system interface contract and MUST NOT override an accepted KDD Contract artifact, requirement, architecture decision, business rule, or product boundary.
+It is an operational delegation contract. It is not a system interface contract and MUST NOT override an accepted KGAID Contract artifact, requirement, architecture decision, business rule, or product boundary.
 
 ## 3. Three Distinct Decisions
 
-KDD distinguishes three decisions that MUST NOT be collapsed:
+KGAID distinguishes three decisions that MUST NOT be collapsed:
 
 | Decision | Meaning | Authority |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Authorization to begin does not mean that the implementation is correct, verifie
 
 A successful Execution AI report does not perform the second or third decision automatically.
 
-## 4. Relationship to KDD Artifacts
+## 4. Relationship to KGAID Artifacts
 
 The task contract packages and references existing project knowledge. It does not become authoritative merely by copying it.
 
@@ -75,7 +75,7 @@ A task contract typically derives from:
 
 The task contract SHOULD preserve links to source artifacts rather than duplicating their full content. When a necessary excerpt is included, the authoritative source and version MUST remain identifiable.
 
-A task contract MAY use a project-local identifier. KDD core does not introduce a new mandatory artifact type in version 0.1. A project may associate the contract with its Increment identifier, work-item identifier, or a profile-defined task identifier.
+A task contract MAY use a project-local identifier. KGAID core does not introduce a new mandatory artifact type in version 0.1. A project may associate the contract with its Increment identifier, work-item identifier, or a profile-defined task identifier.
 
 ## 5. Contract Parties and Responsibilities
 
@@ -737,7 +737,7 @@ The following indicate likely contract failure:
 
 ## 21. Conformance
 
-A project conforms to this contract specification when, for a declared scope and KDD version:
+A project conforms to this contract specification when, for a declared scope and KGAID version:
 
 - consequential AI execution begins from a human-authorized, bounded task contract;
 - the contract identifies objective, scope, authoritative inputs, constraints, permissions, criteria, evidence, and escalation;
