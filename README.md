@@ -42,6 +42,7 @@ The methodology composes accepted knowledge models into an end-to-end way of wor
 - [KDD Process Model](docs/20-methodology/process-model.md) — the iterative process from product stimulus through business knowledge, requirements, architecture, contracts, implementation, verification, operation, and learning.
 - [KDD Human–AI Collaboration Model](docs/20-methodology/human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
 - [KDD AI Execution Task Contract](docs/20-methodology/ai-execution-task-contract.md) — the bounded, human-authorized task passed from a Knowledge and Review AI to an Execution AI.
+- [KDD Delivery Increment Model](docs/20-methodology/delivery-increment-model.md) — the governed unit that connects accepted product knowledge, execution tasks, integration, evidence, baseline, and human acceptance.
 
 ## Core dependency
 
