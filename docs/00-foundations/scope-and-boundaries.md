@@ -3,7 +3,8 @@
 **Status:** Accepted  
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
-**Accepted:** 2026-07-18
+**Accepted:** 2026-07-18  
+**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
 
 ## 1. Purpose
 
