@@ -264,7 +264,7 @@ The correct next task is not license selection. It is a human decision about dis
 ## 13. Post-Audit Human Decision
 
 **Decision date:** 2026-07-18  
-**Decision authority:** Krzysztof Olejnik — KDD Methodology Owner  
+**Decision authority:** Krzysztof Olejnik — KGAID Methodology Owner  
 **Decision:** Accept **Knowledge-Governed AI-Assisted Development (KGAID)** as the official methodology identity.
 
 This decision implements Identity Option A: a distinctive new name. The earlier name **Knowledge-Driven Development (KDD)** remains in this audit as historical evidence and as the exact name of prior work reviewed here.
