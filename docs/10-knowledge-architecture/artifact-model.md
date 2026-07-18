@@ -1,15 +1,15 @@
-# KDD Artifact Model
+# KGAID Artifact Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
 
 ## 1. Purpose
 
-This document defines the artifact model of Knowledge-Driven Development
-(KDD). It specifies the kinds of knowledge artifacts used by the methodology,
+This document defines the artifact model of Knowledge-Governed AI-Assisted Development
+(KGAID). It specifies the kinds of knowledge artifacts used by the methodology,
 their authority, lifecycle states, relationships, minimum metadata and
 verification rules.
 
@@ -51,7 +51,7 @@ catalogue may contain `UC-001` through `UC-008`. Each artifact that affects
 project decisions must nevertheless remain addressable by a stable identifier
 or unambiguous anchor.
 
-KDD does not require one file per artifact and does not assign identifiers to
+KGAID does not require one file per artifact and does not assign identifiers to
 every paragraph, note, AI conversation or implementation task.
 
 ## 4. Artifact catalogue
@@ -107,7 +107,7 @@ Additional relationships apply throughout this flow:
 
 ## 6. Independent status dimensions
 
-A single status field is insufficient. KDD separates knowledge approval,
+A single status field is insufficient. KGAID separates knowledge approval,
 implementation maturity and verification.
 
 ### 6.1 Knowledge status
@@ -319,7 +319,7 @@ Evidence can invalidate an assumption or reveal a conflict. It does not
 silently edit the affected knowledge. It creates a proposed change or
 `LRN` artifact for human review.
 
-## 12. KDD profiles
+## 12. KGAID profiles
 
 ### 12.1 Minimal profile
 
@@ -424,6 +424,6 @@ generalized for projects independent of domain, language and framework.
 KSeF_2 demonstrates the value of ordered normative documentation, explicit
 domain boundaries, use cases, contract-first design, ADR and RFC registries,
 bounded implementation claims, automated verification and architecture audits.
-KDD adopts those general lessons without requiring KSeF_2-specific choices
+KGAID adopts those general lessons without requiring KSeF_2-specific choices
 such as Hexagonal Architecture, Python, pytest, a particular coverage target,
 English as the normative language, or a particular AI product.
