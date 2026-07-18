@@ -1,8 +1,8 @@
-# Knowledge-Driven Development
+# Knowledge-Governed AI-Assisted Development
 
-Knowledge-Driven Development (KDD) is an open, technology-independent methodology for developing software systems through collaboration between people and AI.
+Knowledge-Governed AI-Assisted Development (KGAID) is an open, technology-independent methodology for developing software systems through collaboration between people and AI.
 
-KDD treats knowledge as the primary project asset. Code is a realization of accepted knowledge rather than its sole source. Product and business understanding guide architecture, architecture guides implementation, explicit contracts precede the code that realizes them, and verification evidence limits completion claims. AI supports the work; humans retain decision authority and accountability.
+KGAID treats knowledge as the primary project asset. Code is a realization of accepted knowledge rather than its sole source. Product and business understanding guide architecture, architecture guides implementation, explicit contracts precede the code that realizes them, and verification evidence limits completion claims. AI supports the work; humans retain decision authority and accountability.
 
 ## Methodology structure
 
@@ -22,10 +22,10 @@ The numbered directories express dependency of meaning, not a mandatory waterfal
 
 ### 00 — Foundations
 
-Foundations define the identity and constitutional rules of KDD.
+Foundations define the identity and constitutional rules of KGAID.
 
-- [KDD Scope and Boundaries](docs/00-foundations/scope-and-boundaries.md) — what KDD covers and deliberately does not prescribe.
-- [KDD Principles](docs/00-foundations/principles.md) — the normative principles governing the methodology and its adoption.
+- [KGAID Scope and Boundaries](docs/00-foundations/scope-and-boundaries.md) — what KGAID covers and deliberately does not prescribe.
+- [KGAID Principles](docs/00-foundations/principles.md) — the normative principles governing the methodology and its adoption.
 
 ### 10 — Knowledge Architecture
 
@@ -42,22 +42,22 @@ Knowledge Architecture defines the units, lifecycle, authority, relationships, a
 
 The methodology composes accepted knowledge models into an end-to-end way of working.
 
-- [KDD Process Model](docs/20-methodology/process-model.md) — the iterative process from product stimulus through business knowledge, requirements, architecture, contracts, implementation, verification, operation, and learning.
-- [KDD Human–AI Collaboration Model](docs/20-methodology/human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
-- [KDD AI Execution Task Contract](docs/20-methodology/ai-execution-task-contract.md) — the bounded, human-authorized task passed from a Knowledge and Review AI to an Execution AI.
-- [KDD Delivery Increment Model](docs/20-methodology/delivery-increment-model.md) — the governed unit that connects accepted product knowledge, execution tasks, integration, evidence, baseline, and human acceptance.
+- [KGAID Process Model](docs/20-methodology/process-model.md) — the iterative process from product stimulus through business knowledge, requirements, architecture, contracts, implementation, verification, operation, and learning.
+- [KGAID Human–AI Collaboration Model](docs/20-methodology/human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
+- [KGAID AI Execution Task Contract](docs/20-methodology/ai-execution-task-contract.md) — the bounded, human-authorized task passed from a Knowledge and Review AI to an Execution AI.
+- [KGAID Delivery Increment Model](docs/20-methodology/delivery-increment-model.md) — the governed unit that connects accepted product knowledge, execution tasks, integration, evidence, baseline, and human acceptance.
 
 ### 30 — Quality
 
 Quality models define how claims are verified, how evidence is interpreted, and how limitations constrain completion, baseline, release, and outcome decisions.
 
-- [KDD Verification and Evidence Model](docs/30-quality/verification-and-evidence-model.md) — claim-first verification, evidence strength and boundaries, independence, invalidation, and the Human–ChatGPT–Codex verification flow.
+- [KGAID Verification and Evidence Model](docs/30-quality/verification-and-evidence-model.md) — claim-first verification, evidence strength and boundaries, independence, invalidation, and the Human–ChatGPT–Codex verification flow.
 
 ### 40 — Adoption
 
-Adoption models define how projects select a KDD baseline and profile, tailor local realization, demonstrate conformance, and maintain an evidence-based declaration.
+Adoption models define how projects select a KGAID baseline and profile, tailor local realization, demonstrate conformance, and maintain an evidence-based declaration.
 
-- [KDD Adoption and Conformance Model](docs/40-adoption/adoption-and-conformance-model.md) — invariant core, Minimal and Extended profiles, tailoring, assessment requirements, evidence package, declaration, and adoption paths for KSeF_2, 3ksef, and future projects.
+- [KGAID Adoption and Conformance Model](docs/40-adoption/adoption-and-conformance-model.md) — invariant core, Minimal and Extended profiles, tailoring, assessment requirements, evidence package, declaration, and adoption paths for KSeF_2, 3ksef, and future projects.
 
 ### 50 — Governance evidence
 
@@ -65,7 +65,7 @@ Governance evidence records reviews and decisions about the methodology itself. 
 
 - [AUD-001 — KDD 0.1 Cross-Document Consistency Review](docs/50-governance/audits/AUD-001-kdd-0.1-consistency-review.md) — completed self-review of structure, terminology, authority, metadata, and baseline readiness.
 - [AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review](docs/50-governance/audits/AUD-002-knowledge-driven-development-landscape-review.md) — external-source review of earlier terminology, conceptual overlap, distinct Human–AI features, and naming options.
-- [Methodology Identity Proposal](docs/50-governance/proposals/methodology-identity-proposal.md) — draft comparison of replacement names and the recommended working identity Knowledge-Governed AI-Assisted Development (KGAID).
+- [Methodology Identity Proposal](docs/50-governance/proposals/methodology-identity-proposal.md) — accepted naming decision and migration basis for Knowledge-Governed AI-Assisted Development (KGAID).
 
 ## Core dependency
 
@@ -98,7 +98,7 @@ AI cannot accept its own proposal or project risk.
 
 ## Adoption
 
-KDD is independent of:
+KGAID is independent of:
 
 - programming language and framework;
 - architectural style;
@@ -111,7 +111,9 @@ An adopting project owns its product-specific knowledge and selects a level of r
 
 ## Origin
 
-KDD is being extracted and generalized from practical project experience, including [KSeF_2](https://github.com/KrzysztofOle/KSeF_2). KSeF_2 is an empirical source and reference application, not a normative source for the methodology.
+KGAID is being extracted and generalized from practical project experience, including [KSeF_2](https://github.com/KrzysztofOle/KSeF_2). KSeF_2 is an empirical source and reference application, not a normative source for the methodology.
+
+The methodology was developed under the working name Knowledge-Driven Development (KDD). The identity changed to KGAID after [AUD-002](docs/50-governance/audits/AUD-002-knowledge-driven-development-landscape-review.md) confirmed prior use of the former name and the Methodology Owner accepted a distinct identity.
 
 ## Status
 
