@@ -1,9 +1,9 @@
 # KDD Principles
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
-**Proposed:** 2026-07-18  
+**Accepted:** 2026-07-18  
 **Depends on:** [KDD Scope and Boundaries](scope-and-boundaries.md)
 
 ## 1. Purpose
