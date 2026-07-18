@@ -1,14 +1,20 @@
-# KGAID Knowledge Domains Model
+---
+document_id: KGAID-KA-006
+title: KGAID Knowledge Domains Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-KA-002, KGAID-KA-003, KGAID-KA-004, KGAID-KA-005]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Artifact Model](artifact-model.md),
-[KGAID Knowledge Lifecycle](knowledge-lifecycle.md),
-[KGAID Knowledge Authority Model](authority-model.md),
-[KGAID Knowledge Traceability Model](traceability-model.md)
+# KGAID Knowledge Domains Model
 
 ## 1. Purpose
 
@@ -17,9 +23,9 @@ Knowledge-Governed AI-Assisted Development (KGAID). Each domain answers a distin
 questions, owns a distinct meaning and has an accountable authority.
 
 A knowledge domain is not necessarily a directory, phase, team or document.
-It is a responsibility boundary. A small project may store several domains in
-one file, while a large project may use separate repositories. The semantic
-separation must remain visible in both cases.
+It is a responsibility boundary. A small project MAY store several domains in
+one file, while a large project MAY use separate repositories. The semantic
+separation MUST remain visible in both cases.
 
 KGAID preserves the derivation order:
 
@@ -46,9 +52,9 @@ The downward flow represents derivation. The return from Operations and
 Evolution to Product and Business starts a new knowledge lifecycle. It does not
 silently modify accepted upstream artifacts.
 
-Multiple capabilities may move through these domains concurrently. KGAID is not a
+Multiple capabilities MAY move through these domains concurrently. KGAID is not a
 requirement to complete every product artifact before implementation begins.
-The selected increment must have sufficient accepted upstream knowledge.
+The selected increment MUST have sufficient accepted upstream knowledge.
 
 ## 3. Domain 0 — Foundations and Governance
 
@@ -103,7 +109,7 @@ This domain answers:
 - Why does the product exist?
 - Which problem does it solve?
 - For whom?
-- Which outcomes and value should it provide?
+- Which outcomes and value SHOULD it provide?
 - What is the product and what is it not?
 - Where are its scope and responsibility boundaries?
 - Which business or user capabilities does it expose?
@@ -134,7 +140,7 @@ This domain does not choose:
 - infrastructure topology; or
 - implementation algorithm.
 
-A solution choice may appear here only when it is itself a binding product or
+A solution choice MAY appear here only when it is itself a binding product or
 business constraint and is recorded as such.
 
 ### 4.4 Authority
@@ -153,7 +159,7 @@ This domain answers:
 - Which actors, entities, values and processes exist?
 - Who owns business data and state?
 - Where are the domain boundaries?
-- Which distinctions must remain stable independently of technology?
+- Which distinctions MUST remain stable independently of technology?
 
 ### 5.2 Typical knowledge
 
@@ -181,7 +187,7 @@ This domain does not define:
 - serialization libraries; or
 - implementation repositories.
 
-A domain model may later be represented in code, but its normative meaning does
+A domain model MAY later be represented in code, but its normative meaning does
 not originate in that representation.
 
 ### 5.4 Authority
@@ -194,11 +200,11 @@ Typical owner: Domain Authority.
 
 This domain answers:
 
-- What must the system provide?
+- What MUST the system provide?
 - Which observable behaviour is required?
 - What are the success, failure and boundary conditions?
 - Which quality attributes and constraints apply?
-- Which scenarios must be supported?
+- Which scenarios MUST be supported?
 - How will an acceptable result be recognized?
 - Which behaviour is prohibited or intentionally excluded?
 
@@ -291,7 +297,7 @@ This domain answers:
 - Which guarantees apply?
 - Who owns the contract?
 - How do versioning, compatibility and deprecation work?
-- Which different implementations may realize the contract?
+- Which different implementations MAY realize the contract?
 
 ### 8.2 Typical knowledge
 
@@ -316,9 +322,9 @@ This domain does not define:
 - database layout merely because one implementation uses it; or
 - a new business rule without Domain and Requirements authority.
 
-A contract may use technology-specific representation when the representation
+A contract MAY use technology-specific representation when the representation
 is intentionally part of the accepted boundary. The representation and its
-compatibility consequences must then be explicit.
+compatibility consequences MUST then be explicit.
 
 ### 8.4 Authority
 
@@ -355,7 +361,7 @@ This domain answers:
 
 ### 9.3 Excludes
 
-This domain must not:
+This domain MUST NOT:
 
 - silently change requirements;
 - change contract semantics without authority;
@@ -402,7 +408,7 @@ This domain answers:
 
 ### 10.3 Excludes
 
-This domain must not:
+This domain MUST NOT:
 
 - change a requirement to fit a test result;
 - generalize evidence beyond its scope;
@@ -430,7 +436,7 @@ This domain answers:
 - What did users and operators learn?
 - Which assumptions were disproved?
 - Which external conditions changed?
-- Which knowledge should re-enter the lifecycle?
+- Which knowledge SHOULD re-enter the lifecycle?
 
 ### 11.2 Typical knowledge
 
@@ -448,7 +454,7 @@ This domain answers:
 
 ### 11.3 Excludes
 
-This domain must not:
+This domain MUST NOT:
 
 - directly rewrite requirements from logs;
 - automatically change architecture;
@@ -498,7 +504,7 @@ A cross-cutting report or index does not become a competing normative source.
 | `LRN` | Operations and Evolution |
 | `ASM`, `RISK`, `CON`, `RFC` | Domain determined by subject and owner |
 
-Every artifact has exactly one primary domain. It may have typed relationships
+Every artifact has exactly one primary domain. It MAY have typed relationships
 to artifacts in several other domains.
 
 An RFC does not automatically belong to Architecture. A product RFC belongs to
@@ -527,7 +533,7 @@ Domain:
 "A Session belongs to exactly one Company."
 
 Requirement:
-"The system must not share a Session between Companies."
+"The system MUST NOT share a Session between Companies."
 ```
 
 A domain rule states meaning or an invariant. A requirement creates an
@@ -543,7 +549,7 @@ Architecture:
 "Company Context is a mandatory boundary of every Workflow."
 ```
 
-A requirement states what must be achieved. Architecture defines the structural
+A requirement states what MUST be achieved. Architecture defines the structural
 approach used to achieve it.
 
 ### 14.4 Architecture and Contract
@@ -563,7 +569,7 @@ observable behaviour at that boundary.
 
 ```text
 Contract:
-"Repeating the request must not create a duplicate effect."
+"Repeating the request MUST NOT create a duplicate effect."
 
 Implementation:
 A concrete idempotency mechanism in code and storage.
@@ -585,15 +591,15 @@ Both supply evidence, but their environments, authority and limitations differ.
 
 ## 15. Inter-domain dependency rules
 
-1. `ARC` should derive from `VIS`, `CAP`, `REQ`, `QR`, `BR`,
+1. `ARC` SHOULD derive from `VIS`, `CAP`, `REQ`, `QR`, `BR`,
    `CON`, `PRN` or accepted prior decisions.
-2. `CTR` should derive from accepted architecture, requirements and domain
+2. `CTR` SHOULD derive from accepted architecture, requirements and domain
    meaning.
-3. `INC` should reference the requirements, contracts and decisions it
+3. `INC` SHOULD reference the requirements, contracts and decisions it
    realizes.
-4. `EVD` should reference exact claims and the implementation version it
+4. `EVD` SHOULD reference exact claims and the implementation version it
    observes.
-5. `LRN` should reference the observation, evidence or incident from which it
+5. `LRN` SHOULD reference the observation, evidence or incident from which it
    follows.
 6. Downstream knowledge cannot silently change upstream semantics.
 7. A discovery in a downstream domain returns to the upstream owner as a
@@ -620,7 +626,7 @@ purpose
 → evidence
 ```
 
-Other product areas may remain `captured`, `proposed`, `planned` or
+Other product areas MAY remain `captured`, `proposed`, `planned` or
 unknown.
 
 "Sufficient" is determined proportionately to risk, reversibility,
@@ -628,7 +634,7 @@ compatibility, regulatory impact and claim scope. A small reversible experiment
 needs less accepted detail than a production migration or irreversible external
 write.
 
-An experiment must still state its purpose, boundary, assumptions, safety
+An experiment MUST still state its purpose, boundary, assumptions, safety
 constraints and the claims it cannot establish.
 
 ## 17. Anti-patterns
@@ -650,7 +656,7 @@ constraints and the claims it cannot establish.
 
 ## 18. Minimal profile
 
-A small project may group domains into a few documents:
+A small project MAY group domains into a few documents:
 
 ```text
 vision.md
@@ -661,23 +667,23 @@ evidence/
 operations.md
 ```
 
-The grouping must still allow a reader to distinguish:
+The grouping MUST still allow a reader to distinguish:
 
 - why the product exists;
 - how the represented domain works;
-- what the system must do;
+- what the system MUST do;
 - how responsibilities are structured;
 - which contracts define boundaries;
 - where the realization exists;
 - how claims were verified; and
 - what was learned from operation.
 
-Combining documents must not combine ownership or status of unrelated
+Combining documents MUST NOT combine ownership or status of unrelated
 artifacts.
 
 ## 19. Extended profile
 
-A larger project may use:
+A larger project MAY use:
 
 ```text
 knowledge/
@@ -693,7 +699,7 @@ knowledge/
 ```
 
 This is a recommended semantic mapping, not a mandatory directory structure.
-The project may store code outside `knowledge/60-delivery`; the knowledge
+The project MAY store code outside `knowledge/60-delivery`; the knowledge
 domain then contains implementation manifests or references rather than
 duplicating source code.
 
@@ -704,7 +710,7 @@ semantic model.
 
 | Knowledge domain | KSeF_2 example |
 | --- | --- |
-| Foundations and Governance | `00-architecture-principles.md`, assistant and project working rules |
+| Foundations and Governance | `02-principles.md`, assistant and project working rules |
 | Product and Business | `01-project-vision.md` |
 | Domain Knowledge | `02-domain-model.md`, `98-glossary.md` |
 | Requirements and Acceptance | `03-use-cases.md`, `capabilities/` |
@@ -737,7 +743,7 @@ A project conforms to this model when:
 - cross-cutting concerns do not create competing knowledge owners;
 - inter-domain relationships follow the Traceability Model;
 - incremental delivery retains a sufficient upstream chain; and
-- a minimal project may simplify files without collapsing semantic
+- a minimal project MAY simplify files without collapsing semantic
   responsibilities.
 
 Conformance does not require a specific folder structure, domain-modeling

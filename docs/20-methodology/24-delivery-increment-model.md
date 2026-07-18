@@ -1,12 +1,20 @@
-# KGAID Delivery Increment Model
+---
+document_id: KGAID-MTH-004
+title: KGAID Delivery Increment Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-002, KGAID-KA-002, KGAID-MTH-001, KGAID-MTH-003, KGAID-KA-005]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Artifact Model](../10-knowledge-architecture/artifact-model.md), [KGAID Process Model](process-model.md), [KGAID AI Execution Task Contract](ai-execution-task-contract.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
-**Realizes principles:** P1–P11
+# KGAID Delivery Increment Model
 
 ## 1. Purpose
 
@@ -16,13 +24,13 @@ It explains:
 
 - how an increment relates to product outcomes, capabilities, contracts, tasks, baselines, and releases;
 - how a valuable or necessary slice is selected;
-- which knowledge an increment must contain or reference;
+- which knowledge an increment MUST contain or reference;
 - when an increment is ready for realization;
 - how it is decomposed into AI Execution Task Contracts;
 - how humans, a Knowledge and Review AI, and Execution AI collaborate;
 - how implementation, integration, verification, and acceptance are coordinated;
 - how discoveries and scope changes are governed;
-- when an increment may be called implemented, verified, baselined, released, or complete.
+- when an increment MAY be called implemented, verified, baselined, released, or complete.
 
 The model is independent of planning method, programming language, architecture style, repository platform, and AI provider.
 
@@ -47,10 +55,10 @@ An increment is a unit of governed outcome, not merely a container of activities
 | Unit | Relationship to increment |
 | --- | --- |
 | **Product** | Supplies vision, boundaries, desired outcomes, and success measures. |
-| **Capability** | Describes an enduring product ability that one or more increments may realize or evolve. |
+| **Capability** | Describes an enduring product ability that one or more increments MAY realize or evolve. |
 | **Requirement** | Defines an obligation that constrains one or more increments. |
-| **Architecture decision** | Constrains how the increment may be realized. |
-| **Contract** | Defines observable obligations the increment must preserve or implement. |
+| **Architecture decision** | Constrains how the increment MAY be realized. |
+| **Contract** | Defines observable obligations the increment MUST preserve or implement. |
 | **AI Execution Task Contract** | Delegates one bounded portion of increment realization to an Execution AI. |
 | **Implementation revision** | Contains the realized system change. |
 | **Evidence** | Supports exact claims about the increment and implementation. |
@@ -58,9 +66,9 @@ An increment is a unit of governed outcome, not merely a container of activities
 | **Release** | Applies an authorized delivery decision to one or more baselined increments and a target environment. |
 | **Outcome measurement** | Determines whether released behavior contributes to the intended product result. |
 
-One capability may require several increments. One increment may affect several capabilities when the scope remains coherent and the shared result can be evaluated meaningfully.
+One capability MAY require several increments. One increment MAY affect several capabilities when the scope remains coherent and the shared result can be evaluated meaningfully.
 
-One increment may contain several execution tasks. Completion of every task does not by itself prove increment completion.
+One increment MAY contain several execution tasks. Completion of every task does not by itself prove increment completion.
 
 ## 4. Increment Types
 
@@ -256,17 +264,20 @@ It answers: **What has been realized operationally?**
 | --- | --- |
 | **not-planned** | Verification has not yet been defined. |
 | **planned** | Claims, methods, environments, and evidence needs are identified. |
-| **partial** | Some claims have evidence; intended completion claim remains unsupported. |
+| **in-progress** | Evidence collection or evaluation is active. |
+| **partially-supported** | Some required evidence supports only part of the declared claim. |
 | **failed** | Evidence contradicts at least one applicable criterion or claim. |
 | **verified** | Proportionate evidence supports the declared completion claim. |
-| **limited** | Evidence supports a deliberately narrower claim with explicit limitations. |
+| **verified-with-limitations** | Human authority accepted an explicitly narrowed verification claim. |
+| **inconclusive** | Available evidence cannot resolve the claim. |
 | **invalidated** | Change in knowledge, implementation, environment, or method makes prior evidence unusable for the claim. |
+| **expired** | Time or policy boundary requires reverification. |
 
 It answers: **What exact claim does evidence support?**
 
 These axes MUST NOT be collapsed.
 
-An increment may have accepted knowledge, active delivery, and partial verification. It may be implementation-complete but not verified. It may be verified in a test environment but not released. It may be released while the intended product outcome remains unproven.
+An increment MAY have accepted knowledge, active delivery, and partially-supported verification. It MAY be implementation-complete but not verified. It MAY be verified in a test environment but not released. It MAY be released while the intended product outcome remains unproven.
 
 ## 9. Increment Lifecycle
 
@@ -286,7 +297,7 @@ flowchart TD
     J --> A
 ~~~
 
-The flow may return upstream whenever a discovery changes product meaning, requirement, architecture, contract, risk, or evidence scope.
+The flow MAY return upstream whenever a discovery changes product meaning, requirement, architecture, contract, risk, or evidence scope.
 
 ### 9.1 Candidate and shaping
 
@@ -347,7 +358,7 @@ A human Risk Authority MAY authorize reduced readiness when the missing knowledg
 
 ## 11. Task Decomposition
 
-An accepted increment may be decomposed into:
+An accepted increment MAY be decomposed into:
 
 - AI execution tasks;
 - human decision or specialist-review tasks;
@@ -356,7 +367,7 @@ An accepted increment may be decomposed into:
 - verification tasks;
 - migration, rollout, and operational tasks.
 
-Every material AI execution task SHOULD use the accepted [KGAID AI Execution Task Contract](ai-execution-task-contract.md).
+Every material AI execution task SHOULD use the accepted [KGAID AI Execution Task Contract](23-ai-execution-task-contract.md).
 
 A task MUST:
 
@@ -384,7 +395,7 @@ flowchart TD
     D --> E["Task D: increment verification"]
 ~~~
 
-The graph is illustrative. Tasks may proceed concurrently when their inputs, write scopes, and contracts do not conflict.
+The graph is illustrative. Tasks MAY proceed concurrently when their inputs, write scopes, and contracts do not conflict.
 
 ### 11.2 Task completion
 
@@ -466,7 +477,7 @@ Integration review SHOULD verify:
 - no task introduced unintended behavior outside scope;
 - increment-level verification can run against the integrated result.
 
-A set of individually passing tasks may fail integration.
+A set of individually passing tasks MAY fail integration.
 
 Integration defects MAY return to task correction when the accepted increment remains valid. A defect that challenges increment knowledge returns to the relevant human authority.
 
@@ -572,7 +583,7 @@ Concurrent increments MUST coordinate:
 - release sequencing;
 - impact of upstream changes.
 
-A change to shared knowledge triggers impact analysis for every dependent increment. Unrelated ready work may continue when the disputed scope remains isolated.
+A change to shared knowledge triggers impact analysis for every dependent increment. Unrelated ready work MAY continue when the disputed scope remains isolated.
 
 ## 19. Baseline, Release, and Learning
 

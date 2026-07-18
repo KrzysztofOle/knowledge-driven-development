@@ -1,11 +1,20 @@
-# KGAID Knowledge Lifecycle
+---
+document_id: KGAID-KA-003
+title: KGAID Knowledge Lifecycle
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-KA-002]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Artifact Model](artifact-model.md)
+# KGAID Knowledge Lifecycle
 
 ## 1. Purpose
 
@@ -18,7 +27,7 @@ observation to normative knowledge and from normative knowledge to
 implementation and evidence.
 
 KGAID is iterative, not a rigid waterfall. Multiple capabilities and increments
-may evolve concurrently. Downstream knowledge must nevertheless be derived
+MAY evolve concurrently. Downstream knowledge MUST nevertheless be derived
 from sufficiently mature upstream knowledge, and an upstream change requires an
 impact review of its dependants.
 
@@ -43,7 +52,7 @@ flowchart TD
     N --> A
 ```
 
-The cycle may return to any earlier stage when a contradiction, missing
+The cycle MAY return to any earlier stage when a contradiction, missing
 requirement, invalid assumption, unsafe boundary or insufficient contract is
 discovered.
 
@@ -80,7 +89,7 @@ The trigger is captured as one or more of:
 
 The initial knowledge status is `captured`.
 
-A chat, working note, transcript or exploratory result may remain transient.
+A chat, working note, transcript or exploratory result MAY remain transient.
 KGAID does not require every piece of working material to become a durable
 artifact. Material becomes durable when it can affect a project decision,
 requirement, contract, risk, evidence claim or future interpretation.
@@ -99,7 +108,7 @@ Humans and AI collaborate to:
 8. find the authoritative owner of related knowledge; and
 9. assign an owner and decision authority for the candidate artifact.
 
-Material claims should be classified as one of:
+Material claims SHOULD be classified as one of:
 
 - sourced fact;
 - direct observation;
@@ -108,16 +117,16 @@ Material claims should be classified as one of:
 - assumption; or
 - recommendation.
 
-An unstable or time-sensitive external fact must retain its source and
-observation date. Conflicting sources must remain visible until resolved; AI
-must not silently select a convenient source and present the result as settled
+An unstable or time-sensitive external fact MUST retain its source and
+observation date. Conflicting sources MUST remain visible until resolved; AI
+MUST NOT silently select a convenient source and present the result as settled
 knowledge.
 
 ### 3.4 Proposal
 
 A coherent artifact is created with knowledge status `proposed`.
 
-A material proposal should state:
+A material proposal SHOULD state:
 
 - purpose;
 - scope;
@@ -131,7 +140,7 @@ A material proposal should state:
 - compatibility impact; and
 - proposed acceptance or verification criteria.
 
-AI may create or improve the proposal but cannot accept it.
+AI MAY create or improve the proposal but cannot accept it.
 
 ### 3.5 Review
 
@@ -149,7 +158,7 @@ Review evaluates:
 - testability and verifiability; and
 - whether the proposed authority and scope are correct.
 
-Review may result in:
+Review MAY result in:
 
 - knowledge status `reviewed`;
 - return to `proposed` for revision;
@@ -164,7 +173,7 @@ recommended where proportionate.
 
 ### 3.6 Human decision
 
-An authorized human may:
+An authorized human MAY:
 
 - accept the proposal;
 - reject it;
@@ -173,7 +182,7 @@ An authorized human may:
 - defer the decision; or
 - explicitly accept a known risk.
 
-Only a human decision authority may transition an artifact to `accepted`.
+Only a human decision authority MAY transition an artifact to `accepted`.
 
 Acceptance records:
 
@@ -205,12 +214,12 @@ Before realization, the project identifies the accepted artifact's effect on:
 - previously accepted risks.
 
 An upstream change triggers review of artifacts that depend on it. Impact
-analysis must distinguish artifacts that require a semantic change from those
+analysis MUST distinguish artifacts that require a semantic change from those
 that only require a refreshed reference, test or status.
 
 ### 3.8 Realization readiness
 
-Implementation may begin when the intended increment has, in proportion to its
+Implementation MAY begin when the intended increment has, in proportion to its
 risk:
 
 - an accepted purpose and scope;
@@ -223,11 +232,11 @@ risk:
 - no unresolved conflict that invalidates the intended work.
 
 Not every implementation detail requires advance human approval. An AI agent or
-human implementer may make local, reversible technical decisions that remain
+human implementer MAY make local, reversible technical decisions that remain
 inside accepted requirements, architecture, contracts, security boundaries and
 risk limits.
 
-A decision must return to human authority when it changes functionality,
+A decision MUST return to human authority when it changes functionality,
 business rules, architecture, security, compatibility, evidence scope or
 accepted risk.
 
@@ -236,7 +245,7 @@ accepted risk.
 Implementation realizes accepted knowledge through code, configuration,
 migration, documentation or another deliverable appropriate to the project.
 
-During implementation, the team or AI may discover:
+During implementation, the team or AI MAY discover:
 
 - a missing requirement;
 - an invalid assumption;
@@ -245,12 +254,12 @@ During implementation, the team or AI may discover:
 - an unhandled risk; or
 - evidence that an accepted boundary is insufficient.
 
-The implementer must not silently redefine the solution. The discovery creates
+The implementer MUST NOT silently redefine the solution. The discovery creates
 a new captured item, assumption, risk, RFC or learning artifact, and the
 lifecycle returns to the appropriate earlier stage.
 
 Implementation status is maintained independently from knowledge status. An
-accepted contract may be `not-started`, `experimental`, `partial` or
+accepted contract MAY be `not-started`, `experimental`, `partial` or
 `implemented`.
 
 ### 3.10 Verification
@@ -273,13 +282,13 @@ the intended boundary. A passing unit test cannot establish integration,
 restart durability, regulatory compliance or production readiness unless those
 claims were actually exercised.
 
-A failed verification does not automatically change accepted knowledge. It may
+A failed verification does not automatically change accepted knowledge. It MAY
 change implementation or verification status and creates a new trigger for
 analysis.
 
 ### 3.11 Knowledge baseline
 
-After the applicable gates pass, a project may establish a knowledge baseline
+After the applicable gates pass, a project MAY establish a knowledge baseline
 that binds:
 
 - accepted knowledge;
@@ -289,7 +298,7 @@ that binds:
 - known limitations; and
 - accepted residual risks.
 
-A release or completion claim should identify the knowledge baseline and
+A release or completion claim SHOULD identify the knowledge baseline and
 evidence from which it is derived. The baseline is a reproducible point of
 reference, not a claim that all future work is complete.
 
@@ -343,7 +352,7 @@ The allowed transitions are:
 | `accepted` | `superseded` | Human authority accepting the replacement. |
 | `accepted` | `retired` | Human authority confirming it no longer applies. |
 
-AI may recommend every transition but cannot perform the transition to
+AI MAY recommend every transition but cannot perform the transition to
 `accepted`, accept risk or act as the final decision authority.
 
 ## 5. Knowledge gates
@@ -360,8 +369,8 @@ AI may recommend every transition but cannot perform the transition to
 | `KG-8 Learning Reviewed` | Operational learning has been assessed and routed into the lifecycle. |
 
 A gate is a semantic condition, not a mandatory meeting or form. In a small
-project, one authorized person may record a concise decision. In a large,
-regulated or high-risk project, the same gate may require formal review and
+project, one authorized person MAY record a concise decision. In a large,
+regulated or high-risk project, the same gate MAY require formal review and
 multiple authorities.
 
 A blocked gate stops only the affected scope. It does not automatically block
@@ -380,7 +389,7 @@ When observable meaning does not change:
 - preserve links and decision history; and
 - recheck dependent summaries where necessary.
 
-A clarification must not add a new obligation, weaken a guarantee or change
+A clarification MUST NOT add a new obligation, weaken a guarantee or change
 accepted behaviour.
 
 ### 6.2 Compatible change
@@ -393,7 +402,7 @@ When an artifact retains its identity and existing valid uses remain correct:
 - update affected dependent artifacts; and
 - refresh or extend evidence where the changed scope requires it.
 
-Compatibility must be demonstrated, not assumed from an additive file diff.
+Compatibility MUST be demonstrated, not assumed from an additive file diff.
 
 ### 6.3 Semantic or incompatible change
 
@@ -408,7 +417,7 @@ changes materially:
 - retain historical artifacts.
 
 A change to a durable architecture decision always requires a new ADR that
-supersedes the earlier decision. An accepted ADR may be edited in place only for
+supersedes the earlier decision. An accepted ADR MAY be edited in place only for
 a non-semantic clarification.
 
 ## 7. Human and AI collaboration
@@ -424,7 +433,7 @@ a non-semantic clarification.
 | Verification | Produces and analyzes evidence. | Accepts the claim scope and residual risk. |
 | Learning | Identifies patterns and candidate changes. | Decides whether the product or methodology changes. |
 
-AI must stop and obtain human direction when a decision would change:
+AI MUST stop and obtain human direction when a decision would change:
 
 - product purpose or boundary;
 - functionality;
@@ -452,12 +461,12 @@ requirement
 → evidence
 ```
 
-Several capabilities or increments may follow that chain concurrently.
-Discovery in one increment may update shared upstream knowledge and trigger
+Several capabilities or increments MAY follow that chain concurrently.
+Discovery in one increment MAY update shared upstream knowledge and trigger
 impact review in the others.
 
 Returning to an earlier stage is a normal knowledge-correction mechanism, not a
-process failure. The project must preserve the reason for the change and avoid
+process failure. The project MUST preserve the reason for the change and avoid
 silently rewriting history.
 
 ## 9. Example derived from KSeF_2
@@ -479,14 +488,14 @@ Need for restart-safe UC-005 execution
 
 This example demonstrates that:
 
-- knowledge may be accepted;
-- part of a contract may be implemented;
-- tests may verify that bounded implementation;
-- verification may remain partial for the target capability; and
-- production readiness may still be planned.
+- knowledge MAY be accepted;
+- part of a contract MAY be implemented;
+- tests MAY verify that bounded implementation;
+- verification MAY remain partial for the target capability; and
+- production readiness MAY still be planned.
 
 KGAID generalizes this pattern: the status of knowledge, implementation and
-verification must remain independent and scoped.
+verification MUST remain independent and scoped.
 
 ## 10. Conformance
 

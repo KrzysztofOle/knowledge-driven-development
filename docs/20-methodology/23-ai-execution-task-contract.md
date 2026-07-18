@@ -1,12 +1,20 @@
-# KGAID AI Execution Task Contract
+---
+document_id: KGAID-MTH-003
+title: KGAID AI Execution Task Contract
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-002, KGAID-MTH-001, KGAID-MTH-002, KGAID-KA-004, KGAID-KA-005]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Process Model](process-model.md), [KGAID Human–AI Collaboration Model](human-ai-collaboration.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
-**Realizes principles:** P1, P4–P11
+# KGAID AI Execution Task Contract
 
 ## 1. Purpose
 
@@ -14,7 +22,7 @@ This document defines the AI Execution Task Contract used to delegate bounded re
 
 In the KSeF_2 collaboration pattern:
 
-- the Human and ChatGPT establish what should be done;
+- the Human and ChatGPT establish what SHOULD be done;
 - ChatGPT prepares the task contract;
 - the Human authorizes consequential scope;
 - ChatGPT sends the contract to Codex;
@@ -36,8 +44,8 @@ An **AI Execution Task Contract** is a versioned, bounded delegation package tha
 - which decisions are already made;
 - which decisions remain with humans;
 - what acceptance criteria apply;
-- what evidence must be returned;
-- when execution must stop and escalate.
+- what evidence MUST be returned;
+- when execution MUST stop and escalate.
 
 The contract converts accepted project knowledge into an executable unit without transferring human decision authority to AI.
 
@@ -49,7 +57,7 @@ KGAID distinguishes three decisions that MUST NOT be collapsed:
 
 | Decision | Meaning | Authority |
 | --- | --- | --- |
-| **Task authorization** | The declared work may be attempted within the stated delegation. | Human authority or applicable accepted policy. |
+| **Task authorization** | The declared work MAY be attempted within the stated delegation. | Human authority or applicable accepted policy. |
 | **Result verification** | Evidence supports specified claims about the implementation. | Verification Authority or accepted automatic verification policy. |
 | **Result acceptance** | The reviewed result, limitations, and residual risk are accepted for the declared scope. | Properly scoped Human Decision Authority. |
 
@@ -75,7 +83,7 @@ A task contract typically derives from:
 
 The task contract SHOULD preserve links to source artifacts rather than duplicating their full content. When a necessary excerpt is included, the authoritative source and version MUST remain identifiable.
 
-A task contract MAY use a project-local identifier. KGAID core does not introduce a new mandatory artifact type in version 0.1. A project may associate the contract with its Increment identifier, work-item identifier, or a profile-defined task identifier.
+A task contract MAY use a project-local identifier. KGAID core does not introduce a new mandatory artifact type in version 0.1. A project MAY associate the contract with its Increment identifier, work-item identifier, or a profile-defined task identifier.
 
 ## 5. Contract Parties and Responsibilities
 
@@ -138,7 +146,7 @@ The objective describes the result, not only the activity.
 
 ### 6.5 Assumptions and unknowns
 
-- assumptions under which execution may proceed;
+- assumptions under which execution MAY proceed;
 - consequence if an assumption is false;
 - validation or expiry condition;
 - unresolved questions;
@@ -147,18 +155,18 @@ The objective describes the result, not only the activity.
 
 ### 6.6 Constraints and invariants
 
-- business rules that must remain true;
+- business rules that MUST remain true;
 - architecture boundaries;
 - contract obligations;
 - quality, security, privacy, legal, and compliance constraints;
 - performance, durability, compatibility, and operational expectations;
 - project conventions relevant to the change;
-- protected behavior and existing state that must not be altered.
+- protected behavior and existing state that MUST NOT be altered.
 
 ### 6.7 Allowed and forbidden actions
 
-- files, systems, tools, commands, environments, and data the Execution AI may access;
-- writes and mutations it may perform;
+- files, systems, tools, commands, environments, and data the Execution AI MAY access;
+- writes and mutations it MAY perform;
 - actions requiring preview or read-only inspection first;
 - external actions explicitly authorized;
 - destructive actions explicitly authorized;
@@ -284,9 +292,9 @@ stateDiagram-v2
 | **withdrawn** | Draft was abandoned before authorization. |
 | **closed** | The task record is complete and retained with its result. |
 
-Only a properly scoped human or accepted policy may transition a task to **authorized**.
+Only a properly scoped human or accepted policy MAY transition a task to **authorized**.
 
-Only a properly scoped human may transition a consequential result to **accepted_result**.
+Only a properly scoped human MAY transition a consequential result to **accepted_result**.
 
 The Knowledge AI MAY manage routine status updates and the correction loop within explicit delegation, but it cannot accept its own contract or result.
 
@@ -306,7 +314,7 @@ A task is ready for authorization when:
 - the target state and relevant concurrent changes are known;
 - no unresolved conflict invalidates the task.
 
-For low-risk work, the record may be concise. Missing semantic content MUST NOT be hidden by a longer prompt.
+For low-risk work, the record MAY be concise. Missing semantic content MUST NOT be hidden by a longer prompt.
 
 The Knowledge AI SHOULD detect readiness gaps before delegating to the Execution AI.
 
@@ -340,7 +348,7 @@ A generated prompt MAY include additional tactical guidance when it remains with
 
 ## 10. Reference Contract Template
 
-The following template is a technology-independent reference. Projects may change its representation while preserving required semantics.
+The following template is a technology-independent reference. Projects MAY change its representation while preserving required semantics.
 
 ~~~markdown
 # AI Execution Task Contract
@@ -539,7 +547,7 @@ The review SHOULD produce:
 | **conforms** | Result satisfies the contract and evidence supports the stated claim. |
 | **conforms with limitations** | Result satisfies a narrower claim with explicit limitations. |
 | **correction required** | Defects can be corrected within authorized scope. |
-| **human decision required** | Upstream meaning, scope, authority, or risk must change. |
+| **human decision required** | Upstream meaning, scope, authority, or risk MUST change. |
 | **rejected** | Result cannot be accepted under the current contract. |
 | **review limited** | The Knowledge AI lacks access or evidence necessary for a complete review. |
 
@@ -556,7 +564,7 @@ A correction request SHOULD contain:
 - violated criterion or authoritative source;
 - observed evidence;
 - required result;
-- scope that must remain unchanged;
+- scope that MUST remain unchanged;
 - checks to repeat;
 - any new limitation;
 - escalation condition.
@@ -569,13 +577,13 @@ Otherwise the task becomes **revised** and requires human reauthorization.
 
 ### 14.1 Clarification
 
-A clarification may be made without reauthorization when it does not change observable meaning, permissions, scope, constraints, criteria, evidence claim, or risk.
+A clarification MAY be made without reauthorization when it does not change observable meaning, permissions, scope, constraints, criteria, evidence claim, or risk.
 
 The clarification SHOULD be recorded with its author and date.
 
 ### 14.2 Execution-level adjustment
 
-The Knowledge AI or Execution AI may adjust tactics when the change:
+The Knowledge AI or Execution AI MAY adjust tactics when the change:
 
 - remains reversible;
 - stays inside accepted architecture and contracts;
@@ -670,7 +678,7 @@ When recovery is possible, the contract SHOULD define backup, checkpoint, rollba
 
 ## 18. Concurrent Work
 
-Before execution, the contract SHOULD identify whether other humans, AI agents, branches, or systems may change the same scope.
+Before execution, the contract SHOULD identify whether other humans, AI agents, branches, or systems MAY change the same scope.
 
 The Execution AI MUST:
 
@@ -698,7 +706,7 @@ For low-risk, reversible work, a compact contract MAY contain:
 - expected result report;
 - human authorization.
 
-A well-structured short message may satisfy the minimal profile.
+A well-structured short message MAY satisfy the minimal profile.
 
 ### 19.2 Extended profile
 

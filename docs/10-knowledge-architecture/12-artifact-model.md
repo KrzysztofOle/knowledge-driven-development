@@ -1,10 +1,20 @@
-# KGAID Artifact Model
+---
+document_id: KGAID-KA-002
+title: KGAID Artifact Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-KA-001]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+# KGAID Artifact Model
 
 ## 1. Purpose
 
@@ -14,8 +24,8 @@ their authority, lifecycle states, relationships, minimum metadata and
 verification rules.
 
 The model is independent of programming language, framework, architecture
-style, repository host and AI provider. A project may use a minimal or extended
-profile, but it must preserve the semantic distinctions defined here.
+style, repository host and AI provider. A project MAY use a minimal or extended
+profile, but it MUST preserve the semantic distinctions defined here.
 
 ## 2. Fundamental rules
 
@@ -46,9 +56,9 @@ These rules establish the **Single Knowledge Ownership Principle**:
 A knowledge artifact is an identifiable unit of project knowledge. A file is
 only a storage container.
 
-One coherent document may contain several artifacts. For example, one use-case
-catalogue may contain `UC-001` through `UC-008`. Each artifact that affects
-project decisions must nevertheless remain addressable by a stable identifier
+One coherent document MAY contain several artifacts. For example, one use-case
+catalogue MAY contain `UC-001` through `UC-008`. Each artifact that affects
+project decisions MUST nevertheless remain addressable by a stable identifier
 or unambiguous anchor.
 
 KGAID does not require one file per artifact and does not assign identifiers to
@@ -79,7 +89,7 @@ every paragraph, note, AI conversation or implementation task.
 | `AUD` | Audit | A scoped review of consistency, quality or conformance. |
 | `LRN` | Learning | Knowledge obtained from verification or operation. |
 
-A project profile may introduce additional artifact types when it defines their
+A project profile MAY introduce additional artifact types when it defines their
 authority and relationships without changing the meanings above.
 
 ## 5. Primary knowledge flow
@@ -100,9 +110,9 @@ Additional relationships apply throughout this flow:
 
 - `TERM` and `BR` supply the language and rules used by capabilities,
   requirements and architecture;
-- `ASM` and `RISK` may relate to any artifact;
+- `ASM` and `RISK` MAY relate to any artifact;
 - `SCN` makes a capability, use case or requirement concrete;
-- an `RFC` may lead to an `ADR`, `CTR` and `INC`;
+- an `RFC` MAY lead to an `ADR`, `CTR` and `INC`;
 - an `AUD` checks a selected part or the whole knowledge chain.
 
 ## 6. Independent status dimensions
@@ -147,30 +157,36 @@ removed
 ```
 
 Implementation status is always interpreted within the artifact's declared
-scope. `experimental` or `partial` must identify the missing boundary or
+scope. `experimental` or `partial` MUST identify the missing boundary or
 guarantee. `implemented` requires realization at the intended boundary, not
 merely the existence of related code.
 
 ### 6.3 Verification status
 
 ```text
-not-required
-unverified
-partially-verified
+not-planned
+planned
+in-progress
+partially-supported
+failed
 verified
+verified-with-limitations
+inconclusive
 invalidated
+expired
 ```
 
-Verification status never stands alone. It must reference evidence and its
+These are the canonical claim verification statuses defined by the Verification
+and Evidence Model. Verification status never stands alone. It MUST reference evidence and its
 scope. Evidence from a unit test, controlled substitute or DEMO environment
-must not be generalized to production behaviour.
+MUST NOT be generalized to production behaviour.
 
 Example:
 
 ```yaml
 knowledge_status: accepted
 implementation_status: experimental
-verification_status: partially-verified
+verification_status: partially-supported
 
 verification_scope:
   environment: demo
@@ -182,7 +198,7 @@ verification_scope:
 
 ## 7. Minimum metadata
 
-Every normative artifact must provide at least:
+Every normative artifact MUST provide at least:
 
 ```yaml
 id: ADR-001
@@ -191,7 +207,7 @@ title: Decision title
 
 knowledge_status: accepted
 implementation_status: planned
-verification_status: unverified
+verification_status: planned
 
 scope: Scope in which the artifact applies
 owner: architecture-owner
@@ -212,11 +228,11 @@ provenance:
   accepted_by: human
 ```
 
-Projects may use Markdown front matter, tables, structured files or another
+Projects MAY use Markdown front matter, tables, structured files or another
 machine-readable representation. The semantics are normative; the serialization
 format is replaceable.
 
-The inverse relation `downstream` should not be maintained manually. It should
+The inverse relation `downstream` SHOULD NOT be maintained manually. It SHOULD
 be derived from authoritative upstream links such as `depends_on`, because
 duplicated bidirectional links easily become inconsistent.
 
@@ -234,7 +250,7 @@ duplicated bidirectional links easily become inconsistent.
 | `supersedes` | The artifact replaces an earlier artifact. |
 | `conflicts_with` | An unresolved contradiction has been detected. |
 
-An accepted release of project knowledge should not contain an unresolved
+An accepted release of project knowledge SHOULD NOT contain an unresolved
 `conflicts_with` relation without an explicit exception owner, scope and
 resolution plan.
 
@@ -253,12 +269,12 @@ resolution plan.
 
 A downstream artifact cannot silently override upstream knowledge.
 
-If implementation reveals that a requirement must change, the requirement is
+If implementation reveals that a requirement MUST change, the requirement is
 changed first through its own authority and lifecycle. The affected
 architecture, contracts, implementation and verification are then reviewed and
 updated. Existing code does not automatically become the specification.
 
-An ADR may clarify or choose within accepted upstream constraints. It cannot
+An ADR MAY clarify or choose within accepted upstream constraints. It cannot
 override a principle, business rule or requirement unless the owning upstream
 artifact is explicitly changed or superseded.
 
@@ -279,13 +295,13 @@ artifact is explicitly changed or superseded.
 | Translation | Derived artifact that cannot introduce normative meaning. |
 | Code | Realization of accepted knowledge, not the owner of product decisions. |
 
-A status must have one authoritative location. README files and registries
-should link to it rather than maintain independent copies. When tooling is
-available, indexes should be generated from artifact metadata.
+A status MUST have one authoritative location. README files and registries
+SHOULD link to it rather than maintain independent copies. When tooling is
+available, indexes SHOULD be generated from artifact metadata.
 
 ## 11. Evidence model
 
-Every `EVD` must state:
+Every `EVD` MUST state:
 
 1. the claims it verifies;
 2. the subject and exact version;
@@ -323,7 +339,7 @@ silently edit the affected knowledge. It creates a proposed change or
 
 ### 12.1 Minimal profile
 
-A small project must maintain at least:
+A small project MUST maintain at least:
 
 1. product vision and boundaries;
 2. essential terms and business rules;
@@ -334,11 +350,11 @@ A small project must maintain at least:
 7. contracts for material boundaries; and
 8. evidence supporting completion claims.
 
-The artifacts may be grouped into a small number of files.
+The artifacts MAY be grouped into a small number of files.
 
 ### 12.2 Extended profile
 
-A larger, regulated, long-lived or multi-team project should additionally
+A larger, regulated, long-lived or multi-team project SHOULD additionally
 maintain:
 
 - separate assumption and risk registers;
@@ -351,7 +367,7 @@ maintain:
 - architecture and conformance audits;
 - operational learning and supersession history.
 
-The selected profile should be recorded in project governance and may evolve
+The selected profile SHOULD be recorded in project governance and MAY evolve
 as the project grows.
 
 ## 13. Identifier rules
@@ -383,11 +399,11 @@ identifier. A changed decision is represented by a new artifact that
 
 ## 14. Human and AI authority
 
-AI may gather sources, identify gaps, detect contradictions, propose models,
+AI MAY gather sources, identify gaps, detect contradictions, propose models,
 draft artifacts, implement accepted contracts, generate verification and
 perform an additional review.
 
-AI must not:
+AI MUST NOT:
 
 - accept its own proposal;
 - change product goals or business rules without human authorization;
@@ -402,7 +418,7 @@ from authorship.
 
 ## 15. Evolution rules
 
-1. A clarification may update an accepted artifact only when it does not change
+1. A clarification MAY update an accepted artifact only when it does not change
    its observable meaning.
 2. A semantic change creates a new revision or artifact according to that
    artifact type's governance.

@@ -1,16 +1,24 @@
-# KGAID Adoption and Conformance Model
+---
+document_id: KGAID-ADP-001
+title: KGAID Adoption and Conformance Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-MTH-001, KGAID-QLT-001]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md), [KGAID Knowledge Architecture](../10-knowledge-architecture/README.md), [KGAID Process Model](../20-methodology/process-model.md), [KGAID Verification and Evidence Model](../30-quality/verification-and-evidence-model.md)  
-**Realizes principles:** P1–P12
+# KGAID Adoption and Conformance Model
 
 ## 1. Purpose
 
-This document defines how a software project adopts Knowledge-Governed AI-Assisted Development and how it may make a bounded, evidence-based KGAID conformance claim.
+This document defines how a software project adopts Knowledge-Governed AI-Assisted Development and how it MAY make a bounded, evidence-based KGAID conformance claim.
 
 It specifies:
 
@@ -22,7 +30,7 @@ It specifies:
 - how deviations and non-applicable requirements are handled;
 - which evidence supports conformance;
 - how conformance is assessed, declared, maintained, and invalidated;
-- how existing projects such as KSeF_2 and 3ksef may adopt KGAID without copying the methodology repository.
+- how existing projects such as KSeF_2 and 3ksef MAY adopt KGAID without copying the methodology repository.
 
 This model does not create a certification body or guarantee software quality.
 
@@ -61,7 +69,7 @@ KGAID distinguishes:
 
 A project MAY adopt KGAID partially and describe itself as KGAID-aligned. It MUST NOT claim conformance when mandatory requirements are missing or unassessed.
 
-Permitted tailoring may be part of a conformant realization. A deviation that reverses a mandatory KGAID rule is non-conformity, not tailoring.
+Permitted tailoring MAY be part of a conformant realization. A deviation that reverses a mandatory KGAID rule is non-conformity, not tailoring.
 
 ## 4. Unit and Scope of Conformance
 
@@ -128,7 +136,7 @@ Every KGAID profile MUST preserve the following invariants.
 | **KGAID-C14** | Tool choice and artifact form do not silently change project meaning or authority. |
 | **KGAID-C15** | Tailoring, exclusions, limitations, and non-conformities remain explicit. |
 
-A profile may strengthen these requirements. It cannot reverse them.
+A profile MAY strengthen these requirements. It cannot reverse them.
 
 ## 7. Adoption Profiles
 
@@ -142,15 +150,15 @@ It preserves every core invariant while permitting compact realization.
 
 Typical characteristics:
 
-- one person may hold several human authorities;
-- one concise artifact may represent several knowledge concerns;
+- one person MAY hold several human authorities;
+- one concise artifact MAY represent several knowledge concerns;
 - identifiers are required only for materially traceable items;
-- review may be performed by the same human who authored the work when risk permits;
-- one repository or work record may contain knowledge, implementation, and evidence;
-- AI task contracts may use a concise structured message;
-- verification may use a small evidence set;
-- conformance may be self-assessed;
-- baseline and decision records may be lightweight.
+- review MAY be performed by the same human who authored the work when risk permits;
+- one repository or work record MAY contain knowledge, implementation, and evidence;
+- AI task contracts MAY use a concise structured message;
+- verification MAY use a small evidence set;
+- conformance MAY be self-assessed;
+- baseline and decision records MAY be lightweight.
 
 The Minimal Profile is not permission to:
 
@@ -185,7 +193,7 @@ It strengthens control through:
 - explicit residual-risk acceptance;
 - periodic conformance reassessment.
 
-Extended does not mean that every artifact must be long or every change requires a meeting. It means the control strength and evidence match the consequence.
+Extended does not mean that every artifact MUST be long or every change requires a meeting. It means the control strength and evidence match the consequence.
 
 ## 8. Profile Selection
 
@@ -358,7 +366,7 @@ A project MUST NOT claim KGAID conformance while tailoring that:
 
 ## 12. Applicability and Non-Applicable Requirements
 
-A mandatory conditional requirement may be marked **not applicable** only when:
+A mandatory conditional requirement MAY be marked **not applicable** only when:
 
 - the triggering condition is absent from the declared scope;
 - the rationale is explicit;
@@ -368,7 +376,7 @@ A mandatory conditional requirement may be marked **not applicable** only when:
 
 Example:
 
-A migration plan may be not applicable when the increment introduces no persistent data, existing consumers, or state transition. It is not non-applicable merely because migration has not yet been designed.
+A migration plan MAY be not applicable when the increment introduces no persistent data, existing consumers, or state transition. It is not non-applicable merely because migration has not yet been designed.
 
 When applicability is uncertain, the requirement remains open or a human Risk Authority accepts a bounded temporary assumption.
 
@@ -383,7 +391,7 @@ When applicability is uncertain, the requirement remains open or a human Risk Au
 | **Observation** | Improvement opportunity that does not violate a requirement. | Does not block conformance. |
 | **Unknown** | Assessment lacks sufficient evidence. | Cannot be treated as conformant. |
 
-Risk acceptance does not convert non-conformity into conformance. It may authorize operation while the conformance status remains accurate.
+Risk acceptance does not convert non-conformity into conformance. It MAY authorize operation while the conformance status remains accurate.
 
 A deviation record SHOULD identify:
 
@@ -433,7 +441,7 @@ All requirements apply to both profiles. Profile selection changes required dept
 | Artifacts | Concise or combined records. | Stable identifiers, controlled revisions, stronger provenance. |
 | Decisions | Human decision visible. | Formal authority, review, alternatives, risk, and acceptance record. |
 | Architecture and contracts | Material decisions and obligations explicit. | Versioned governance, compatibility, migration, specialist review. |
-| AI delegation | Bounded structured message may suffice. | Controlled task contract, permissions, retained evidence, external-action policy. |
+| AI delegation | Bounded structured message MAY suffice. | Controlled task contract, permissions, retained evidence, external-action policy. |
 | Traceability | Navigable critical path. | Strong bidirectional traceability and impact analysis. |
 | Verification | Proportionate evidence with limitations. | Independent, diverse, reproducible evidence with controlled retention. |
 | Baseline and release | Lightweight binding and human decision. | Formal baseline, release authority, rollback, operations, residual risk. |
@@ -462,7 +470,7 @@ A conformance evidence package SHOULD contain:
 
 The package SHOULD prefer links to authoritative project evidence rather than copied snapshots when links remain durable and access is controlled.
 
-One successful increment may demonstrate an increment-level claim. It does not automatically demonstrate project-wide conformance.
+One successful increment MAY demonstrate an increment-level claim. It does not automatically demonstrate project-wide conformance.
 
 ## 17. Assessment Methods
 
@@ -656,7 +664,7 @@ Automation MAY monitor structural indicators such as:
 - missing human decisions;
 - conformance baseline drift.
 
-Automation may identify or update pre-authorized findings. It cannot make the final human conformance decision or hide semantic gaps behind structural completeness.
+Automation MAY identify or update pre-authorized findings. It cannot make the final human conformance decision or hide semantic gaps behind structural completeness.
 
 ## 23. Reassessment Triggers
 
@@ -695,7 +703,7 @@ To make a claim, KSeF_2 SHOULD:
 7. record tailoring and non-conformities;
 8. produce an evidence-backed declaration.
 
-Existing ADRs, RFCs, use cases, contracts, tests, and execution patterns may provide evidence. Historical influence alone is not conformance.
+Existing ADRs, RFCs, use cases, contracts, tests, and execution patterns MAY provide evidence. Historical influence alone is not conformance.
 
 ### 24.2 3ksef and future projects
 

@@ -1,0 +1,27 @@
+baseline_id: KGAID-0.1.0
+version: 0.1.0
+prepared_on: 2026-07-19
+publication_status: prepared-unpublished
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+normative_documents:
+  - { id: KGAID-FND-001, path: docs/00-foundations/01-scope-and-boundaries.md, status: Accepted, normative: true, dependencies: [] }
+  - { id: KGAID-FND-002, path: docs/00-foundations/02-principles.md, status: Accepted, normative: true, dependencies: [KGAID-FND-001] }
+  - { id: KGAID-KA-001, path: docs/10-knowledge-architecture/11-knowledge-architecture.md, status: Accepted, normative: true, dependencies: [KGAID-FND-001, KGAID-FND-002] }
+  - { id: KGAID-KA-002, path: docs/10-knowledge-architecture/12-artifact-model.md, status: Accepted, normative: true, dependencies: [KGAID-KA-001] }
+  - { id: KGAID-KA-003, path: docs/10-knowledge-architecture/13-knowledge-lifecycle.md, status: Accepted, normative: true, dependencies: [KGAID-KA-002] }
+  - { id: KGAID-KA-004, path: docs/10-knowledge-architecture/14-authority-model.md, status: Accepted, normative: true, dependencies: [KGAID-KA-002, KGAID-KA-003] }
+  - { id: KGAID-KA-005, path: docs/10-knowledge-architecture/15-traceability-model.md, status: Accepted, normative: true, dependencies: [KGAID-KA-002, KGAID-KA-003, KGAID-KA-004] }
+  - { id: KGAID-KA-006, path: docs/10-knowledge-architecture/16-knowledge-domains.md, status: Accepted, normative: true, dependencies: [KGAID-KA-002, KGAID-KA-003, KGAID-KA-004, KGAID-KA-005] }
+  - { id: KGAID-MTH-001, path: docs/20-methodology/21-process-model.md, status: Accepted, normative: true, dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-KA-003, KGAID-KA-004] }
+  - { id: KGAID-MTH-002, path: docs/20-methodology/22-human-ai-collaboration.md, status: Accepted, normative: true, dependencies: [KGAID-FND-002, KGAID-MTH-001, KGAID-KA-004, KGAID-KA-005] }
+  - { id: KGAID-MTH-003, path: docs/20-methodology/23-ai-execution-task-contract.md, status: Accepted, normative: true, dependencies: [KGAID-FND-002, KGAID-MTH-001, KGAID-MTH-002, KGAID-KA-004, KGAID-KA-005] }
+  - { id: KGAID-MTH-004, path: docs/20-methodology/24-delivery-increment-model.md, status: Accepted, normative: true, dependencies: [KGAID-FND-002, KGAID-KA-002, KGAID-MTH-001, KGAID-MTH-003, KGAID-KA-005] }
+  - { id: KGAID-QLT-001, path: docs/30-quality/31-verification-and-evidence-model.md, status: Accepted, normative: true, dependencies: [KGAID-FND-002, KGAID-KA-002, KGAID-KA-003, KGAID-KA-004, KGAID-KA-005, KGAID-MTH-004] }
+  - { id: KGAID-ADP-001, path: docs/40-adoption/41-adoption-and-conformance-model.md, status: Accepted, normative: true, dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-MTH-001, KGAID-QLT-001] }
+informational_documents:
+  - { path: docs/50-governance/governance-and-release-model.md, status: Accepted }
+  - { path: docs/50-governance/metadata-profile.md, status: Accepted }
+  - { path: docs/50-governance/knowledge-architecture-principle-mapping.md, status: Accepted }
+historical_migration_evidence:
+  - { document_id: AUD-001, path: docs/50-governance/audits/AUD-001-kdd-0.1-consistency-review.md, purpose: Historical record of KDD-to-KGAID migration findings }
+  - { document_id: AUD-002, path: docs/50-governance/audits/AUD-002-knowledge-driven-development-landscape-review.md, purpose: Historical naming and prior-use review supporting the migration }

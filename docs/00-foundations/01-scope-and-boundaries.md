@@ -1,16 +1,26 @@
-# KGAID Scope and Boundaries
+---
+document_id: KGAID-FND-001
+title: KGAID Scope and Boundaries
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: []
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+# KGAID Scope and Boundaries
 
 ## 1. Purpose
 
 This document defines what Knowledge-Governed AI-Assisted Development (KGAID) is, what problems it addresses, where its responsibility begins and ends, and what it deliberately does not prescribe.
 
-It establishes the boundary within which the methodology, its knowledge architecture, processes, roles, practices, and conformance rules may evolve.
+It establishes the boundary within which the methodology, its knowledge architecture, processes, roles, practices, and conformance rules MAY evolve.
 
 ## 2. Definition
 
@@ -26,7 +36,7 @@ KGAID organizes the creation, validation, use, and evolution of:
 - verification evidence,
 - operational knowledge and feedback.
 
-Its purpose is to lead a project from product vision to a working and evolving system while preserving the context needed to understand why the system exists, how it should behave, and why it was built in a particular way.
+Its purpose is to lead a project from product vision to a working and evolving system while preserving the context needed to understand why the system exists, how it SHOULD behave, and why it was built in a particular way.
 
 KGAID is independent of:
 
@@ -73,12 +83,12 @@ The mission of KGAID is to make software development:
 - proportional to project risk,
 - accountable to human decision-makers.
 
-KGAID should help a team answer, at any meaningful point in the project:
+KGAID SHOULD help a team answer, at any meaningful point in the project:
 
 1. What problem are we solving?
 2. What knowledge supports the current direction?
 3. Which decisions are authoritative?
-4. What contracts must the system satisfy?
+4. What contracts MUST the system satisfy?
 5. How does the implementation derive from accepted knowledge?
 6. What evidence shows that the intended result was achieved?
 7. What knowledge is affected when something changes?
@@ -97,7 +107,7 @@ KGAID is intended for:
 - teams using AI assistants in software delivery,
 - organizations seeking a repeatable method for human–AI collaboration.
 
-A project may adopt KGAID with one person performing several roles. The methodology defines responsibilities and authority, not mandatory job titles or team size.
+A project MAY adopt KGAID with one person performing several roles. The methodology defines responsibilities and authority, not mandatory job titles or team size.
 
 ## 6. Areas Within Scope
 
@@ -159,7 +169,7 @@ KGAID requires business knowledge to inform architecture, architecture to shape 
 
 ### 6.5 Human–AI collaboration
 
-KGAID defines how AI may support:
+KGAID defines how AI MAY support:
 
 - exploration and synthesis,
 - knowledge extraction,
@@ -197,7 +207,7 @@ KGAID covers the production and evaluation of evidence that a result conforms to
 - acceptance evidence,
 - limitations and unresolved risks.
 
-Evidence must be interpreted within its actual scope. A passing local check is not automatically proof of system-wide correctness.
+Evidence MUST be interpreted within its actual scope. A passing local check is not automatically proof of system-wide correctness.
 
 ### 6.8 Operations and learning
 
@@ -228,7 +238,7 @@ KGAID is not:
 - a guarantee or certificate of software quality,
 - a demand to document every thought or implementation detail.
 
-KGAID does not equate document volume with knowledge quality. The required rigor and artifact depth must be proportional to uncertainty, risk, reversibility, lifetime, and impact.
+KGAID does not equate document volume with knowledge quality. The required rigor and artifact depth MUST be proportional to uncertainty, risk, reversibility, lifetime, and impact.
 
 ## 8. KGAID and the Adopting Project
 
@@ -243,9 +253,9 @@ flowchart LR
     E --> K
 ```
 
-KGAID may define:
+KGAID MAY define:
 
-- types of knowledge that should exist,
+- types of knowledge that SHOULD exist,
 - lifecycle and authority rules,
 - expected relationships between artifacts,
 - decision points and quality gates,
@@ -263,7 +273,7 @@ The adopting project determines:
 - the proportional depth of each artifact,
 - which optional KGAID practices it adopts.
 
-Project-specific conclusions must not silently become universal KGAID rules. They may inform the methodology only after their applicability has been evaluated beyond the original project context.
+Project-specific conclusions MUST NOT silently become universal KGAID rules. They MAY inform the methodology only after their applicability has been evaluated beyond the original project context.
 
 ## 9. Method and Tool Boundary
 
@@ -280,13 +290,13 @@ Examples:
 | Evidence | CI reports, review records, test results, audit artifacts |
 | AI support | IDE assistant, chat system, agent workflow, local model |
 
-A tool may automate a KGAID practice, but the tool is not the methodology. Switching tools should not invalidate the meaning or authority of project knowledge.
+A tool MAY automate a KGAID practice, but the tool is not the methodology. Switching tools SHOULD NOT invalidate the meaning or authority of project knowledge.
 
 ## 10. Human and AI Boundary
 
 AI is a participant in knowledge work, not the final authority for consequential project decisions.
 
-AI may:
+AI MAY:
 
 - propose,
 - analyze,
@@ -298,7 +308,7 @@ AI may:
 - identify uncertainty,
 - collect evidence.
 
-AI must not independently:
+AI MUST NOT independently:
 
 - define product intent,
 - accept business risk,
@@ -323,7 +333,7 @@ The required level of human review increases with consequence, uncertainty, irre
 
 KGAID is designed to coexist with established practices and methods.
 
-It may be used with, among others:
+It MAY be used with, among others:
 
 - Domain-Driven Design,
 - Architecture Decision Records,
@@ -338,11 +348,11 @@ It may be used with, among others:
 
 KGAID does not replace these methods. It provides a knowledge architecture and an end-to-end reasoning structure that can connect them.
 
-Where another method defines a specialized practice more deeply, KGAID should reference or integrate that practice rather than duplicate it without need.
+Where another method defines a specialized practice more deeply, KGAID SHOULD reference or integrate that practice rather than duplicate it without need.
 
 ## 12. Adoption Profiles
 
-KGAID must support at least two levels of adoption.
+KGAID MUST support at least two levels of adoption.
 
 ### 12.1 Minimal profile
 
@@ -355,11 +365,11 @@ The minimal profile is suitable for small, low-risk, or exploratory work. It req
 - verification evidence,
 - known limitations and risks.
 
-Artifacts may be concise and responsibilities may be combined.
+Artifacts MAY be concise and responsibilities MAY be combined.
 
 ### 12.2 Extended profile
 
-The extended profile is suitable for long-lived, regulated, distributed, safety-relevant, or otherwise high-risk systems. It may require:
+The extended profile is suitable for long-lived, regulated, distributed, safety-relevant, or otherwise high-risk systems. It MAY require:
 
 - more formal authority and review,
 - stronger provenance,
@@ -388,7 +398,7 @@ KGAID is successful when an adopting team can:
 - change tools without losing the project’s reasoning structure,
 - learn from implementation and operations without erasing prior context.
 
-KGAID should reduce avoidable rework caused by missing or inconsistent knowledge. It should not create documentation work whose cost exceeds its decision, coordination, verification, or learning value.
+KGAID SHOULD reduce avoidable rework caused by missing or inconsistent knowledge. It SHOULD NOT create documentation work whose cost exceeds its decision, coordination, verification, or learning value.
 
 ## 14. Origin and Role of KSeF_2
 
@@ -398,17 +408,17 @@ KSeF_2 is not a normative source for KGAID.
 
 Therefore:
 
-- KSeF_2 artifacts may inspire KGAID concepts,
-- lessons from KSeF_2 should be recorded with provenance,
-- project-specific choices must be evaluated before generalization,
-- KGAID rules must remain applicable beyond KSeF_2,
-- future projects may challenge and improve conclusions derived from KSeF_2.
+- KSeF_2 artifacts MAY inspire KGAID concepts,
+- lessons from KSeF_2 SHOULD be recorded with provenance,
+- project-specific choices MUST be evaluated before generalization,
+- KGAID rules MUST remain applicable beyond KSeF_2,
+- future projects MAY challenge and improve conclusions derived from KSeF_2.
 
 KGAID evolves through evidence from multiple projects, deliberate review, and human acceptance.
 
 ## 15. Repository Boundary
 
-The KGAID repository may contain:
+The KGAID repository MAY contain:
 
 - foundations and principles,
 - the knowledge architecture,
@@ -422,7 +432,7 @@ The KGAID repository may contain:
 
 Product-specific source code and knowledge belong in the adopting project unless they serve as explicitly labeled examples or reference material.
 
-Normative methodology content must be distinguishable from:
+Normative methodology content MUST be distinguishable from:
 
 - explanatory guidance,
 - examples,
@@ -432,9 +442,9 @@ Normative methodology content must be distinguishable from:
 
 ## 16. Conformance Boundary
 
-A project may claim KGAID conformance only against a defined version and profile of the methodology.
+A project MAY claim KGAID conformance only against a defined version and profile of the methodology.
 
-Conformance must not be inferred merely from:
+Conformance MUST NOT be inferred merely from:
 
 - using AI,
 - storing documentation with code,
@@ -442,7 +452,7 @@ Conformance must not be inferred merely from:
 - copying KGAID templates,
 - referencing the KGAID repository.
 
-A conformance model must specify:
+A conformance model MUST specify:
 
 - mandatory and optional requirements,
 - permitted tailoring,
@@ -450,7 +460,7 @@ A conformance model must specify:
 - profile and version,
 - known deviations.
 
-The detailed requirements, profiles, evidence, assessment, and declaration rules are defined in the [KGAID Adoption and Conformance Model](../40-adoption/adoption-and-conformance-model.md).
+The detailed requirements, profiles, evidence, assessment, and declaration rules are defined in the [KGAID Adoption and Conformance Model](../40-adoption/41-adoption-and-conformance-model.md).
 
 ## 17. Scope Change Rule
 

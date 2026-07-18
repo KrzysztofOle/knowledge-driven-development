@@ -1,12 +1,20 @@
-# KGAID Verification and Evidence Model
+---
+document_id: KGAID-QLT-001
+title: KGAID Verification and Evidence Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-002, KGAID-KA-002, KGAID-KA-003, KGAID-KA-004, KGAID-KA-005, KGAID-MTH-004]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Artifact Model](../10-knowledge-architecture/artifact-model.md), [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md), [KGAID Delivery Increment Model](../20-methodology/delivery-increment-model.md)  
-**Realizes principles:** P1, P5–P11
+# KGAID Verification and Evidence Model
 
 ## 1. Purpose
 
@@ -16,12 +24,12 @@ It explains:
 
 - what a verifiable claim contains;
 - how acceptance criteria relate to claims and evidence;
-- which evidence types may be used;
+- which evidence types MAY be used;
 - how environment, version, boundary, data, and method limit conclusions;
 - how evidence is reviewed, aggregated, invalidated, and retained;
 - how much independence is needed;
 - how Codex, ChatGPT, and humans participate in verification;
-- when automation may update verification status;
+- when automation MAY update verification status;
 - how evidence supports increment, baseline, release, and product-outcome decisions.
 
 The model is independent of testing framework, programming language, CI platform, AI provider, and quality standard.
@@ -50,7 +58,7 @@ Examples:
 | --- | --- |
 | **Claim** | A scoped statement asserted to be true about an identified subject. |
 | **Subject** | The exact artifact, implementation, system, environment, process, or outcome to which a claim applies. |
-| **Criterion** | A condition used to judge whether a claim may be supported. |
+| **Criterion** | A condition used to judge whether a claim MAY be supported. |
 | **Verification** | Evaluation of whether evidence supports a claim against accepted knowledge. |
 | **Validation** | Evaluation of whether a realized and operating result serves the intended product outcome or actual need. |
 | **Evidence** | A durable record of an observation, test, analysis, review, measurement, or audit relevant to a claim. |
@@ -212,16 +220,16 @@ Evidence SHOULD retain raw or reproducible observations when the decision conseq
 | **AI review** | Scales comparison, pattern detection, and contradiction analysis. | May share assumptions or hallucinate without grounded inputs. |
 | **Static analysis** | Evaluates code or artifacts without execution. | Cannot establish all runtime behavior. |
 | **Example-based test** | Demonstrates behavior for selected cases. | Coverage limited to chosen examples. |
-| **Property-based test** | Explores a declared property over generated cases. | Generator and oracle may omit important states. |
+| **Property-based test** | Explores a declared property over generated cases. | Generator and oracle MAY omit important states. |
 | **Contract test** | Evaluates consumer or provider obligations. | Limited to contract representation and environment. |
 | **Integration test** | Exercises interactions and dependencies. | May not reproduce full production conditions. |
-| **System or end-to-end test** | Exercises an integrated scenario. | Expensive and may localize defects poorly. |
+| **System or end-to-end test** | Exercises an integrated scenario. | Expensive and MAY localize defects poorly. |
 | **Performance or reliability test** | Measures a quality property under declared load and conditions. | Results depend strongly on environment and workload. |
 | **Security analysis or test** | Identifies declared classes of weakness or attack behavior. | No finite assessment proves absence of all vulnerabilities. |
-| **Formal analysis** | Provides strong conclusions under explicit model assumptions. | Model may not represent implementation or environment fully. |
-| **Simulation or fault injection** | Evaluates selected failures or conditions. | Simulated boundary may differ from actual failure. |
+| **Formal analysis** | Provides strong conclusions under explicit model assumptions. | Model MAY not represent implementation or environment fully. |
+| **Simulation or fault injection** | Evaluates selected failures or conditions. | Simulated boundary MAY differ from actual failure. |
 | **Migration or recovery rehearsal** | Exercises transition, restore, rollback, or recovery. | Evidence applies to exercised data and environment. |
-| **Operational measurement** | Observes actual behavior. | Observation may be incomplete and causality uncertain. |
+| **Operational measurement** | Observes actual behavior. | Observation MAY be incomplete and causality uncertain. |
 | **Audit** | Independently evaluates conformance and controls. | Scope and sampling limit conclusions. |
 | **User or stakeholder validation** | Evaluates fitness for actual need. | May be qualitative or affected by selection bias. |
 
@@ -244,7 +252,7 @@ KGAID evaluates evidence across dimensions rather than assigning one universal c
 | **Specificity** | Are subject, version, method, and limitations explicit? |
 | **Diversity** | Do materially different methods address correlated failure modes? |
 
-More evidence does not automatically mean stronger evidence. Many duplicated checks may share one blind spot.
+More evidence does not automatically mean stronger evidence. Many duplicated checks MAY share one blind spot.
 
 A verification decision SHOULD explain material weakness in any dimension when the claim is consequential.
 
@@ -297,7 +305,7 @@ flowchart TD
     J --> A
 ~~~
 
-The lifecycle may return upstream when:
+The lifecycle MAY return upstream when:
 
 - the claim is ambiguous;
 - the method cannot evaluate it;
@@ -324,6 +332,9 @@ Evidence result and claim status are distinct.
 | **invalid** | Evidence procedure or integrity is not usable. |
 
 ### 11.2 Claim verification status
+
+This is the canonical KGAID verification-status taxonomy. Artifact, increment,
+and other model documents MUST use these names for a verification claim.
 
 | Status | Meaning |
 | --- | --- |
@@ -396,7 +407,7 @@ KGAID rules:
 
 ## 14. Aggregating Evidence
 
-Evidence may be combined when each item has compatible:
+Evidence MAY be combined when each item has compatible:
 
 - claim meaning;
 - subject and revision;
@@ -439,7 +450,7 @@ The Human–ChatGPT–Codex pattern normally provides:
 - V1 through ChatGPT review of actual changes and evidence;
 - human acceptance and possible V2 when the human performs substantive review.
 
-If ChatGPT and Codex share the same unsupported assumption, V1 may not detect it. High-risk claims SHOULD use independent sources, methods, environments, specialists, or separately designed tests.
+If ChatGPT and Codex share the same unsupported assumption, V1 MAY not detect it. High-risk claims SHOULD use independent sources, methods, environments, specialists, or separately designed tests.
 
 ## 16. Human–ChatGPT–Codex Verification Flow
 
@@ -532,7 +543,7 @@ Hidden model reasoning is not required as evidence. Sources, inputs, procedure, 
 
 ## 18. Automatic Verification Policy
 
-Automation may update claim status only under a human-accepted policy that defines:
+Automation MAY update claim status only under a human-accepted policy that defines:
 
 - exact claim;
 - subject resolution;
@@ -717,7 +728,7 @@ The packet SHOULD distinguish:
 - Accepted residual risk:
 ~~~
 
-A project may combine several related results in one Evidence artifact when individual claim and boundary mappings remain clear.
+A project MAY combine several related results in one Evidence artifact when individual claim and boundary mappings remain clear.
 
 ## 22. Evidence Retention and Integrity
 

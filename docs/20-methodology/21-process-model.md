@@ -1,13 +1,20 @@
-# KGAID Process Model
+---
+document_id: KGAID-MTH-001
+title: KGAID Process Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-KA-003, KGAID-KA-004]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md), [KGAID Knowledge Architecture](../10-knowledge-architecture/README.md), [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md)  
-**Realizes principles:** P1–P12  
-**Operationalized by:** [KGAID Delivery Increment Model](delivery-increment-model.md)
+# KGAID Process Model
 
 ## 1. Purpose
 
@@ -16,9 +23,9 @@ This document defines the universal KGAID process from an initial product stimul
 It explains:
 
 - how product, domain, requirements, architecture, contracts, implementation, verification, and operations relate;
-- what must be known before a consequential downstream commitment is made;
+- what MUST be known before a consequential downstream commitment is made;
 - where human decisions are required;
-- how AI may support each part of the work;
+- how AI MAY support each part of the work;
 - how an increment becomes ready for implementation, verification, and release;
 - how discoveries and operational evidence return to earlier knowledge.
 
@@ -28,7 +35,7 @@ The process is independent of delivery framework, programming language, architec
 
 KGAID is an iterative, evidence-driven process with ordered dependencies.
 
-It is not a mandatory sequence of project phases. Discovery, design, implementation, and verification may overlap when their scope and uncertainty are explicit. Several capabilities or increments may progress concurrently.
+It is not a mandatory sequence of project phases. Discovery, design, implementation, and verification MAY overlap when their scope and uncertainty are explicit. Several capabilities or increments MAY progress concurrently.
 
 Concurrency does not remove dependency of meaning:
 
@@ -43,7 +50,7 @@ flowchart TD
     G --> A
 ~~~
 
-A downstream artifact may challenge upstream knowledge, but it MUST NOT silently redefine it. A material discovery returns to the appropriate knowledge owner and decision authority.
+A downstream artifact MAY challenge upstream knowledge, but it MUST NOT silently redefine it. A material discovery returns to the appropriate knowledge owner and decision authority.
 
 The arrows express semantic dependency, not a waterfall schedule.
 
@@ -85,7 +92,7 @@ Its unit of flow is a **delivery increment**: a coherent, bounded change that ca
 
 ### 3.3 Artifact knowledge cycle
 
-Every material knowledge artifact follows the accepted [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md):
+Every material knowledge artifact follows the accepted [KGAID Knowledge Lifecycle](../10-knowledge-architecture/13-knowledge-lifecycle.md):
 
 ~~~text
 capture
@@ -103,12 +110,12 @@ The process model does not replace the artifact lifecycle. It composes multiple 
 
 ## 4. Units of Work
 
-KGAID distinguishes four units that may evolve at different speeds.
+KGAID distinguishes four units that MAY evolve at different speeds.
 
 | Unit | Meaning | Typical result |
 | --- | --- | --- |
 | **Product** | The enduring value proposition and system boundary. | Vision, outcomes, product boundaries, operational learning. |
-| **Capability** | A coherent ability the product must provide. | Capability definition, use cases, quality expectations. |
+| **Capability** | A coherent ability the product MUST provide. | Capability definition, use cases, quality expectations. |
 | **Delivery increment** | A bounded change selected for realization and verification. | Implemented and evidenced change. |
 | **Knowledge artifact** | One governed unit of meaning. | Requirement, decision, contract, evidence, learning, or another KGAID artifact. |
 
@@ -121,16 +128,16 @@ A project MUST NOT use completion of one unit as an unsupported completion claim
 
 ## 5. End-to-End Process
 
-The default process contains nine concerns. They may overlap and repeat, but their exit conditions constrain downstream commitment.
+The default process contains nine concerns. They MAY overlap and repeat, but their exit conditions constrain downstream commitment.
 
 | ID | Concern | Primary question | Principal result |
 | --- | --- | --- | --- |
 | **PM-1** | Orient | What triggered work, and why might it matter? | Classified trigger and investigation scope. |
-| **PM-2** | Frame product or change | What outcome and boundary should guide decisions? | Accepted intent, scope, constraints, and success measures. |
+| **PM-2** | Frame product or change | What outcome and boundary SHOULD guide decisions? | Accepted intent, scope, constraints, and success measures. |
 | **PM-3** | Discover business and domain | What business meaning and rules govern the problem? | Shared terminology, rules, actors, scenarios, and unknowns. |
-| **PM-4** | Define requirements and quality | What must be true of the system and result? | Accepted requirements, quality expectations, and acceptance criteria. |
+| **PM-4** | Define requirements and quality | What MUST be true of the system and result? | Accepted requirements, quality expectations, and acceptance criteria. |
 | **PM-5** | Shape architecture | Which significant structural decisions enable the requirements? | Accepted boundaries, responsibilities, strategies, and decisions. |
-| **PM-6** | Establish contracts | What observable obligations must implementations satisfy? | Accepted contracts and compatibility expectations. |
+| **PM-6** | Establish contracts | What observable obligations MUST implementations satisfy? | Accepted contracts and compatibility expectations. |
 | **PM-7** | Realize increment | How will accepted knowledge become a working change? | Integrated implementation and implementation record. |
 | **PM-8** | Verify and baseline | What exact claims does evidence support? | Evidence, limitations, residual risk, and coherent baseline. |
 | **PM-9** | Operate and learn | What does actual use teach us? | Observations, incidents, measurements, and proposed learning. |
@@ -141,7 +148,7 @@ The default process contains nine concerns. They may overlap and repeat, but the
 
 **Purpose:** Turn a stimulus into a visible and correctly routed knowledge item.
 
-A trigger may originate from product vision, an external obligation, user feedback, an opportunity, a defect, an incident, a risk, a dependency change, a verification failure, or a human or AI proposal.
+A trigger MAY originate from product vision, an external obligation, user feedback, an opportunity, a defect, an incident, a risk, a dependency change, a verification failure, or a human or AI proposal.
 
 **Required work:**
 
@@ -157,7 +164,7 @@ AI MAY classify and correlate triggers. A human authority MUST decide whether a 
 
 ### 6.2 PM-2 — Frame product or change
 
-**Purpose:** Establish why the work should exist and what outcome bounds it.
+**Purpose:** Establish why the work SHOULD exist and what outcome bounds it.
 
 For a new product, framing SHOULD establish:
 
@@ -286,7 +293,7 @@ Schemas, examples, tests, and generated clients MAY represent a contract. The pr
 
 Before implementation commitment, the affected scope MUST satisfy the realization readiness conditions in Section 7.
 
-Realization may include code, configuration, infrastructure, data migration, generated artifacts, operational procedures, documentation, and test assets.
+Realization MAY include code, configuration, infrastructure, data migration, generated artifacts, operational procedures, documentation, and test assets.
 
 During realization:
 
@@ -334,7 +341,7 @@ A baseline does not imply that the product is complete or that all possible qual
 
 **Purpose:** Evaluate the system in actual use and convert observations into governed learning.
 
-Operations may supply product outcome measures, usage data, service-level results, incidents, security events, user feedback, support patterns, performance and cost observations, dependency changes, and disproven assumptions.
+Operations MAY supply product outcome measures, usage data, service-level results, incidents, security events, user feedback, support patterns, performance and cost observations, dependency changes, and disproven assumptions.
 
 Operational evidence MUST retain its environment, time range, version, and limitations.
 
@@ -401,7 +408,7 @@ A checkpoint:
 
 ## 9. Human and AI Collaboration
 
-| Process concern | AI may contribute | Humans remain accountable for |
+| Process concern | AI MAY contribute | Humans remain accountable for |
 | --- | --- | --- |
 | Orient | Classify triggers, find related knowledge, identify gaps. | Relevance, ownership, priority, and obligation. |
 | Frame | Draft problem statements, outcomes, assumptions, and alternatives. | Product intent, scope, priority, and accepted constraints. |
@@ -435,8 +442,8 @@ Returning to earlier work is normal when knowledge changes.
 | Product outcome or boundary is unclear or changed. | PM-2 Frame. |
 | Business term, rule, actor, or scenario is disputed. | PM-3 Discover. |
 | Requirement is missing, contradictory, or unverifiable. | PM-4 Requirements. |
-| Boundary, responsibility, dependency, or quality strategy must change. | PM-5 Architecture. |
-| Observable obligation or compatibility semantics must change. | PM-6 Contracts. |
+| Boundary, responsibility, dependency, or quality strategy MUST change. | PM-5 Architecture. |
+| Observable obligation or compatibility semantics MUST change. | PM-6 Contracts. |
 | Realization does not satisfy accepted knowledge. | PM-7 Realize, unless upstream knowledge is challenged. |
 | Evidence cannot support the intended claim. | PM-4 through PM-8 according to cause. |
 | Operation disproves an assumption or reveals a new need. | PM-1 Orient and the affected upstream concern. |
@@ -508,7 +515,7 @@ At minimum it SHOULD identify:
 - verification result and limitation;
 - human acceptance where consequential.
 
-One person MAY hold several authorities, but the capacity in which each consequential decision is made should remain clear.
+One person MAY hold several authorities, but the capacity in which each consequential decision is made SHOULD remain clear.
 
 ### 13.2 Extended application
 

@@ -476,7 +476,7 @@ The repository has a coherent foundation. The next work should normalize and gov
 
 The durable human role is recorded as:
 
-> **Krzysztof Olejnik — KDD Methodology Owner**
+> **Krzysztof Olejnik — KGAID Methodology Maintainer**
 
 The title identifies ownership of methodology decisions. It does not assert infallibility, certification, or personal expert authority.
 

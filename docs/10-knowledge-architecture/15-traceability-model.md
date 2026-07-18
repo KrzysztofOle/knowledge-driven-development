@@ -1,13 +1,20 @@
-# KGAID Knowledge Traceability Model
+---
+document_id: KGAID-KA-005
+title: KGAID Knowledge Traceability Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-KA-002, KGAID-KA-003, KGAID-KA-004]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Artifact Model](artifact-model.md),
-[KGAID Knowledge Lifecycle](knowledge-lifecycle.md),
-[KGAID Knowledge Authority Model](authority-model.md)
+# KGAID Knowledge Traceability Model
 
 ## 1. Purpose
 
@@ -15,7 +22,7 @@ This document defines how Knowledge-Governed AI-Assisted Development (KGAID) con
 vision, domain knowledge, capabilities, requirements, decisions, architecture,
 contracts, implementation and evidence.
 
-Traceability must make it possible to answer:
+Traceability MUST make it possible to answer:
 
 - why a decision exists;
 - which requirement a contract satisfies;
@@ -26,7 +33,7 @@ Traceability must make it possible to answer:
 
 The fundamental rule is:
 
-> Every consequential product claim should have a traceable path from purpose
+> Every consequential product claim SHOULD have a traceable path from purpose
 > and accepted knowledge to bounded evidence.
 
 ## 2. Primary traceability chain
@@ -44,7 +51,7 @@ flowchart TD
 ```
 
 Not every artifact requires every element in this chain. A consequential
-completion, conformance or readiness claim must not rely solely on the
+completion, conformance or readiness claim MUST NOT rely solely on the
 existence of code.
 
 ## 3. Traceability principles
@@ -62,7 +69,7 @@ existence of code.
 8. A semantic upstream change triggers proportionate impact analysis.
 9. A dependency on superseded knowledge is historical unless an explicit
    compatibility or migration period remains active.
-10. The number of links is not a quality measure. Every relationship must have
+10. The number of links is not a quality measure. Every relationship MUST have
     real project meaning.
 11. A traceability graph explains derivation and evidence; it does not replace
     human review or authority.
@@ -95,7 +102,7 @@ The inverse relationship is calculated from the graph.
 
 This rule prevents two sources from maintaining the same relation and follows
 the Single Knowledge Ownership Principle in the
-[KGAID Artifact Model](artifact-model.md).
+[KGAID Artifact Model](12-artifact-model.md).
 
 ## 5. Relationship semantics
 
@@ -111,11 +118,11 @@ the Single Knowledge Ownership Principle in the
 | `conflicts_with` | symmetric conflict | Artifacts contain an unresolved contradiction. |
 | `defines` | owner → defined item | The artifact is the authoritative owner of a definition. |
 
-`verified_by` is the derived inverse of `EVD.verified_claims`. It should not
+`verified_by` is the derived inverse of `EVD.verified_claims`. It SHOULD NOT
 be repeated manually in every requirement and contract.
 
-A symmetric `conflicts_with` relation may be stored once in a conflict record
-or in one canonical location. Tools must expose it in both directions without
+A symmetric `conflicts_with` relation MAY be stored once in a conflict record
+or in one canonical location. Tools MUST expose it in both directions without
 creating two independent sources.
 
 ## 6. Typical relationship expectations
@@ -229,7 +236,7 @@ are normative.
 
 ## 8. Claim-level traceability
 
-A reference to a whole document may be too broad. Evidence should identify:
+A reference to a whole document MAY be too broad. Evidence SHOULD identify:
 
 - artifact identifier;
 - exact claim or stable section;
@@ -253,23 +260,23 @@ This record does not verify every statement in `CTR-006`. It verifies only the
 declared claim and scope.
 
 Where a document contains several independently meaningful claims, those claims
-must be addressable by stable identifiers or anchors. Paragraph numbering alone
+MUST be addressable by stable identifiers or anchors. Paragraph numbering alone
 is insufficient when formatting changes can move the paragraph.
 
 ## 9. Completeness rules
 
 ### 9.1 Root artifacts
 
-`PRN`, `VIS` and binding external `CON` artifacts may be graph roots and
+`PRN`, `VIS` and binding external `CON` artifacts MAY be graph roots and
 need not have upstream project dependencies.
 
 ### 9.2 Normative artifacts
 
-An accepted downstream artifact should reference accepted upstream knowledge or
-an explicit applicable external source. A deliberate exception must record its
+An accepted downstream artifact SHOULD reference accepted upstream knowledge or
+an explicit applicable external source. A deliberate exception MUST record its
 owner, scope and rationale.
 
-A proposal may depend on another proposal. It cannot use that dependency to
+A proposal MAY depend on another proposal. It cannot use that dependency to
 claim accepted downstream knowledge.
 
 ### 9.3 Implementation
@@ -300,13 +307,13 @@ Evidence cannot verify a version created after the evidence was obtained.
 
 ### 9.5 Supersession
 
-Active knowledge should not depend on a `superseded` artifact unless:
+Active knowledge SHOULD NOT depend on a `superseded` artifact unless:
 
 - an explicit migration period remains active;
 - compatibility is deliberately retained; or
 - the relationship is historical and cannot affect current behaviour.
 
-A current dependency must name the applicable contract version or replacement.
+A current dependency MUST name the applicable contract version or replacement.
 
 ### 9.6 Conflicts
 
@@ -325,12 +332,12 @@ An artifact is a candidate orphan when it:
 - contains normative meaning without an owner.
 
 A root principle, vision, external constraint, captured observation or retained
-historical decision may legitimately have no incoming or outgoing relation.
+historical decision MAY legitimately have no incoming or outgoing relation.
 Automated tools and AI identify candidates; a human Knowledge Owner or Steward
-decides whether an artifact is truly orphaned, requires linking, or should be
+decides whether an artifact is truly orphaned, requires linking, or SHOULD be
 retired.
 
-An orphan check must not create meaningless links merely to satisfy a metric.
+An orphan check MUST NOT create meaningless links merely to satisfy a metric.
 
 ## 11. Change impact analysis
 
@@ -359,7 +366,7 @@ Impact analysis covers:
 8. migration or coexistence requirements.
 
 Dependent artifacts do not automatically change their knowledge status. The
-graph may calculate derived traceability health:
+graph MAY calculate derived traceability health:
 
 - `current`;
 - `impact-review-required`;
@@ -387,7 +394,7 @@ Not every code change invalidates every evidence artifact. Impact analysis
 limits invalidation to the affected claims, subject versions and boundaries.
 
 Historical evidence remains retained with its original result and invalidation
-reason. It must not be reused for a new baseline as if still current.
+reason. It MUST NOT be reused for a new baseline as if still current.
 
 ## 13. Knowledge baseline
 
@@ -401,7 +408,7 @@ A Knowledge Baseline is a versioned reference point containing:
 - accepted residual risks; and
 - explicit unresolved exceptions where the baseline permits them.
 
-A baseline should be bound to an immutable identifier, such as:
+A baseline SHOULD be bound to an immutable identifier, such as:
 
 - repository tag;
 - exact commit;
@@ -419,7 +426,7 @@ verified.
 KGAID is intended for use by multiple independent projects. An identifier such as
 `ADR-001` is therefore ambiguous outside its project namespace.
 
-A cross-project reference should include:
+A cross-project reference SHOULD include:
 
 ```yaml
 target:
@@ -429,24 +436,24 @@ target:
   revision: exact-tag-or-commit
 ```
 
-A compact representation may be used:
+A compact representation MAY be used:
 
 ```text
 ksef2:ADR-023@v0.10.1
-kdd:PRN-001@0.1
+kgaid:PRN-001@0.1
 ```
 
 The project namespace, artifact identifier and revision form the semantic
 reference. A repository URL is a locator, not the identity of the knowledge.
 
-Cross-repository references should be pinned to a tag, commit or immutable
+Cross-repository references SHOULD be pinned to a tag, commit or immutable
 release when reproducibility matters. A floating reference to a default branch
 is informative unless its volatility is explicitly accepted.
 
 ## 15. Traceability to code
 
 KGAID does not require a requirement identifier in every function or source file.
-The implementation relationship may be maintained at the level of:
+The implementation relationship MAY be maintained at the level of:
 
 - `INC`;
 - component or module;
@@ -497,10 +504,10 @@ verification_method:
   - architecture dependency test
 ```
 
-Evidence that a forbidden dependency is absent may be as important as evidence
+Evidence that a forbidden dependency is absent MAY be as important as evidence
 that a capability works.
 
-A negative claim must state its inspection boundary. A test of one package
+A negative claim MUST state its inspection boundary. A test of one package
 cannot prove absence across an uninspected repository or deployed system.
 
 ## 17. Traceability profiles
@@ -515,11 +522,11 @@ A conforming minimal project maintains at least:
 - an increment linked to the contract or requirement it realizes; and
 - evidence linked to the exact claim and implementation version.
 
-Artifacts may be grouped in a small number of files.
+Artifacts MAY be grouped in a small number of files.
 
 ### 17.2 Extended profile
 
-A larger, regulated, multi-repository or long-lived project should additionally
+A larger, regulated, multi-repository or long-lived project SHOULD additionally
 maintain:
 
 - complete assumption and risk relationships;
@@ -534,7 +541,7 @@ maintain:
 
 ## 18. Automation
 
-Automation may:
+Automation MAY:
 
 - validate identifier syntax and uniqueness;
 - check whether relation targets exist;
@@ -549,7 +556,7 @@ Automation may:
 - invalidate evidence under an accepted deterministic policy; and
 - validate baseline completeness.
 
-Automation must not:
+Automation MUST NOT:
 
 - invent semantic meaning for a relationship;
 - treat an incidental hyperlink as a dependency;
@@ -559,7 +566,7 @@ Automation must not:
 - accept project risk; or
 - create an accepted normative relationship without human authority.
 
-AI may recommend missing relationships and explain their likely meaning. A
+AI MAY recommend missing relationships and explain their likely meaning. A
 material semantic relationship remains a proposal until reviewed according to
 the Knowledge Lifecycle and Authority Model.
 
@@ -578,7 +585,7 @@ Useful health metrics include:
 - orphan candidates; and
 - baseline items with version mismatch.
 
-Projects should not optimize raw link count or require artificial 100% coverage
+Projects SHOULD NOT optimize raw link count or require artificial 100% coverage
 of every file. Metrics support investigation and governance; they do not replace
 semantic review.
 

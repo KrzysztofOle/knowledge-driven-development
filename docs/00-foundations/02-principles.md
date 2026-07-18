@@ -1,17 +1,26 @@
-# KGAID Principles
+---
+document_id: KGAID-FND-002
+title: KGAID Principles
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-001]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Scope and Boundaries](scope-and-boundaries.md)
+# KGAID Principles
 
 ## 1. Purpose
 
 This document defines the foundational principles of Knowledge-Governed AI-Assisted Development (KGAID).
 
-The principles govern how the methodology is designed, interpreted, adopted, and evolved. They are normative: a KGAID process, practice, artifact, profile, or tool must remain consistent with them.
+The principles govern how the methodology is designed, interpreted, adopted, and evolved. They are normative: a KGAID process, practice, artifact, profile, or tool MUST remain consistent with them.
 
 The principles are intentionally independent of programming language, framework, architectural style, repository platform, delivery method, and AI provider.
 
@@ -20,10 +29,10 @@ The principles are intentionally independent of programming language, framework,
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** express the strength of a rule:
 
 - **MUST** and **MUST NOT** define requirements necessary for consistency with KGAID;
-- **SHOULD** and **SHOULD NOT** define strong recommendations that may be departed from when the reason is explicit;
+- **SHOULD** and **SHOULD NOT** define strong recommendations that MAY be departed from when the reason is explicit;
 - **MAY** defines an optional practice.
 
-A project may tailor how a principle is realized, but it must not reverse the principle's meaning while claiming KGAID conformance.
+A project MAY tailor how a principle is realized, but it MUST NOT reverse the principle's meaning while claiming KGAID conformance.
 
 ## 3. Foundational Principles
 
@@ -31,7 +40,7 @@ A project may tailor how a principle is realized, but it must not reverse the pr
 
 **Statement:** A software project MUST treat validated knowledge as the basis for coordinated action. Code is an important product of knowledge, but it is not the sole or automatically authoritative source of truth.
 
-**Rationale:** A system cannot be understood or safely changed from implementation alone. Product intent, business rules, decisions, contracts, constraints, risks, and evidence carry meaning that code may only partially express.
+**Rationale:** A system cannot be understood or safely changed from implementation alone. Product intent, business rules, decisions, contracts, constraints, risks, and evidence carry meaning that code can only partially express.
 
 **Consequences:**
 
@@ -42,7 +51,7 @@ A project may tailor how a principle is realized, but it must not reverse the pr
 
 ### P2. Product purpose precedes solution design
 
-**Statement:** A project MUST establish why a product or change should exist before committing to how it will be built.
+**Statement:** A project MUST establish why a product or change SHOULD exist before committing to how it will be built.
 
 **Rationale:** A technically correct solution can still solve the wrong problem. Product vision, stakeholder outcomes, scope, constraints, and success criteria give direction to every later decision.
 
@@ -87,7 +96,7 @@ Architecture in KGAID means the set of significant decisions, not a mandatory co
 
 **Statement:** Observable obligations between actors or system elements MUST be agreed before their implementation is treated as complete.
 
-**Rationale:** Without an explicit contract, independently produced components may be locally correct but mutually incompatible. Code-first inference makes accidental behavior difficult to distinguish from intended behavior.
+**Rationale:** Without an explicit contract, independently produced components MAY be locally correct but mutually incompatible. Code-first inference makes accidental behavior difficult to distinguish from intended behavior.
 
 **Consequences:**
 
@@ -121,7 +130,7 @@ The required formality depends on risk, number of consumers, reversibility, and 
 **Consequences:**
 
 - relationships between goals, domain knowledge, requirements, decisions, architecture, contracts, implementation, verification, and operations SHOULD be explicit where they affect meaningful risk;
-- traceability MUST support navigation in both directions when impact or justification must be assessed;
+- traceability MUST support navigation in both directions when impact or justification MUST be assessed;
 - every file and line of code need not have an individual trace link;
 - traceability SHOULD be created when knowledge is produced, not reconstructed only during an audit;
 - a broken or ambiguous critical trace MUST be treated as a knowledge defect.
@@ -148,7 +157,7 @@ The required formality depends on risk, number of consumers, reversibility, and 
 
 **Consequences:**
 
-- a change MUST identify the knowledge and system elements it may affect;
+- a change MUST identify the knowledge and system elements it MAY affect;
 - accepted changes MUST update relevant knowledge, implementation, contracts, and evidence as one coherent unit of work;
 - when knowledge and implementation diverge, neither MUST be declared correct solely because of its form;
 - divergence MUST be investigated against product intent, authority, contracts, and evidence;
@@ -224,11 +233,11 @@ Across the entire structure:
 - proportionality determines the necessary rigor;
 - tool independence preserves meaning over time.
 
-The arrows express dependency of meaning, not a mandatory waterfall process. Work may iterate, overlap, and feed back to earlier knowledge as long as dependencies, uncertainty, and authority remain explicit.
+The arrows express dependency of meaning, not a mandatory waterfall process. Work MAY iterate, overlap, and feed back to earlier knowledge as long as dependencies, uncertainty, and authority remain explicit.
 
 ## 5. Resolving Tensions Between Principles
 
-The principles are intended to reinforce one another, but their application may create tension. A project MUST resolve such tension explicitly rather than silently ignoring one principle.
+The principles are intended to reinforce one another, but their application MAY create tension. A project MUST resolve such tension explicitly rather than silently ignoring one principle.
 
 The following rules apply:
 
@@ -269,4 +278,4 @@ Every proposed change to the methodology MUST be checked against all principles.
 - explicit tailoring within an adopting project,
 - or a separately accepted revision of this document.
 
-No subordinate KGAID document may silently redefine these principles.
+No subordinate KGAID document MAY silently redefine these principles.

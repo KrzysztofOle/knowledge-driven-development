@@ -1,23 +1,31 @@
-# KGAID Knowledge Authority Model
+---
+document_id: KGAID-KA-004
+title: KGAID Knowledge Authority Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-KA-002, KGAID-KA-003]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Artifact Model](artifact-model.md),
-[KGAID Knowledge Lifecycle](knowledge-lifecycle.md)
+# KGAID Knowledge Authority Model
 
 ## 1. Purpose
 
-This document defines who may propose, review, accept, realize, verify, change
+This document defines who MAY propose, review, accept, realize, verify, change
 and retire knowledge in Knowledge-Governed AI-Assisted Development (KGAID). It also defines
 source authority, delegation, conflict resolution and the authority boundaries
 between humans, AI and automation.
 
 The model is independent of organization size, role names, programming
-language, repository host and AI provider. A small project may assign several
-authorities to one person. A larger or high-risk project may separate them.
+language, repository host and AI provider. A small project MAY assign several
+authorities to one person. A larger or high-risk project MAY separate them.
 The semantic responsibilities remain the same.
 
 The fundamental rule is:
@@ -43,7 +51,7 @@ capability does not grant human decision or risk authority.
 | **Baseline Authority** | May establish a knowledge baseline or release claim. |
 | **Knowledge Steward** | Maintains knowledge structure, metadata, ownership and traceability rules. |
 
-One person may hold several responsibilities, but the record should identify
+One person MAY hold several responsibilities, but the record SHOULD identify
 the role in which each consequential decision was made.
 
 Authorship and authority are independent. The author of an artifact is not
@@ -66,7 +74,7 @@ automatically its owner, reviewer or decision authority.
 | **Knowledge Steward** | Knowledge architecture, artifact metadata, ownership and conflict visibility. |
 | **AI Collaborator** | Analysis, proposals, implementation, evidence generation and review without acceptance authority. |
 
-Projects may use different role names or combine roles. They must preserve the
+Projects MAY use different role names or combine roles. They MUST preserve the
 scope and accountability represented by the roles above.
 
 ## 4. Default artifact authority
@@ -91,7 +99,7 @@ scope and accountability represented by the roles above.
 | `AUD` | Independent reviewer where proportionate | Authority responsible for the audited concern |
 | `LRN` | Operations or Knowledge Owner | Owner of the affected normative knowledge |
 
-This is a default model, not a mandatory organization chart. A project may
+This is a default model, not a mandatory organization chart. A project MAY
 assign different authorities when it records the assignment, preserves the
 required competence and does not give AI final human authority.
 
@@ -161,7 +169,7 @@ own owner and decision authority.
 | **S5** | Inference, interpretation, expert opinion or recommendation. |
 | **S6** | Unverified note, conversation or AI output. |
 
-Source level alone does not determine applicability. Every material source must
+Source level alone does not determine applicability. Every material source MUST
 also be evaluated for:
 
 - scope;
@@ -173,7 +181,7 @@ also be evaluated for:
 - whether it is normative, informative or evidential; and
 - relevance to the exact claim.
 
-A lower-level reproducible observation may reveal that an official
+A lower-level reproducible observation MAY reveal that an official
 specification and a running external system differ. The observation does not
 silently replace the specification. The conflict is recorded, scoped and
 resolved by the relevant authority.
@@ -221,15 +229,15 @@ The process is:
 8. perform downstream impact analysis; and
 9. invalidate or refresh affected evidence.
 
-Until resolution, an artifact may retain a `conflicts_with` relationship and a
+Until resolution, an artifact MAY retain a `conflicts_with` relationship and a
 blocking condition for the affected scope. Unrelated work need not stop.
 
-AI must not hide a conflict by merging contradictory claims into ambiguous
+AI MUST NOT hide a conflict by merging contradictory claims into ambiguous
 wording or choosing one source without reporting the unresolved difference.
 
 ## 9. Delegation
 
-A human authority may delegate actions to another human, team, automation or AI
+A human authority MAY delegate actions to another human, team, automation or AI
 within an explicit boundary.
 
 Example:
@@ -267,12 +275,12 @@ A valid delegation:
 - preserves auditability; and
 - does not transfer final product or risk accountability to AI.
 
-A delegate may make routine decisions necessary to perform the allowed work
+A delegate MAY make routine decisions necessary to perform the allowed work
 when those decisions remain reversible and inside accepted knowledge.
 
 ## 10. Automatic verification authority
 
-Automation may update verification status only when authorized humans have
+Automation MAY update verification status only when authorized humans have
 previously accepted:
 
 - the exact claim;
@@ -316,7 +324,7 @@ recommends proportionate separation:
 - baseline or release approval includes independent verification where
   required.
 
-A small project may assign all roles to one person. The decision record should
+A small project MAY assign all roles to one person. The decision record SHOULD
 still identify which authority that person exercised at each stage.
 
 Separation of duties is a risk control, not mandatory ceremony for every
@@ -324,7 +332,7 @@ change.
 
 ## 12. AI autonomy boundary
 
-AI may autonomously:
+AI MAY autonomously:
 
 - read accepted project knowledge;
 - inspect relevant sources;
@@ -339,7 +347,7 @@ AI may autonomously:
 - update derived artifacts from their authoritative source; and
 - recommend status transitions.
 
-AI must obtain human authority before:
+AI MUST obtain human authority before:
 
 - changing product vision or boundaries;
 - changing a domain or business rule;
@@ -353,7 +361,7 @@ AI must obtain human authority before:
 - establishing a normative knowledge baseline; or
 - accepting its own proposal.
 
-AI may be an author, analyst, implementer or reviewer. It cannot be the final
+AI MAY be an author, analyst, implementer or reviewer. It cannot be the final
 human decision authority, final risk authority or accountable product owner.
 
 ## 13. Knowledge gate authority
@@ -369,13 +377,13 @@ human decision authority, final risk authority or accountable product owner.
 | `KG-7 Baseline Ready` | Product or Baseline Authority and Risk Authority where residual risk remains. |
 | `KG-8 Learning Reviewed` | Owner of the normative knowledge affected by the learning. |
 
-A gate may require several authorities when it crosses product, domain,
+A gate MAY require several authorities when it crosses product, domain,
 architecture, security or compliance boundaries. One authority cannot silently
 stand in for another outside its declared scope.
 
 ## 14. Minimum authority record
 
-A consequential accepted artifact should record:
+A consequential accepted artifact SHOULD record:
 
 ```yaml
 authority:

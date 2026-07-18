@@ -1,13 +1,20 @@
-# KGAID Human–AI Collaboration Model
+---
+document_id: KGAID-MTH-002
+title: KGAID Human–AI Collaboration Model
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-002, KGAID-MTH-001, KGAID-KA-004, KGAID-KA-005]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Process Model](process-model.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
-**Realizes principles:** P1, P6–P12  
-**Operationalized by:** [KGAID AI Execution Task Contract](ai-execution-task-contract.md)
+# KGAID Human–AI Collaboration Model
 
 ## 1. Purpose
 
@@ -19,9 +26,9 @@ It specifies:
 - which context AI requires;
 - how authority and execution permissions are bounded;
 - how AI handles sources, assumptions, uncertainty, and conflicts;
-- when AI may proceed autonomously and when it must escalate;
+- when AI MAY proceed autonomously and when it MUST escalate;
 - how AI results are reviewed, accepted, and integrated;
-- what provenance and evidence collaboration must preserve;
+- what provenance and evidence collaboration MUST preserve;
 - how security, privacy, external effects, and failure are handled;
 - how work is transferred between humans and multiple AI collaborators.
 
@@ -31,7 +38,7 @@ This model is independent of AI provider, model, interface, agent framework, pro
 
 > **Execution capability does not grant decision authority.**
 
-AI may perform substantial analysis, design, implementation, verification, and review within an explicit delegation. The ability to perform an action does not authorize AI to:
+AI MAY perform substantial analysis, design, implementation, verification, and review within an explicit delegation. The ability to perform an action does not authorize AI to:
 
 - change product intent;
 - define authoritative business meaning;
@@ -42,7 +49,7 @@ AI may perform substantial analysis, design, implementation, verification, and r
 - establish a normative baseline or release decision;
 - accept its own proposal.
 
-Only a properly scoped human authority may make those decisions.
+Only a properly scoped human authority MAY make those decisions.
 
 Human accountability does not require a human to perform every action manually. It requires human control over consequential intent, authority, risk, and acceptance.
 
@@ -80,7 +87,7 @@ flowchart TD
     H --> A
 ~~~
 
-The concerns may be combined in a short interaction for low-risk work. Their semantics still apply.
+The concerns MAY be combined in a short interaction for low-risk work. Their semantics still apply.
 
 ### 4.1 Prepare context
 
@@ -88,7 +95,7 @@ The human or authorized orchestrator identifies the purpose, authoritative input
 
 ### 4.2 Delegate
 
-The delegating authority states what AI may do, what it must not do, what evidence is expected, and when it must stop.
+The delegating authority states what AI MAY do, what it MUST NOT do, what evidence is expected, and when it MUST stop.
 
 ### 4.3 Analyze and execute
 
@@ -138,20 +145,20 @@ A material context package SHOULD identify:
 | **Objective** | The intended outcome or question. |
 | **Why** | Product need, obligation, risk reduction, or learning goal. |
 | **Scope** | Included systems, artifacts, files, capabilities, and boundaries. |
-| **Non-goals** | Work that must remain outside the task. |
+| **Non-goals** | Work that MUST remain outside the task. |
 | **Authoritative knowledge** | Accepted sources that govern meaning. |
 | **Working knowledge** | Proposals, observations, assumptions, and other non-normative inputs. |
 | **Constraints** | Business, architecture, contract, quality, security, legal, tool, and time limits. |
 | **Expected result** | Required output, change, or decision packet. |
 | **Acceptance criteria** | Conditions used to evaluate the result. |
 | **Allowed actions** | Reads, writes, commands, tools, environments, or external effects permitted. |
-| **Forbidden actions** | Explicit boundaries that must not be crossed. |
+| **Forbidden actions** | Explicit boundaries that MUST NOT be crossed. |
 | **Evidence** | Checks and records required to support the completion claim. |
 | **Escalation conditions** | Events requiring human direction. |
 | **Authority** | Human owner, decision authority, risk authority, and delegation source. |
 | **Freshness** | Applicable versions, dates, branches, baselines, and time-sensitive sources. |
 
-A concise low-risk task may express these fields in ordinary language. High-risk or repeatable delegation SHOULD use structured metadata.
+A concise low-risk task MAY express these fields in ordinary language. High-risk or repeatable delegation SHOULD use structured metadata.
 
 Example:
 
@@ -196,7 +203,7 @@ collaboration:
   escalate_when:
     - authoritative-inputs-conflict
     - contract-is-infeasible
-    - security-boundary-must-change
+    - security-boundary-MUST-change
 ~~~
 
 A large context dump is not automatically a good context package. AI SHOULD be told which artifacts own meaning and which material is merely informative.
@@ -345,7 +352,7 @@ AI SHOULD also escalate when:
 - accepted knowledge appears stale or inconsistent with observed reality;
 - the requested verification cannot support the intended claim;
 - the task exceeds the available competence, tools, access, or time boundary;
-- unexpected change indicates that another human or system may be modifying the same scope;
+- unexpected change indicates that another human or system MAY be modifying the same scope;
 - repeated attempts do not reduce uncertainty.
 
 An escalation SHOULD include a focused decision packet rather than only a statement that work is blocked.
@@ -380,7 +387,7 @@ A material AI result SHOULD report:
 3. **Artifacts** — created, updated, superseded, or inspected items;
 4. **Decisions** — accepted decisions and unresolved decisions, kept distinct;
 5. **Evidence** — checks performed, environment, results, and exact supported claims;
-6. **Limitations** — unverified boundaries and incomplete work;
+6. **Limitations** — boundaries not yet verified and incomplete work;
 7. **Assumptions** — material assumptions still in effect;
 8. **Risks** — introduced, changed, mitigated, or remaining risks;
 9. **Traceability** — relevant upstream and downstream relationships;
@@ -416,7 +423,7 @@ Review, approval, and acceptance are distinct:
 - **approval** authorizes a specific action within a workflow;
 - **acceptance** makes knowledge normative or accepts a consequential claim or risk.
 
-For high-impact work, review SHOULD be independent from the original generation context where proportionate. Independence may involve a different human, AI context, verification method, tool, environment, or source set.
+For high-impact work, review SHOULD be independent from the original generation context where proportionate. Independence MAY involve a different human, AI context, verification method, tool, environment, or source set.
 
 ## 15. Evidence and Provenance
 
@@ -491,7 +498,7 @@ The generic roles are:
 | **Knowledge and Review AI** | Helps frame the work, prepares the execution task, preserves accepted context, reviews the executor's result, detects deviations, and prepares decisions for the human. | ChatGPT. |
 | **Execution AI** | Implements the bounded task, runs checks, produces evidence, and reports discoveries without changing accepted meaning. | Codex. |
 
-Product names are an example, not a methodology requirement. Another adopting project may use different AI systems or tools while preserving the three responsibilities.
+Product names are an example, not a methodology requirement. Another adopting project MAY use different AI systems or tools while preserving the three responsibilities.
 
 ### 18.1 Controlled flow
 
@@ -521,13 +528,13 @@ sequenceDiagram
 
 The complete flow is:
 
-1. the Human and Knowledge AI establish what should be achieved, why it matters, what is in scope, and what must remain unchanged;
+1. the Human and Knowledge AI establish what SHOULD be achieved, why it matters, what is in scope, and what MUST remain unchanged;
 2. the Knowledge AI converts that agreement into a bounded task contract and context package for the Execution AI;
 3. the Human accepts consequential scope and authorizes the delegation;
 4. the Execution AI implements and tests within the accepted boundary;
 5. the Execution AI returns the actual change, test results, evidence, limitations, assumptions, and discoveries;
 6. the Knowledge AI reviews the result against the accepted task contract and authoritative project knowledge;
-7. the Knowledge AI may request corrections that remain within the accepted scope;
+7. the Knowledge AI MAY request corrections that remain within the accepted scope;
 8. any required change to product intent, business meaning, architecture, contract, security, compatibility, evidence scope, or risk returns to the Human;
 9. the Knowledge AI presents the reviewed result and recommendation;
 10. the Human accepts, rejects, limits, or requests revision of the result.
@@ -546,7 +553,7 @@ The pattern creates three error-detection layers:
 
 These layers reduce the chance that one participant's mistake becomes accepted project state. They do not guarantee correctness.
 
-The Knowledge AI and Execution AI may share incorrect assumptions, incomplete sources, or correlated model behavior. For high-risk work, the project SHOULD add proportionate independent controls such as specialist human review, a separately prepared verification procedure, a different AI context or model, independent tests, security analysis, or verification in another environment.
+The Knowledge AI and Execution AI MAY share incorrect assumptions, incomplete sources, or correlated model behavior. For high-risk work, the project SHOULD add proportionate independent controls such as specialist human review, a separately prepared verification procedure, a different AI context or model, independent tests, security analysis, or verification in another environment.
 
 ### 18.3 Separation between orchestration and execution
 
@@ -592,7 +599,7 @@ The Knowledge AI MAY send a result back to the Execution AI without an additiona
 
 The Knowledge AI MUST escalate when the proposed correction would:
 
-- change what the product should do;
+- change what the product SHOULD do;
 - change business meaning or a normative requirement;
 - create or supersede a significant architecture decision;
 - change contract semantics or compatibility;
@@ -635,11 +642,11 @@ human-approved objective and scope
 → human acceptance or rejection
 ~~~
 
-Each link may be implemented through repository references, identifiers, workflow metadata, or another durable mechanism. The chain must preserve meaning even when a specific AI tool or conversation is unavailable.
+Each link MAY be implemented through repository references, identifiers, workflow metadata, or another durable mechanism. The chain MUST preserve meaning even when a specific AI tool or conversation is unavailable.
 
 ### 18.7 Variants
 
-The three responsibilities may be realized in several ways:
+The three responsibilities MAY be realized in several ways:
 
 - two different AI products, such as ChatGPT and Codex;
 - two isolated contexts of one AI product;
@@ -702,7 +709,7 @@ Repeated retry SHOULD be bounded. Lack of progress, inconsistent state, or incre
 
 ## 21. Accepted Automation Policies
 
-Policy automation under mode C3 may perform predefined actions without case-by-case human approval only when authorized humans have accepted:
+Policy automation under mode C3 MAY perform predefined actions without case-by-case human approval only when authorized humans have accepted:
 
 - exact trigger;
 - scope and target resolution;
@@ -723,7 +730,7 @@ A material policy change returns to proposal, review, and human acceptance.
 
 ### 22.1 Minimal application
 
-For low-risk, reversible work, the collaboration record may be a concise task description and result report.
+For low-risk, reversible work, the collaboration record MAY be a concise task description and result report.
 
 It SHOULD still make clear:
 

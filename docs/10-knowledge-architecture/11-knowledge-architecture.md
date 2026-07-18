@@ -1,11 +1,20 @@
-# KGAID Knowledge Architecture
+---
+document_id: KGAID-KA-001
+title: KGAID Knowledge Architecture
+status: Accepted
+version: 0.1.0
+baseline: KGAID-0.1.0
+normative: true
+maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
+last_reviewed: 2026-07-19
+dependencies: [KGAID-FND-001, KGAID-FND-002]
+supersedes: null
+superseded_by: null
+verification_status: verified
+change_control: docs/50-governance/governance-and-release-model.md
+---
 
-**Status:** Accepted  
-**Version:** 0.1  
-**Project:** Knowledge-Governed AI-Assisted Development  
-**Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
-**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md)
+# KGAID Knowledge Architecture
 
 ## 1. Purpose
 
@@ -16,7 +25,7 @@ Knowledge Architecture defines:
 
 - which units of knowledge exist;
 - how knowledge is created and changes state;
-- who may make decisions;
+- who MAY make decisions;
 - how artifacts are related; and
 - which semantic domain owns each meaning.
 
@@ -24,11 +33,11 @@ The five detailed models have distinct ownership:
 
 | Model | Question |
 | --- | --- |
-| [Artifact Model](artifact-model.md) | What is a unit of knowledge? |
-| [Knowledge Lifecycle](knowledge-lifecycle.md) | How is knowledge created and changed? |
-| [Knowledge Authority Model](authority-model.md) | Who may decide? |
-| [Knowledge Traceability Model](traceability-model.md) | What does knowledge derive from and realize? |
-| [Knowledge Domains Model](knowledge-domains.md) | Where does a meaning belong? |
+| [Artifact Model](12-artifact-model.md) | What is a unit of knowledge? |
+| [Knowledge Lifecycle](13-knowledge-lifecycle.md) | How is knowledge created and changed? |
+| [Knowledge Authority Model](14-authority-model.md) | Who MAY decide? |
+| [Knowledge Traceability Model](15-traceability-model.md) | What does knowledge derive from and realize? |
+| [Knowledge Domains Model](16-knowledge-domains.md) | Where does a meaning belong? |
 
 This overview summarizes their collaboration. Each detailed model remains the
 authoritative source for its own semantics.
@@ -43,14 +52,14 @@ KGAID does not treat documentation as an appendix to code. Normative knowledge
 defines:
 
 - why a product exists;
-- what it must do;
+- what it MUST do;
 - which domain rules apply;
 - how responsibilities are structured;
 - which contracts govern boundaries;
 - what has been realized; and
 - what has actually been verified.
 
-Implementation may reveal missing or incorrect knowledge. It cannot silently
+Implementation MAY reveal missing or incorrect knowledge. It cannot silently
 become the new source of business rules, requirements, contracts or durable
 decisions.
 
@@ -77,7 +86,7 @@ They are not implementation packages or mandatory repository dependencies.
 
 ### 4.1 Artifact Model
 
-Read [KGAID Artifact Model](artifact-model.md) first.
+Read [KGAID Artifact Model](12-artifact-model.md) first.
 
 It defines:
 
@@ -96,7 +105,7 @@ It owns the answer to:
 
 ### 4.2 Knowledge Lifecycle
 
-Read [KGAID Knowledge Lifecycle](knowledge-lifecycle.md) second.
+Read [KGAID Knowledge Lifecycle](13-knowledge-lifecycle.md) second.
 
 It defines:
 
@@ -117,7 +126,7 @@ It owns the answer to:
 
 ### 4.3 Knowledge Authority Model
 
-Read [KGAID Knowledge Authority Model](authority-model.md) third.
+Read [KGAID Knowledge Authority Model](14-authority-model.md) third.
 
 It defines:
 
@@ -137,7 +146,7 @@ It owns the answer to:
 
 ### 4.4 Knowledge Traceability Model
 
-Read [KGAID Knowledge Traceability Model](traceability-model.md) fourth.
+Read [KGAID Knowledge Traceability Model](15-traceability-model.md) fourth.
 
 It defines:
 
@@ -158,7 +167,7 @@ It owns the answer to:
 
 ### 4.5 Knowledge Domains Model
 
-Read [KGAID Knowledge Domains Model](knowledge-domains.md) fifth.
+Read [KGAID Knowledge Domains Model](16-knowledge-domains.md) fifth.
 
 It defines:
 
@@ -198,7 +207,7 @@ authority:
 status:
   knowledge: accepted
   implementation: partial
-  verification: partially-verified
+  verification: partially-supported
 
 traceability:
   depends_on:
@@ -250,7 +259,7 @@ Throughout the flow:
 - the Traceability Model preserves derivation and evidence;
 - the Knowledge Domains Model preserves semantic ownership.
 
-The cycle may return to an earlier point whenever evidence, implementation or
+The cycle MAY return to an earlier point whenever evidence, implementation or
 operation reveals missing, conflicting or obsolete knowledge.
 
 ## 7. Knowledge Architecture invariants
@@ -266,7 +275,7 @@ second owner.
 A file is a storage container. An artifact is a unit of knowledge with identity,
 meaning, ownership, status and relationships.
 
-One file may contain several coherent artifacts. One artifact may have derived
+One file MAY contain several coherent artifacts. One artifact MAY have derived
 representations. The authoritative identity remains stable independently of
 file movement.
 
@@ -275,16 +284,16 @@ file movement.
 Knowledge approval, implementation maturity and verification status are
 independent.
 
-An accepted artifact may be unimplemented. An implemented artifact may be
-unverified. Verified evidence may apply only to a partial or experimental
+An accepted artifact MAY be unimplemented. An implemented artifact MAY be
+not yet verified. Verified evidence MAY apply only to a partial or experimental
 boundary.
 
 ### KA-4 — Human Acceptance
 
-AI may gather sources, analyze, propose, implement, test and review. A material
+AI MAY gather sources, analyze, propose, implement, test and review. A material
 artifact becomes normative only through authorized human acceptance.
 
-Automation may apply a verification result only under a previously
+Automation MAY apply a verification result only under a previously
 human-accepted policy and scope.
 
 ### KA-5 — Upstream Before Downstream
@@ -300,7 +309,7 @@ the upstream owner and re-enters the Knowledge Lifecycle.
 Material observable behaviour at a boundary is defined by an accepted contract
 before the implementation can be treated as conforming or authoritative.
 
-An experiment may precede a final contract when it is explicitly bounded as
+An experiment MAY precede a final contract when it is explicitly bounded as
 research and cannot create a product compatibility claim.
 
 ### KA-7 — Code Is Realization
@@ -364,7 +373,7 @@ Each element:
 - belongs to one primary semantic domain;
 - has the applicable owner and authority;
 - derives from upstream knowledge;
-- may have independent knowledge, implementation and verification status; and
+- MAY have independent knowledge, implementation and verification status; and
 - is verified only within a declared scope.
 
 The identifiers in this example illustrate the model. They do not assign new
@@ -374,16 +383,16 @@ identifiers to existing KSeF_2 documents.
 
 The authoritative detailed sources are:
 
-1. [KGAID Artifact Model](artifact-model.md);
-2. [KGAID Knowledge Lifecycle](knowledge-lifecycle.md);
-3. [KGAID Knowledge Authority Model](authority-model.md);
-4. [KGAID Knowledge Traceability Model](traceability-model.md); and
-5. [KGAID Knowledge Domains Model](knowledge-domains.md).
+1. [KGAID Artifact Model](12-artifact-model.md);
+2. [KGAID Knowledge Lifecycle](13-knowledge-lifecycle.md);
+3. [KGAID Knowledge Authority Model](14-authority-model.md);
+4. [KGAID Knowledge Traceability Model](15-traceability-model.md); and
+5. [KGAID Knowledge Domains Model](16-knowledge-domains.md).
 
 This README is an accepted overview and index. If a summary here appears to
 differ from a detailed model, the model that owns the subject takes precedence.
 
-A semantic change must therefore be made first in the owning model and then
+A semantic change MUST therefore be made first in the owning model and then
 propagated to this overview. Editing only this overview cannot change detailed
 KGAID semantics.
 
@@ -391,7 +400,7 @@ KGAID semantics.
 
 ### 10.1 Minimal profile
 
-A small project may group knowledge into a limited number of files. It must
+A small project MAY group knowledge into a limited number of files. It MUST
 still retain, for consequential artifacts:
 
 - stable identity;
@@ -406,7 +415,7 @@ still retain, for consequential artifacts:
 
 ### 10.2 Extended profile
 
-A larger, regulated, long-lived or multi-repository project may add:
+A larger, regulated, long-lived or multi-repository project MAY add:
 
 - separate artifact registries;
 - machine-readable metadata schemas;
@@ -438,7 +447,7 @@ A project's Knowledge Architecture conforms to KGAID when:
 - semantic changes follow the Knowledge Lifecycle and impact analysis;
 - operational learning re-enters the lifecycle as captured or proposed
   knowledge; and
-- a minimal project may simplify storage without collapsing semantic
+- a minimal project MAY simplify storage without collapsing semantic
   responsibilities.
 
 Conformance does not require a specific schema language, folder structure,
@@ -460,7 +469,7 @@ This Knowledge Architecture does not yet define:
 - release governance for KGAID itself; or
 - adoption and migration guidance.
 
-These concerns belong to subsequent layers of the methodology. They must use
+These concerns belong to subsequent layers of the methodology. They MUST use
 the Knowledge Architecture rather than redefine it.
 
 ## 13. Knowledge Architecture 0.1 module
@@ -469,12 +478,12 @@ The accepted Knowledge Architecture 0.1 consists of:
 
 ```text
 docs/10-knowledge-architecture/
-├── README.md
-├── artifact-model.md
-├── knowledge-lifecycle.md
-├── authority-model.md
-├── traceability-model.md
-└── knowledge-domains.md
+├── 11-knowledge-architecture.md
+├── 12-artifact-model.md
+├── 13-knowledge-lifecycle.md
+├── 14-authority-model.md
+├── 15-traceability-model.md
+└── 16-knowledge-domains.md
 ```
 
 Together these documents establish the first complete normative module of KGAID.
