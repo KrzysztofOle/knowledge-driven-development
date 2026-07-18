@@ -1,16 +1,16 @@
-# KDD Knowledge Architecture
+# KGAID Knowledge Architecture
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KDD Principles](../00-foundations/principles.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md)
 
 ## 1. Purpose
 
 This document is the normative overview and entry point for the Knowledge
-Architecture of Knowledge-Driven Development (KDD).
+Architecture of Knowledge-Governed AI-Assisted Development (KGAID).
 
 Knowledge Architecture defines:
 
@@ -33,13 +33,13 @@ The five detailed models have distinct ownership:
 This overview summarizes their collaboration. Each detailed model remains the
 authoritative source for its own semantics.
 
-## 2. Core KDD statement
+## 2. Core KGAID statement
 
 > Knowledge is the primary project asset. Code, configuration, tests and
 > delivery documentation are realizations of that knowledge and evidence about
 > its implementation.
 
-KDD does not treat documentation as an appendix to code. Normative knowledge
+KGAID does not treat documentation as an appendix to code. Normative knowledge
 defines:
 
 - why a product exists;
@@ -77,7 +77,7 @@ They are not implementation packages or mandatory repository dependencies.
 
 ### 4.1 Artifact Model
 
-Read [KDD Artifact Model](artifact-model.md) first.
+Read [KGAID Artifact Model](artifact-model.md) first.
 
 It defines:
 
@@ -92,11 +92,11 @@ It defines:
 
 It owns the answer to:
 
-> What constitutes a KDD knowledge artifact?
+> What constitutes a KGAID knowledge artifact?
 
 ### 4.2 Knowledge Lifecycle
 
-Read [KDD Knowledge Lifecycle](knowledge-lifecycle.md) second.
+Read [KGAID Knowledge Lifecycle](knowledge-lifecycle.md) second.
 
 It defines:
 
@@ -117,7 +117,7 @@ It owns the answer to:
 
 ### 4.3 Knowledge Authority Model
 
-Read [KDD Knowledge Authority Model](authority-model.md) third.
+Read [KGAID Knowledge Authority Model](authority-model.md) third.
 
 It defines:
 
@@ -137,7 +137,7 @@ It owns the answer to:
 
 ### 4.4 Knowledge Traceability Model
 
-Read [KDD Knowledge Traceability Model](traceability-model.md) fourth.
+Read [KGAID Knowledge Traceability Model](traceability-model.md) fourth.
 
 It defines:
 
@@ -158,7 +158,7 @@ It owns the answer to:
 
 ### 4.5 Knowledge Domains Model
 
-Read [KDD Knowledge Domains Model](knowledge-domains.md) fifth.
+Read [KGAID Knowledge Domains Model](knowledge-domains.md) fifth.
 
 It defines:
 
@@ -177,7 +177,7 @@ It owns the answer to:
 
 ## 5. Integrated artifact model
 
-A consequential KDD artifact combines the semantics of all five models.
+A consequential KGAID artifact combines the semantics of all five models.
 
 Example:
 
@@ -374,18 +374,18 @@ identifiers to existing KSeF_2 documents.
 
 The authoritative detailed sources are:
 
-1. [KDD Artifact Model](artifact-model.md);
-2. [KDD Knowledge Lifecycle](knowledge-lifecycle.md);
-3. [KDD Knowledge Authority Model](authority-model.md);
-4. [KDD Knowledge Traceability Model](traceability-model.md); and
-5. [KDD Knowledge Domains Model](knowledge-domains.md).
+1. [KGAID Artifact Model](artifact-model.md);
+2. [KGAID Knowledge Lifecycle](knowledge-lifecycle.md);
+3. [KGAID Knowledge Authority Model](authority-model.md);
+4. [KGAID Knowledge Traceability Model](traceability-model.md); and
+5. [KGAID Knowledge Domains Model](knowledge-domains.md).
 
 This README is an accepted overview and index. If a summary here appears to
 differ from a detailed model, the model that owns the subject takes precedence.
 
 A semantic change must therefore be made first in the owning model and then
 propagated to this overview. Editing only this overview cannot change detailed
-KDD semantics.
+KGAID semantics.
 
 ## 10. Minimal and extended profiles
 
@@ -424,7 +424,7 @@ authority boundaries of the five models.
 
 ## 11. Conformance
 
-A project's Knowledge Architecture conforms to KDD when:
+A project's Knowledge Architecture conforms to KGAID when:
 
 - it preserves the distinct responsibilities of the five models;
 - every normative meaning has one owner;
@@ -449,7 +449,7 @@ or AI provider.
 
 This Knowledge Architecture does not yet define:
 
-- the complete end-to-end KDD project method;
+- the complete end-to-end KGAID project method;
 - detailed discovery practices;
 - domain-modeling techniques;
 - artifact templates;
@@ -457,7 +457,7 @@ This Knowledge Architecture does not yet define:
 - automated validators;
 - repository blueprint for an adopting project;
 - maturity assessment;
-- release governance for KDD itself; or
+- release governance for KGAID itself; or
 - adoption and migration guidance.
 
 These concerns belong to subsequent layers of the methodology. They must use
@@ -477,4 +477,4 @@ docs/10-knowledge-architecture/
 └── knowledge-domains.md
 ```
 
-Together these documents establish the first complete normative module of KDD.
+Together these documents establish the first complete normative module of KGAID.
