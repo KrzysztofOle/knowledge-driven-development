@@ -1,38 +1,38 @@
-# KDD Adoption and Conformance Model
+# KGAID Adoption and Conformance Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KDD Principles](../00-foundations/principles.md), [KDD Knowledge Architecture](../10-knowledge-architecture/README.md), [KDD Process Model](../20-methodology/process-model.md), [KDD Verification and Evidence Model](../30-quality/verification-and-evidence-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md), [KGAID Knowledge Architecture](../10-knowledge-architecture/README.md), [KGAID Process Model](../20-methodology/process-model.md), [KGAID Verification and Evidence Model](../30-quality/verification-and-evidence-model.md)  
 **Realizes principles:** P1–P12
 
 ## 1. Purpose
 
-This document defines how a software project adopts Knowledge-Driven Development and how it may make a bounded, evidence-based KDD conformance claim.
+This document defines how a software project adopts Knowledge-Governed AI-Assisted Development and how it may make a bounded, evidence-based KGAID conformance claim.
 
 It specifies:
 
-- the invariant KDD core;
+- the invariant KGAID core;
 - minimal and extended adoption profiles;
 - how a project selects a profile and scope;
-- how local roles, artifacts, tools, and workflows map to KDD;
+- how local roles, artifacts, tools, and workflows map to KGAID;
 - what tailoring is permitted;
 - how deviations and non-applicable requirements are handled;
 - which evidence supports conformance;
 - how conformance is assessed, declared, maintained, and invalidated;
-- how existing projects such as KSeF_2 and 3ksef may adopt KDD without copying the methodology repository.
+- how existing projects such as KSeF_2 and 3ksef may adopt KGAID without copying the methodology repository.
 
 This model does not create a certification body or guarantee software quality.
 
 ## 2. Foundational Rule
 
-> **KDD conformance is always scoped, versioned, profiled, and evidenced.**
+> **KGAID conformance is always scoped, versioned, profiled, and evidenced.**
 
 A valid conformance claim MUST identify:
 
-- KDD version or immutable methodology baseline;
+- KGAID version or immutable methodology baseline;
 - adoption profile;
 - project, product, increment, capability, or organizational scope;
 - implementation and knowledge baseline;
@@ -43,25 +43,25 @@ A valid conformance claim MUST identify:
 - evidence supporting the claim;
 - expiry or reassessment trigger where applicable.
 
-A statement such as “this project uses KDD” is an adoption statement, not a conformance claim.
+A statement such as “this project uses KGAID” is an adoption statement, not a conformance claim.
 
 ## 3. Adoption and Conformance
 
-KDD distinguishes:
+KGAID distinguishes:
 
 | Term | Meaning |
 | --- | --- |
-| **Adoption** | A project intentionally applies selected KDD principles, models, and practices. |
-| **KDD-aligned** | A project follows important KDD ideas but has not demonstrated full conformance for a declared profile and scope. |
+| **Adoption** | A project intentionally applies selected KGAID principles, models, and practices. |
+| **KGAID-aligned** | A project follows important KGAID ideas but has not demonstrated full conformance for a declared profile and scope. |
 | **Conformance candidate** | A declared scope has been mapped and prepared for assessment. |
-| **KDD-conformant** | Evidence demonstrates that all applicable mandatory requirements of the declared KDD baseline and profile are satisfied. |
+| **KGAID-conformant** | Evidence demonstrates that all applicable mandatory requirements of the declared KGAID baseline and profile are satisfied. |
 | **Non-conformant** | One or more applicable mandatory requirements are not satisfied. |
 | **Not assessed** | No evidence-based determination has been made. |
-| **Certification** | Formal attestation by an authorized certification scheme, which KDD version 0.1 does not provide. |
+| **Certification** | Formal attestation by an authorized certification scheme, which KGAID version 0.1 does not provide. |
 
-A project MAY adopt KDD partially and describe itself as KDD-aligned. It MUST NOT claim conformance when mandatory requirements are missing or unassessed.
+A project MAY adopt KGAID partially and describe itself as KGAID-aligned. It MUST NOT claim conformance when mandatory requirements are missing or unassessed.
 
-Permitted tailoring may be part of a conformant realization. A deviation that reverses a mandatory KDD rule is non-conformity, not tailoring.
+Permitted tailoring may be part of a conformant realization. A deviation that reverses a mandatory KGAID rule is non-conformity, not tailoring.
 
 ## 4. Unit and Scope of Conformance
 
@@ -90,13 +90,13 @@ An increment-level conformance claim does not prove organization-wide adoption. 
 
 ## 5. Methodology Baseline
 
-A project MUST pin its conformance claim to an immutable KDD baseline.
+A project MUST pin its conformance claim to an immutable KGAID baseline.
 
-The preferred baseline is a released KDD version or repository tag.
+The preferred baseline is a released KGAID version or repository tag.
 
-Before KDD has a formal release, a project MAY use:
+Before KGAID has a formal release, a project MAY use:
 
-- an immutable KDD repository commit;
+- an immutable KGAID repository commit;
 - a recorded list of accepted normative documents and their revisions;
 - a signed or otherwise integrity-protected methodology bundle.
 
@@ -104,37 +104,37 @@ Only documents with lifecycle status **Accepted** are normative for the baseline
 
 Proposed, experimental, explanatory, and example content MAY guide adoption but MUST NOT create mandatory conformance requirements unless explicitly included by the adopting project.
 
-A newer KDD version does not retroactively invalidate a valid historical claim. Moving a claim to a newer version requires impact analysis and reassessment.
+A newer KGAID version does not retroactively invalidate a valid historical claim. Moving a claim to a newer version requires impact analysis and reassessment.
 
-## 6. Invariant KDD Core
+## 6. Invariant KGAID Core
 
-Every KDD profile MUST preserve the following invariants.
+Every KGAID profile MUST preserve the following invariants.
 
 | ID | Core requirement |
 | --- | --- |
-| **KDD-C01** | Product purpose, scope, and intended outcomes precede consequential solution commitment. |
-| **KDD-C02** | Relevant business and domain knowledge informs requirements and architecture. |
-| **KDD-C03** | Significant architecture decisions precede implementation that depends on them. |
-| **KDD-C04** | Material contracts precede acceptance of the code that realizes them. |
-| **KDD-C05** | Authoritative knowledge is distinguishable from proposals, observations, assumptions, derived content, and implementation. |
-| **KDD-C06** | Consequential knowledge decisions and risk acceptance remain with properly scoped humans. |
-| **KDD-C07** | AI operates within explicit context, delegation, and escalation boundaries. |
-| **KDD-C08** | Material work is traceable from intent through knowledge, implementation, and evidence. |
-| **KDD-C09** | Claims are bounded and supported by proportionate evidence. |
-| **KDD-C10** | Knowledge, delivery, verification, baseline, release, and outcome status remain distinct. |
-| **KDD-C11** | Material changes perform impact analysis and preserve relevant history. |
-| **KDD-C12** | Implementation and operational discoveries return to the appropriate knowledge owner and lifecycle. |
-| **KDD-C13** | Rigor is proportional to consequence, uncertainty, reversibility, lifetime, and coordination needs. |
-| **KDD-C14** | Tool choice and artifact form do not silently change project meaning or authority. |
-| **KDD-C15** | Tailoring, exclusions, limitations, and non-conformities remain explicit. |
+| **KGAID-C01** | Product purpose, scope, and intended outcomes precede consequential solution commitment. |
+| **KGAID-C02** | Relevant business and domain knowledge informs requirements and architecture. |
+| **KGAID-C03** | Significant architecture decisions precede implementation that depends on them. |
+| **KGAID-C04** | Material contracts precede acceptance of the code that realizes them. |
+| **KGAID-C05** | Authoritative knowledge is distinguishable from proposals, observations, assumptions, derived content, and implementation. |
+| **KGAID-C06** | Consequential knowledge decisions and risk acceptance remain with properly scoped humans. |
+| **KGAID-C07** | AI operates within explicit context, delegation, and escalation boundaries. |
+| **KGAID-C08** | Material work is traceable from intent through knowledge, implementation, and evidence. |
+| **KGAID-C09** | Claims are bounded and supported by proportionate evidence. |
+| **KGAID-C10** | Knowledge, delivery, verification, baseline, release, and outcome status remain distinct. |
+| **KGAID-C11** | Material changes perform impact analysis and preserve relevant history. |
+| **KGAID-C12** | Implementation and operational discoveries return to the appropriate knowledge owner and lifecycle. |
+| **KGAID-C13** | Rigor is proportional to consequence, uncertainty, reversibility, lifetime, and coordination needs. |
+| **KGAID-C14** | Tool choice and artifact form do not silently change project meaning or authority. |
+| **KGAID-C15** | Tailoring, exclusions, limitations, and non-conformities remain explicit. |
 
 A profile may strengthen these requirements. It cannot reverse them.
 
 ## 7. Adoption Profiles
 
-KDD version 0.1 defines two profiles.
+KGAID version 0.1 defines two profiles.
 
-### 7.1 KDD Minimal Profile
+### 7.1 KGAID Minimal Profile
 
 The Minimal Profile is intended for small, low-risk, reversible, short-lived, or exploratory work.
 
@@ -162,7 +162,7 @@ The Minimal Profile is not permission to:
 - claim completion without appropriate evidence;
 - erase history of consequential decisions.
 
-### 7.2 KDD Extended Profile
+### 7.2 KGAID Extended Profile
 
 The Extended Profile is intended for regulated, security-sensitive, production-critical, distributed, long-lived, high-impact, difficult-to-reverse, or multi-organization systems.
 
@@ -228,11 +228,11 @@ The declared conformance scope MUST identify the profile or overlay applicable t
 
 ~~~mermaid
 flowchart TD
-    A["Orient and select KDD baseline"] --> B["Define adoption scope"]
+    A["Orient and select KGAID baseline"] --> B["Define adoption scope"]
     B --> C["Select profile and overlays"]
     C --> D["Map local project model"]
     D --> E["Close mandatory gaps"]
-    E --> F["Operate KDD process"]
+    E --> F["Operate KGAID process"]
     F --> G["Collect conformance evidence"]
     G --> H["Assess and declare"]
     H --> I["Monitor and reassess"]
@@ -241,7 +241,7 @@ flowchart TD
 
 ### 9.1 Orient
 
-The project identifies why it is adopting KDD, expected outcomes, sponsor, constraints, and methodology baseline.
+The project identifies why it is adopting KGAID, expected outcomes, sponsor, constraints, and methodology baseline.
 
 ### 9.2 Define scope
 
@@ -253,7 +253,7 @@ Risk and coordination needs determine Minimal, Extended, or a documented hybrid 
 
 ### 9.4 Map local model
 
-Existing roles, artifacts, tools, workflows, and evidence are mapped to KDD semantics.
+Existing roles, artifacts, tools, workflows, and evidence are mapped to KGAID semantics.
 
 ### 9.5 Close gaps
 
@@ -281,7 +281,7 @@ An adopting project MAY use any local terminology or tool when it maps the requi
 
 Example:
 
-| KDD meaning | Possible local realization |
+| KGAID meaning | Possible local realization |
 | --- | --- |
 | Product Vision | Product brief, charter, vision page. |
 | Business Rule | Domain document, rule catalog, acceptance specification. |
@@ -308,7 +308,7 @@ Renaming is allowed. Loss of meaning is not.
 
 ## 11. Tailoring
 
-Tailoring adapts KDD realization to project context without reversing its principles or mandatory semantics.
+Tailoring adapts KGAID realization to project context without reversing its principles or mandatory semantics.
 
 ### 11.1 Permitted tailoring
 
@@ -316,7 +316,7 @@ A project MAY:
 
 - rename roles and artifacts;
 - combine several knowledge concerns in one artifact;
-- split one KDD concern across several tools or records;
+- split one KGAID concern across several tools or records;
 - automate lifecycle transitions under accepted policy;
 - choose different review and approval mechanics;
 - vary artifact depth;
@@ -342,7 +342,7 @@ A project SHOULD record rationale, scope, authority, risk, and compensating cont
 
 ### 11.3 Prohibited tailoring
 
-A project MUST NOT claim KDD conformance while tailoring that:
+A project MUST NOT claim KGAID conformance while tailoring that:
 
 - gives AI final human decision or risk authority;
 - treats implementation as automatically authoritative;
@@ -377,7 +377,7 @@ When applicability is uncertain, the requirement remains open or a human Risk Au
 | Classification | Meaning | Effect on claim |
 | --- | --- | --- |
 | **Equivalent realization** | Different form preserves required semantics. | Conformant. |
-| **Permitted tailoring** | Explicit adaptation allowed by KDD. | Conformant when evidenced. |
+| **Permitted tailoring** | Explicit adaptation allowed by KGAID. | Conformant when evidenced. |
 | **Accepted temporary deviation** | Mandatory requirement is not currently satisfied, with owner, risk, remediation, and expiry. | Scope is not fully conformant until resolved unless the declared claim explicitly excludes the affected scope. |
 | **Non-conformity** | Applicable mandatory requirement is not satisfied. | Conformance claim is false for affected scope. |
 | **Observation** | Improvement opportunity that does not violate a requirement. | Does not block conformance. |
@@ -404,22 +404,22 @@ The following requirements specialize the invariant core for assessment.
 
 | ID | Requirement | Minimum evidence |
 | --- | --- | --- |
-| **KDD-R01 Baseline** | KDD version or immutable methodology baseline is declared. | Tag, commit, or accepted-document manifest. |
-| **KDD-R02 Scope** | Conformance scope, exclusions, interfaces, profile, and assessment period are declared. | Adoption declaration. |
-| **KDD-R03 Principles** | Local process does not reverse accepted KDD principles. | Mapping and assessment review. |
-| **KDD-R04 Knowledge** | Material knowledge has identifiable status, owner, provenance, and authority. | Representative accepted artifacts. |
-| **KDD-R05 Product and domain** | Product intent and relevant business meaning precede solution commitment. | Vision, rules, requirements, decision chronology. |
-| **KDD-R06 Architecture and contracts** | Significant architecture and material contracts precede dependent implementation acceptance. | ADRs, architecture records, contracts, revisions. |
-| **KDD-R07 Human authority** | Consequential decisions and risk acceptance are made by scoped humans. | Decision and authority records. |
-| **KDD-R08 AI collaboration** | Material AI work has context, delegation, boundaries, review, and escalation. | Collaboration or task contract records. |
-| **KDD-R09 Increment** | Material delivery uses a bounded increment with readiness, scope, criteria, and state separation. | Increment artifact and status evidence. |
-| **KDD-R10 Traceability** | Critical paths connect intent, knowledge, implementation, evidence, and decision. | Trace matrix or navigable links. |
-| **KDD-R11 Verification** | Claims are explicit and supported by bounded evidence. | Claim and Evidence artifacts. |
-| **KDD-R12 State semantics** | Knowledge, implementation, verification, baseline, release, and outcome states are not conflated. | Status model and representative records. |
-| **KDD-R13 Change** | Material changes perform impact analysis and preserve history. | Change, supersession, and impact records. |
-| **KDD-R14 Learning** | Verification and operational learning return to knowledge owners. | Learning, incident, feedback, or updated artifact chain. |
-| **KDD-R15 Tailoring** | Tailoring, applicability, deviations, and non-conformities are explicit. | Tailoring and assessment records. |
-| **KDD-R16 Conformance evidence** | The assessment conclusion is supported by retained evidence and limitations. | Assessment report and evidence index. |
+| **KGAID-R01 Baseline** | KGAID version or immutable methodology baseline is declared. | Tag, commit, or accepted-document manifest. |
+| **KGAID-R02 Scope** | Conformance scope, exclusions, interfaces, profile, and assessment period are declared. | Adoption declaration. |
+| **KGAID-R03 Principles** | Local process does not reverse accepted KGAID principles. | Mapping and assessment review. |
+| **KGAID-R04 Knowledge** | Material knowledge has identifiable status, owner, provenance, and authority. | Representative accepted artifacts. |
+| **KGAID-R05 Product and domain** | Product intent and relevant business meaning precede solution commitment. | Vision, rules, requirements, decision chronology. |
+| **KGAID-R06 Architecture and contracts** | Significant architecture and material contracts precede dependent implementation acceptance. | ADRs, architecture records, contracts, revisions. |
+| **KGAID-R07 Human authority** | Consequential decisions and risk acceptance are made by scoped humans. | Decision and authority records. |
+| **KGAID-R08 AI collaboration** | Material AI work has context, delegation, boundaries, review, and escalation. | Collaboration or task contract records. |
+| **KGAID-R09 Increment** | Material delivery uses a bounded increment with readiness, scope, criteria, and state separation. | Increment artifact and status evidence. |
+| **KGAID-R10 Traceability** | Critical paths connect intent, knowledge, implementation, evidence, and decision. | Trace matrix or navigable links. |
+| **KGAID-R11 Verification** | Claims are explicit and supported by bounded evidence. | Claim and Evidence artifacts. |
+| **KGAID-R12 State semantics** | Knowledge, implementation, verification, baseline, release, and outcome states are not conflated. | Status model and representative records. |
+| **KGAID-R13 Change** | Material changes perform impact analysis and preserve history. | Change, supersession, and impact records. |
+| **KGAID-R14 Learning** | Verification and operational learning return to knowledge owners. | Learning, incident, feedback, or updated artifact chain. |
+| **KGAID-R15 Tailoring** | Tailoring, applicability, deviations, and non-conformities are explicit. | Tailoring and assessment records. |
+| **KGAID-R16 Conformance evidence** | The assessment conclusion is supported by retained evidence and limitations. | Assessment report and evidence index. |
 
 All requirements apply to both profiles. Profile selection changes required depth, independence, and formality.
 
@@ -445,7 +445,7 @@ All requirements apply to both profiles. Profile selection changes required dept
 A conformance evidence package SHOULD contain:
 
 1. adoption and conformance declaration;
-2. KDD methodology baseline;
+2. KGAID methodology baseline;
 3. scope and profile;
 4. local terminology and artifact mapping;
 5. role and authority mapping;
@@ -472,7 +472,7 @@ A project MAY use:
 | --- | --- |
 | **Self-assessment** | Project members evaluate their own scope. |
 | **Independent internal assessment** | A person or team outside the assessed delivery context evaluates evidence. |
-| **Peer assessment** | Another KDD-adopting project or practitioner evaluates the scope. |
+| **Peer assessment** | Another KGAID-adopting project or practitioner evaluates the scope. |
 | **External assessment** | An independent external party evaluates conformance. |
 | **Continuous assessment** | Accepted automation and periodic human review monitor selected requirements. |
 
@@ -480,7 +480,7 @@ The assessment method MUST be declared.
 
 Independence SHOULD be proportional to the consequence of the conformance claim. A public, regulatory, contractual, or high-risk claim SHOULD NOT rely only on undocumented self-assessment.
 
-KDD version 0.1 defines no accredited certifier, conformity mark, or certification authority.
+KGAID version 0.1 defines no accredited certifier, conformity mark, or certification authority.
 
 ## 18. Assessment Process
 
@@ -501,7 +501,7 @@ The assessor SHOULD:
 1. verify that the declared baseline is immutable;
 2. validate scope and exclusions;
 3. confirm profile selection;
-4. evaluate every applicable KDD-R requirement;
+4. evaluate every applicable KGAID-R requirement;
 5. inspect actual project use rather than templates alone;
 6. trace representative work from intent to evidence and decision;
 7. inspect AI delegation and human authority;
@@ -518,7 +518,7 @@ An unanswered mandatory requirement is not a pass.
 | Status | Meaning |
 | --- | --- |
 | **not-assessed** | No assessment exists. |
-| **adopting** | Project is mapping KDD and closing gaps. |
+| **adopting** | Project is mapping KGAID and closing gaps. |
 | **candidate** | Evidence package is ready for assessment. |
 | **conformant** | All applicable mandatory requirements are satisfied for the declared scope and baseline. |
 | **non-conformant** | At least one applicable mandatory requirement is not satisfied. |
@@ -533,7 +533,7 @@ A suspended, expired, or superseded declaration remains part of project history 
 ## 20. Declaration Template
 
 ~~~markdown
-# KDD Adoption and Conformance Declaration
+# KGAID Adoption and Conformance Declaration
 
 ## Identity
 
@@ -543,9 +543,9 @@ A suspended, expired, or superseded declaration remains part of project history 
 - Date:
 - Status:
 
-## KDD baseline
+## KGAID baseline
 
-- KDD version, tag, or commit:
+- KGAID version, tag, or commit:
 - Accepted normative documents:
 
 ## Scope
@@ -566,12 +566,12 @@ A suspended, expired, or superseded declaration remains part of project history 
 
 ## Local mapping
 
-| KDD meaning | Local realization | Owner | Source of truth |
+| KGAID meaning | Local realization | Owner | Source of truth |
 | --- | --- | --- | --- |
 
 ## Authorities
 
-| KDD authority | Person or local role | Scope |
+| KGAID authority | Person or local role | Scope |
 | --- | --- | --- |
 
 ## Tailoring and applicability
@@ -603,7 +603,7 @@ A suspended, expired, or superseded declaration remains part of project history 
 - Decision:
 - Decided by:
 - Declared scope:
-- KDD baseline:
+- KGAID baseline:
 - Profile:
 - Unresolved exclusions:
 - Valid until:
@@ -619,15 +619,15 @@ A suspended, expired, or superseded declaration remains part of project history 
 
 A concise conformance claim SHOULD use this form:
 
-> **Project or scope** conforms to **KDD baseline**, **profile**, for **declared boundary and period**, based on **assessment and evidence package**, subject to **listed limitations and validity conditions**.
+> **Project or scope** conforms to **KGAID baseline**, **profile**, for **declared boundary and period**, based on **assessment and evidence package**, subject to **listed limitations and validity conditions**.
 
 Example:
 
-> Capability X, increments INC-010 through INC-014, conforms to KDD commit abc123, Minimal Profile with Extended security controls, for repository and integration environment revisions baselined on YYYY-MM-DD, based on assessment AUD-004, excluding production operations and product-outcome validation.
+> Capability X, increments INC-010 through INC-014, conforms to KGAID commit abc123, Minimal Profile with Extended security controls, for repository and integration environment revisions baselined on YYYY-MM-DD, based on assessment AUD-004, excluding production operations and product-outcome validation.
 
 The example is illustrative and does not assert actual conformance.
 
-A project MUST NOT use the KDD name or badge-like language to imply certification, endorsement, or guarantee that does not exist.
+A project MUST NOT use the KGAID name or badge-like language to imply certification, endorsement, or guarantee that does not exist.
 
 ## 22. Continuous Conformance
 
@@ -662,7 +662,7 @@ Automation may identify or update pre-authorized findings. It cannot make the fi
 
 A conformance declaration SHOULD be reassessed when:
 
-- KDD baseline changes;
+- KGAID baseline changes;
 - product or conformance scope changes materially;
 - selected profile is no longer proportionate;
 - organization or authority model changes;
@@ -682,15 +682,15 @@ Reassessment MAY be limited to the affected requirements and scope when impact a
 
 ### 24.1 KSeF_2
 
-KSeF_2 is an empirical source from which KDD was generalized. It is not automatically KDD-conformant.
+KSeF_2 is an empirical source from which KGAID was generalized. It is not automatically KGAID-conformant.
 
 To make a claim, KSeF_2 SHOULD:
 
-1. select an immutable KDD baseline;
+1. select an immutable KGAID baseline;
 2. declare the assessed system, increments, repositories, and environments;
 3. select a profile;
-4. map existing KSeF_2 artifacts and roles to KDD;
-5. identify gaps created before KDD terminology existed;
+4. map existing KSeF_2 artifacts and roles to KGAID;
+5. identify gaps created before KGAID terminology existed;
 6. assess representative critical trace paths;
 7. record tailoring and non-conformities;
 8. produce an evidence-backed declaration.
@@ -699,26 +699,26 @@ Existing ADRs, RFCs, use cases, contracts, tests, and execution patterns may pro
 
 ### 24.2 3ksef and future projects
 
-A new project SHOULD adopt KDD prospectively:
+A new project SHOULD adopt KGAID prospectively:
 
 1. pin the methodology baseline at project start;
 2. create its local mapping and authority model;
 3. select profile by risk;
-4. use KDD identifiers and relationships where valuable;
+4. use KGAID identifiers and relationships where valuable;
 5. shape increments and AI task contracts from accepted knowledge;
 6. collect evidence during delivery;
 7. baseline and assess the first representative increment;
 8. expand the claim only after evidence supports broader scope.
 
-An adopting project SHOULD reference KDD rather than copy normative files into its repository unless offline, regulatory, or integrity needs require a controlled copy.
+An adopting project SHOULD reference KGAID rather than copy normative files into its repository unless offline, regulatory, or integrity needs require a controlled copy.
 
-Project-specific extensions remain owned by the adopting project. They do not change KDD core unless separately proposed and accepted in the KDD repository.
+Project-specific extensions remain owned by the adopting project. They do not change KGAID core unless separately proposed and accepted in the KGAID repository.
 
 ## 25. Failure Signals
 
 The following indicate likely adoption or conformance failure:
 
-- the project claims KDD without a version, profile, scope, or evidence;
+- the project claims KGAID without a version, profile, scope, or evidence;
 - templates exist but are not used in real delivery;
 - local names are mapped without preserving authority or lifecycle meaning;
 - the Minimal Profile is selected only to avoid controls required by risk;
@@ -731,21 +731,21 @@ The following indicate likely adoption or conformance failure:
 - an assessor inspects file presence but not actual trace paths and decisions;
 - deviations have no owner, expiry, or reassessment trigger;
 - a stale declaration remains current after major project change;
-- KSeF_2 is called conformant merely because it inspired KDD;
-- a project implies external certification or endorsement that KDD does not provide.
+- KSeF_2 is called conformant merely because it inspired KGAID;
+- a project implies external certification or endorsement that KGAID does not provide.
 
 ## 26. Conformance
 
 This adoption model is satisfied when an adopting project:
 
-- pins an immutable KDD baseline;
+- pins an immutable KGAID baseline;
 - declares profile and bounded scope;
 - preserves every invariant core requirement;
-- maps local roles, artifacts, tools, and workflows to KDD semantics;
+- maps local roles, artifacts, tools, and workflows to KGAID semantics;
 - applies rigor proportionate to risk;
 - records tailoring and applicability;
 - identifies deviations, non-conformities, owners, risk, and expiry;
-- evaluates every applicable KDD-R requirement;
+- evaluates every applicable KGAID-R requirement;
 - provides evidence from actual project work;
 - keeps AI execution and human authority distinct;
 - preserves traceability from intent to evidence and decision;
