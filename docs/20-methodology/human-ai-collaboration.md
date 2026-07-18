@@ -1,9 +1,9 @@
 # KDD Human–AI Collaboration Model
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
-**Proposed:** 2026-07-18  
+**Accepted:** 2026-07-18  
 **Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Process Model](process-model.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
 **Realizes principles:** P1, P6–P12
 
