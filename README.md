@@ -40,6 +40,7 @@ Knowledge Architecture defines the units, lifecycle, authority, relationships, a
 The methodology composes accepted knowledge models into an end-to-end way of working.
 
 - [KDD Process Model](docs/20-methodology/process-model.md) — the iterative process from product stimulus through business knowledge, requirements, architecture, contracts, implementation, verification, operation, and learning.
+- [KDD Human–AI Collaboration Model](docs/20-methodology/human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
 
 ## Core dependency
 
