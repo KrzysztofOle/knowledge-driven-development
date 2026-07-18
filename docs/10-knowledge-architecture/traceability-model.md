@@ -1,17 +1,17 @@
-# KDD Knowledge Traceability Model
+# KGAID Knowledge Traceability Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Artifact Model](artifact-model.md),
-[KDD Knowledge Lifecycle](knowledge-lifecycle.md),
-[KDD Knowledge Authority Model](authority-model.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Artifact Model](artifact-model.md),
+[KGAID Knowledge Lifecycle](knowledge-lifecycle.md),
+[KGAID Knowledge Authority Model](authority-model.md)
 
 ## 1. Purpose
 
-This document defines how Knowledge-Driven Development (KDD) connects product
+This document defines how Knowledge-Governed AI-Assisted Development (KGAID) connects product
 vision, domain knowledge, capabilities, requirements, decisions, architecture,
 contracts, implementation and evidence.
 
@@ -95,7 +95,7 @@ The inverse relationship is calculated from the graph.
 
 This rule prevents two sources from maintaining the same relation and follows
 the Single Knowledge Ownership Principle in the
-[KDD Artifact Model](artifact-model.md).
+[KGAID Artifact Model](artifact-model.md).
 
 ## 5. Relationship semantics
 
@@ -416,7 +416,7 @@ verified.
 
 ## 14. Cross-repository traceability
 
-KDD is intended for use by multiple independent projects. An identifier such as
+KGAID is intended for use by multiple independent projects. An identifier such as
 `ADR-001` is therefore ambiguous outside its project namespace.
 
 A cross-project reference should include:
@@ -445,7 +445,7 @@ is informative unless its volatility is explicitly accepted.
 
 ## 15. Traceability to code
 
-KDD does not require a requirement identifier in every function or source file.
+KGAID does not require a requirement identifier in every function or source file.
 The implementation relationship may be maintained at the level of:
 
 - `INC`;
