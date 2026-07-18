@@ -64,6 +64,7 @@ Adoption models define how projects select a KDD baseline and profile, tailor lo
 Governance evidence records reviews and decisions about the methodology itself. It is informative or evidential unless an artifact explicitly declares normative status.
 
 - [AUD-001 — KDD 0.1 Cross-Document Consistency Review](docs/50-governance/audits/AUD-001-kdd-0.1-consistency-review.md) — completed self-review of structure, terminology, authority, metadata, and baseline readiness.
+- [AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review](docs/50-governance/audits/AUD-002-knowledge-driven-development-landscape-review.md) — external-source review of earlier terminology, conceptual overlap, distinct Human–AI features, and naming options.
 
 ## Core dependency
 
