@@ -1,23 +1,23 @@
-# KDD Knowledge Lifecycle
+# KGAID Knowledge Lifecycle
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Artifact Model](artifact-model.md)
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Artifact Model](artifact-model.md)
 
 ## 1. Purpose
 
 This document defines how knowledge is captured, analyzed, proposed, reviewed,
-accepted, realized, verified and evolved in Knowledge-Driven Development (KDD).
+accepted, realized, verified and evolved in Knowledge-Governed AI-Assisted Development (KGAID).
 
 The lifecycle is independent of programming language, framework, architecture
 style, repository host and AI provider. It governs the transition from
 observation to normative knowledge and from normative knowledge to
 implementation and evidence.
 
-KDD is iterative, not a rigid waterfall. Multiple capabilities and increments
+KGAID is iterative, not a rigid waterfall. Multiple capabilities and increments
 may evolve concurrently. Downstream knowledge must nevertheless be derived
 from sufficiently mature upstream knowledge, and an upstream change requires an
 impact review of its dependants.
@@ -81,7 +81,7 @@ The trigger is captured as one or more of:
 The initial knowledge status is `captured`.
 
 A chat, working note, transcript or exploratory result may remain transient.
-KDD does not require every piece of working material to become a durable
+KGAID does not require every piece of working material to become a durable
 artifact. Material becomes durable when it can affect a project decision,
 requirement, contract, risk, evidence claim or future interpretation.
 
@@ -440,7 +440,7 @@ whose answer is already constrained by accepted knowledge.
 
 ## 8. Iteration and concurrent work
 
-KDD is not a requirement to finish every product document before any
+KGAID is not a requirement to finish every product document before any
 implementation starts. It requires that each implementation claim has an
 adequate upstream chain:
 
@@ -485,7 +485,7 @@ This example demonstrates that:
 - verification may remain partial for the target capability; and
 - production readiness may still be planned.
 
-KDD generalizes this pattern: the status of knowledge, implementation and
+KGAID generalizes this pattern: the status of knowledge, implementation and
 verification must remain independent and scoped.
 
 ## 10. Conformance
