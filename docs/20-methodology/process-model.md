@@ -1,17 +1,17 @@
-# KDD Process Model
+# KGAID Process Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KDD Principles](../00-foundations/principles.md), [KDD Knowledge Architecture](../10-knowledge-architecture/README.md), [KDD Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KGAID Principles](../00-foundations/principles.md), [KGAID Knowledge Architecture](../10-knowledge-architecture/README.md), [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md)  
 **Realizes principles:** P1–P12  
-**Operationalized by:** [KDD Delivery Increment Model](delivery-increment-model.md)
+**Operationalized by:** [KGAID Delivery Increment Model](delivery-increment-model.md)
 
 ## 1. Purpose
 
-This document defines the universal KDD process from an initial product stimulus to a working, verified, and evolving system.
+This document defines the universal KGAID process from an initial product stimulus to a working, verified, and evolving system.
 
 It explains:
 
@@ -26,7 +26,7 @@ The process is independent of delivery framework, programming language, architec
 
 ## 2. Process Character
 
-KDD is an iterative, evidence-driven process with ordered dependencies.
+KGAID is an iterative, evidence-driven process with ordered dependencies.
 
 It is not a mandatory sequence of project phases. Discovery, design, implementation, and verification may overlap when their scope and uncertainty are explicit. Several capabilities or increments may progress concurrently.
 
@@ -49,7 +49,7 @@ The arrows express semantic dependency, not a waterfall schedule.
 
 ## 3. Three Nested Cycles
 
-KDD operates through three nested cycles.
+KGAID operates through three nested cycles.
 
 ### 3.1 Product learning cycle
 
@@ -85,7 +85,7 @@ Its unit of flow is a **delivery increment**: a coherent, bounded change that ca
 
 ### 3.3 Artifact knowledge cycle
 
-Every material knowledge artifact follows the accepted [KDD Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md):
+Every material knowledge artifact follows the accepted [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md):
 
 ~~~text
 capture
@@ -103,14 +103,14 @@ The process model does not replace the artifact lifecycle. It composes multiple 
 
 ## 4. Units of Work
 
-KDD distinguishes four units that may evolve at different speeds.
+KGAID distinguishes four units that may evolve at different speeds.
 
 | Unit | Meaning | Typical result |
 | --- | --- | --- |
 | **Product** | The enduring value proposition and system boundary. | Vision, outcomes, product boundaries, operational learning. |
 | **Capability** | A coherent ability the product must provide. | Capability definition, use cases, quality expectations. |
 | **Delivery increment** | A bounded change selected for realization and verification. | Implemented and evidenced change. |
-| **Knowledge artifact** | One governed unit of meaning. | Requirement, decision, contract, evidence, learning, or another KDD artifact. |
+| **Knowledge artifact** | One governed unit of meaning. | Requirement, decision, contract, evidence, learning, or another KGAID artifact. |
 
 A project MUST NOT use completion of one unit as an unsupported completion claim for another. For example:
 
@@ -377,7 +377,7 @@ AI cannot accept reduced readiness or its associated risk.
 
 ## 8. Process Checkpoints
 
-KDD checkpoints are semantic conditions, not mandatory meetings or ceremonies.
+KGAID checkpoints are semantic conditions, not mandatory meetings or ceremonies.
 
 | Checkpoint | Required result | Primary human authority |
 | --- | --- | --- |
@@ -475,7 +475,7 @@ Exploration is not realization unless it passes the applicable knowledge, contra
 
 ## 12. Completion Semantics
 
-KDD distinguishes the following claims:
+KGAID distinguishes the following claims:
 
 | Claim | Meaning |
 | --- | --- |
@@ -489,7 +489,7 @@ KDD distinguishes the following claims:
 
 These claims MUST NOT be used interchangeably.
 
-An increment is complete only relative to its declared completion claim. “Done” without scope, baseline, and evidence is not a KDD completion statement.
+An increment is complete only relative to its declared completion claim. “Done” without scope, baseline, and evidence is not a KGAID completion statement.
 
 ## 13. Minimal and Extended Application
 
@@ -529,7 +529,7 @@ The process meaning remains the same across profiles. Only necessary depth, form
 
 ## 14. Process Health Signals
 
-A healthy KDD process shows that:
+A healthy KGAID process shows that:
 
 - people can explain current work in terms of product outcome;
 - domain meaning is stable where downstream commitment depends on it;
@@ -582,7 +582,7 @@ A tailoring decision that omits a normally required control SHOULD state its rat
 
 ## 16. Conformance
 
-A project conforms to this process model when it can demonstrate, for a declared scope and KDD version, that:
+A project conforms to this process model when it can demonstrate, for a declared scope and KGAID version, that:
 
 - work begins from an owned and classified trigger;
 - product or change intent is accepted before solution commitment;
@@ -597,6 +597,6 @@ A project conforms to this process model when it can demonstrate, for a declared
 - knowledge, implementation, and verification status remain distinct;
 - accepted change performs downstream impact analysis;
 - operational learning re-enters the knowledge process;
-- tailoring does not reverse the KDD principles.
+- tailoring does not reverse the KGAID principles.
 
 Conformance does not require a waterfall lifecycle, particular ceremony, fixed team structure, document count, delivery framework, programming language, repository platform, or AI product.
