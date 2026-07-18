@@ -1,16 +1,16 @@
-# KDD Verification and Evidence Model
+# KGAID Verification and Evidence Model
 
 **Status:** Accepted  
 **Version:** 0.1  
-**Project:** Knowledge-Driven Development  
+**Project:** Knowledge-Governed AI-Assisted Development  
 **Accepted:** 2026-07-18  
-**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
-**Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Artifact Model](../10-knowledge-architecture/artifact-model.md), [KDD Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md), [KDD Delivery Increment Model](../20-methodology/delivery-increment-model.md)  
+**Accepted by:** Krzysztof Olejnik — KGAID Methodology Owner  
+**Depends on:** [KGAID Principles](../00-foundations/principles.md), [KGAID Artifact Model](../10-knowledge-architecture/artifact-model.md), [KGAID Knowledge Lifecycle](../10-knowledge-architecture/knowledge-lifecycle.md), [KGAID Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KGAID Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md), [KGAID Delivery Increment Model](../20-methodology/delivery-increment-model.md)  
 **Realizes principles:** P1, P5–P11
 
 ## 1. Purpose
 
-This document defines how Knowledge-Driven Development formulates claims, plans verification, produces evidence, evaluates its strength and limitations, and uses it in human decisions.
+This document defines how Knowledge-Governed AI-Assisted Development formulates claims, plans verification, produces evidence, evaluates its strength and limitations, and uses it in human decisions.
 
 It explains:
 
@@ -229,7 +229,7 @@ No evidence type is universally superior. Selection depends on the exact claim.
 
 ## 8. Evidence Strength Dimensions
 
-KDD evaluates evidence across dimensions rather than assigning one universal confidence score.
+KGAID evaluates evidence across dimensions rather than assigning one universal confidence score.
 
 | Dimension | Question |
 | --- | --- |
@@ -385,7 +385,7 @@ Negative evidence shows a contradiction, failed criterion, defect, control weakn
 
 Missing evidence means a required claim has not been evaluated sufficiently.
 
-KDD rules:
+KGAID rules:
 
 - negative evidence MUST remain visible until resolved, scoped out by proper authority, or invalidated with rationale;
 - one positive observation MUST NOT silently cancel credible negative evidence;
@@ -799,7 +799,7 @@ The following indicate likely verification failure:
 
 ## 25. Conformance
 
-A project conforms to this model when, for a declared KDD version and profile:
+A project conforms to this model when, for a declared KGAID version and profile:
 
 - material verification begins with an explicit, bounded claim;
 - claims relate to accepted requirements, contracts, criteria, risks, or outcomes;
