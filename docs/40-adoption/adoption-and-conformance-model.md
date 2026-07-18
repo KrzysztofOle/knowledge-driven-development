@@ -4,6 +4,7 @@
 **Version:** 0.1  
 **Project:** Knowledge-Driven Development  
 **Accepted:** 2026-07-18  
+**Accepted by:** Krzysztof Olejnik — KDD Methodology Owner  
 **Depends on:** [KDD Scope and Boundaries](../00-foundations/scope-and-boundaries.md), [KDD Principles](../00-foundations/principles.md), [KDD Knowledge Architecture](../10-knowledge-architecture/README.md), [KDD Process Model](../20-methodology/process-model.md), [KDD Verification and Evidence Model](../30-quality/verification-and-evidence-model.md)  
 **Realizes principles:** P1–P12
 
