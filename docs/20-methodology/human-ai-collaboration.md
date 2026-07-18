@@ -5,7 +5,8 @@
 **Project:** Knowledge-Driven Development  
 **Accepted:** 2026-07-18  
 **Depends on:** [KDD Principles](../00-foundations/principles.md), [KDD Process Model](process-model.md), [KDD Knowledge Authority Model](../10-knowledge-architecture/authority-model.md), [KDD Knowledge Traceability Model](../10-knowledge-architecture/traceability-model.md)  
-**Realizes principles:** P1, P6–P12
+**Realizes principles:** P1, P6–P12  
+**Operationalized by:** [KDD AI Execution Task Contract](ai-execution-task-contract.md)
 
 ## 1. Purpose
 
