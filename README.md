@@ -80,6 +80,11 @@ the current normative baseline.
   approval process, metadata requirements, future user interface, conceptual
   architecture, and staged roadmap.
 
+### KGAID tools
+
+- [KGAID tools](tools/README.md) — reusable developer tools maintained in this
+  repository and installed by adopting projects without copying their code.
+
 ## Core dependency
 
 ~~~text
