@@ -9,6 +9,9 @@ description = "Local KGAID tool for reviewing and approving Markdown documentati
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "bleach[css]>=6.4.0",
+    "markdown-it-py[linkify]>=4.2.0",
+    "mdit-py-plugins>=0.6.1",
     "PyYAML>=6.0",
 ]
 

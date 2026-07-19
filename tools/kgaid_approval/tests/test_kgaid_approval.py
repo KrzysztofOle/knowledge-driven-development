@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 from kgaid_approval import ApprovalError, DocumentationRepository
-from kgaid_approval.web import document_page, queue_page
+from kgaid_approval.web import document_page, queue_page, render_markdown
 
 
 def write_document(root: Path, relative_path: str, content: str) -> Path:
@@ -57,6 +57,75 @@ def test_preview_includes_document_content_and_approval_action(tmp_path: Path) -
     assert "pending.md" in preview
     assert "Podgląd" in queue
     assert "Akceptuj" in queue
+    assert ".document table { width: 100%; border-collapse: collapse;" in preview
+    assert ".document tbody tr:nth-child(even)" in preview
+    assert ".document tbody tr:hover" in preview
+    assert ".document pre { background: #f6f8fa; border-radius: .375rem;" in preview
+
+
+def test_markdown_renders_github_style_document_features() -> None:
+    markdown = """# Przegląd dokumentu
+
+| Element | Status |
+| --- | :---: |
+| Tabela | Gotowa |
+| Kod | Gotowy |
+
+1. Pierwszy krok
+   - element zagnieżdżony
+   - [x] wykonane
+2. Drugi krok
+
+> Ważna uwaga
+
+---
+
+```python
+print("bezpieczny kod")
+```
+
+Użyj `inline_code`, odwiedź https://example.com lub [dokumentację](https://example.org/docs).
+"""
+
+    rendered = render_markdown(markdown)
+
+    assert '<h1 id="przegląd-dokumentu">Przegląd dokumentu</h1>' in rendered
+    assert "<table>" in rendered
+    assert "<thead>" in rendered
+    assert "<tbody>" in rendered
+    assert '<th style="text-align:center;">Status</th>' in rendered
+    assert "<ol>" in rendered
+    assert '<ul class="contains-task-list">' in rendered
+    assert 'class="task-list-item"' in rendered
+    assert 'type="checkbox"' in rendered
+    assert "checked" in rendered
+    assert "disabled" in rendered
+    assert "<blockquote>" in rendered
+    assert "<hr>" in rendered
+    assert '<code class="language-python">' in rendered
+    assert "<code>inline_code</code>" in rendered
+    assert '<a href="https://example.com">https://example.com</a>' in rendered
+    assert '<a href="https://example.org/docs">dokumentację</a>' in rendered
+
+
+def test_markdown_does_not_allow_arbitrary_html_or_javascript() -> None:
+    markdown = """<script>alert("xss")</script>
+
+<img src=x onerror=alert(1)>
+
+[niebezpieczny link](javascript:alert(1))
+
+[bezpieczny link](https://example.com "tytuł")
+"""
+
+    rendered = render_markdown(markdown)
+
+    assert "<script" not in rendered
+    assert "<img" not in rendered
+    assert 'href="javascript:' not in rendered
+    assert "&lt;script&gt;" in rendered
+    assert "&lt;img src=x onerror=alert(1)&gt;" in rendered
+    assert '<a href="https://example.com" title="tytuł">bezpieczny link</a>' in rendered
 
 
 def test_approval_preserves_existing_yaml_and_markdown_body(tmp_path: Path) -> None:
