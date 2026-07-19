@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-004
+title: Approval Center UI
+
+document_type: requirement
+status: proposed
+version: 1.0
+
+owner: Product
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-004 — Approval Center UI
 
 - **Status:** Proposed

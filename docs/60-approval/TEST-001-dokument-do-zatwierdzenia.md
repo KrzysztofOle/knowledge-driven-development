@@ -1,6 +1,13 @@
 ---
 document_id: TEST-001
 title: Testowy dokument do zatwierdzenia
+
+document_type: requirement
+status: draft
+version: 1.0
+
+owner: Product
+
 approval_status: pending
 approved_by:
 approved_at:

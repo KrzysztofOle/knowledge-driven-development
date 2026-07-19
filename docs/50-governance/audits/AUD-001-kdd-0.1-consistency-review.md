@@ -1,3 +1,18 @@
+---
+document_id: AUD-001
+title: AUD-001 — KDD 0.1 Cross-Document Consistency Review
+
+document_type: governance
+status: accepted
+version: 1
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # AUD-001 — KDD 0.1 Cross-Document Consistency Review
 
 **Artifact type:** AUD  

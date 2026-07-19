@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-001
+title: Approval Center Vision
+
+document_type: vision
+status: proposed
+version: 1.0
+
+owner: Product
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-001 — Approval Center Vision
 
 - **Status:** Proposed

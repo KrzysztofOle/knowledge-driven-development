@@ -1,3 +1,18 @@
+---
+document_id: AUD-002
+title: AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review
+
+document_type: governance
+status: accepted
+version: 1
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review
 
 **Artifact type:** AUD  

@@ -1,17 +1,16 @@
 ---
 document_id: KGAID-MTH-001
 title: KGAID Process Model
-status: Accepted
+
+document_type: business-process
+status: accepted
 version: 0.1.0
-baseline: KGAID-0.1.0
-normative: true
-maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
-last_reviewed: 2026-07-19
-dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-KA-003, KGAID-KA-004]
-supersedes: null
-superseded_by: null
-verification_status: verified
-change_control: docs/50-governance/governance-and-release-model.md
+
+owner: Business
+
+approval_status: pending
+approved_by:
+approved_at:
 ---
 
 # KGAID Process Model

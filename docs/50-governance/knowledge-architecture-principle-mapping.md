@@ -1,3 +1,18 @@
+---
+document_id: KGAID-GOV-003
+title: KGAID Knowledge Architecture Principle Mapping
+
+document_type: knowledge
+status: accepted
+version: 0.1.0
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # KGAID Knowledge Architecture Principle Mapping
 
 **Status:** Accepted  

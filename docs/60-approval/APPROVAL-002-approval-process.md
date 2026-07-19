@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-002
+title: Approval Process
+
+document_type: business-process
+status: proposed
+version: 1.0
+
+owner: Business
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-002 — Approval Process
 
 - **Status:** Proposed
@@ -54,13 +69,14 @@ them into one label.
 
 ### 4.1 Knowledge status
 
-Knowledge status follows KGAID: `captured`, `proposed`, `reviewed`, `accepted`,
-`superseded`, `retired` or `rejected`. It describes the authority of the
-knowledge, not the amount of review activity.
+Document status follows the governed metadata profile: `draft`, `proposed`,
+`accepted`, `deprecated` or `superseded`. It describes the maturity and
+authority of the content, not the amount of review activity.
 
-### 4.2 Approval status
+### 4.2 Approval case status
 
-Approval status describes a single approval case:
+The full Approval Center design may describe a single approval case with the
+following workflow states:
 
 | Status | Meaning |
 | --- | --- |
@@ -71,8 +87,11 @@ Approval status describes a single approval case:
 | `rejected` | An authorized human declined the exact revision and scope. |
 | `cancelled` | The submitter or authorized owner ended the case without decision. |
 
-An approval status belongs to the case and revision. It must not be copied to a
-new or changed revision.
+This richer case state is recorded as `case_status`; it is not the governed
+Markdown field `approval_status`. The front-matter projection supports only
+`pending` and `approved` for compatibility with `kgaid-doc-approval`. Both are
+bound to the exact revision and must not be copied to a new or changed
+revision.
 
 ### 4.3 Other statuses
 
@@ -104,10 +123,12 @@ stateDiagram-v2
     Retired --> [*]
 ```
 
-The state `Approved` maps to KGAID knowledge status `accepted` only after the
-human Decision Authority acts. `Rejected`, `Superseded` and `Retired` preserve
-their historical records. A requested change is not a rejection: it returns
-work for revision without making the candidate normative.
+The case state `Approved` records a decision about the exact reviewed revision;
+it does not derive the document's `status`. An authorized lifecycle decision
+may set `status: accepted` in the same governed change. `Rejected`,
+`Superseded` and `Retired` case outcomes preserve their historical records. A
+requested change is not a rejection: it returns work for revision without
+making the candidate normative.
 
 ## 6. End-to-end process
 

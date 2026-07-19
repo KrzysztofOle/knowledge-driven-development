@@ -5,24 +5,70 @@ from __future__ import annotations
 
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs/50-governance/baselines/KGAID-0.1.0.yaml"
 REQUIRED_FILES = [
-    "CONTRIBUTING.md", "CHANGELOG.md", "SECURITY.md", "CODE_OF_CONDUCT.md",
-    "CITATION.cff", "LICENSE", "docs/50-governance/governance-and-release-model.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
+    "CITATION.cff",
+    "LICENSE",
+    "docs/50-governance/governance-and-release-model.md",
     "docs/50-governance/metadata-profile.md",
 ]
 REQUIRED_METADATA = {
-    "document_id", "title", "status", "version", "baseline", "normative",
-    "maintainer", "last_reviewed", "dependencies", "supersedes", "superseded_by",
-    "verification_status", "change_control",
+    "document_id",
+    "title",
+    "document_type",
+    "status",
+    "version",
+    "owner",
+    "approval_status",
+    "approved_by",
+    "approved_at",
 }
+VALID_DOCUMENT_TYPES = {
+    "vision",
+    "capability",
+    "business-process",
+    "business-rule",
+    "requirement",
+    "glossary",
+    "domain-model",
+    "adr",
+    "architecture",
+    "contract",
+    "verification",
+    "operations",
+    "governance",
+    "knowledge",
+}
+VALID_STATUSES = {"draft", "proposed", "accepted", "deprecated", "superseded"}
+VALID_OWNERS = {
+    "Product",
+    "Business",
+    "Architecture",
+    "Quality",
+    "Operations",
+    "Governance",
+}
+VALID_APPROVAL_STATUSES = {"pending", "approved"}
 VALID_VERIFICATION = {
-    "not-planned", "planned", "in-progress", "partially-supported", "failed",
-    "verified", "verified-with-limitations", "inconclusive", "invalidated", "expired",
+    "not-planned",
+    "planned",
+    "in-progress",
+    "partially-supported",
+    "failed",
+    "verified",
+    "verified-with-limitations",
+    "inconclusive",
+    "invalidated",
+    "expired",
 }
 
 
@@ -33,17 +79,80 @@ def front_matter(path: Path) -> dict[str, str]:
         raise ValueError("missing YAML front matter")
     values: dict[str, str] = {}
     for line in match.group(1).splitlines():
-        if ":" in line:
-            key, value = line.split(":", 1)
-            values[key.strip()] = value.strip()
+        if not line.strip():
+            continue
+        field = re.fullmatch(r"([a-z][a-z0-9_]*):(?:[ ](.*))?", line)
+        if not field:
+            raise ValueError(f"invalid front matter line: {line!r}")
+        key, value = field.group(1), field.group(2) or ""
+        if key in values:
+            raise ValueError(f"duplicate front matter field: {key}")
+        values[key] = value
     return values
 
 
-def list_value(value: str) -> list[str]:
-    if not (value.startswith("[") and value.endswith("]")):
-        raise ValueError("expected bracket list")
-    body = value[1:-1].strip()
-    return [] if not body else [part.strip() for part in body.split(",")]
+def managed_markdown_documents() -> list[Path]:
+    return sorted(
+        path for path in (ROOT / "docs").rglob("*.md") if path.name != "README.md"
+    )
+
+
+def check_governed_metadata(errors: list[str]) -> None:
+    identifiers: dict[str, Path] = {}
+    for path in managed_markdown_documents():
+        relative = path.relative_to(ROOT)
+        try:
+            metadata = front_matter(path)
+        except ValueError as error:
+            errors.append(f"{relative}: {error}")
+            continue
+
+        missing = REQUIRED_METADATA - metadata.keys()
+        unexpected = metadata.keys() - REQUIRED_METADATA
+        if missing:
+            errors.append(f"{relative} missing metadata: {', '.join(sorted(missing))}")
+        if unexpected:
+            errors.append(
+                f"{relative} has non-standard metadata: {', '.join(sorted(unexpected))}"
+            )
+
+        identifier = metadata.get("document_id", "")
+        if not identifier:
+            errors.append(f"{relative} has empty document_id")
+        elif identifier in identifiers:
+            errors.append(
+                f"duplicate document_id {identifier}: "
+                f"{identifiers[identifier].relative_to(ROOT)} and {relative}"
+            )
+        else:
+            identifiers[identifier] = path
+
+        if not metadata.get("title"):
+            errors.append(f"{relative} has empty title")
+        if metadata.get("document_type") not in VALID_DOCUMENT_TYPES:
+            errors.append(f"{relative} has invalid document_type")
+        if metadata.get("status") not in VALID_STATUSES:
+            errors.append(f"{relative} has invalid status")
+        if not re.fullmatch(r"[0-9]+(?:\.[0-9]+){0,2}", metadata.get("version", "")):
+            errors.append(f"{relative} has invalid version")
+        if metadata.get("owner") not in VALID_OWNERS:
+            errors.append(f"{relative} has invalid owner")
+
+        approval_status = metadata.get("approval_status")
+        approved_by = metadata.get("approved_by", "")
+        approved_at = metadata.get("approved_at", "")
+        if approval_status not in VALID_APPROVAL_STATUSES:
+            errors.append(f"{relative} has invalid approval_status")
+        elif approval_status == "pending" and (approved_by or approved_at):
+            errors.append(f"{relative} has approval details while pending")
+        elif approval_status == "approved":
+            if not approved_by or not approved_at:
+                errors.append(f"{relative} has incomplete approval details")
+            else:
+                try:
+                    datetime.fromisoformat(approved_at)
+                except ValueError:
+                    errors.append(f"{relative} has invalid approved_at ISO 8601 value")
 
 
 def manifest_documents() -> dict[str, tuple[Path, list[str]]]:
@@ -56,7 +165,9 @@ def manifest_documents() -> dict[str, tuple[Path, list[str]]]:
         dependencies = re.search(r"dependencies: \[([^]]*)\]", line)
         if not (identifier and path and dependencies):
             raise ValueError(f"invalid manifest entry: {line}")
-        deps = [item.strip() for item in dependencies.group(1).split(",") if item.strip()]
+        deps = [
+            item.strip() for item in dependencies.group(1).split(",") if item.strip()
+        ]
         result[identifier.group(1).strip()] = (ROOT / path.group(1).strip(), deps)
     return result
 
@@ -72,10 +183,14 @@ def check_links(errors: list[str]) -> None:
                 continue
             target = target.split("#", 1)[0]
             if target and not (source.parent / target).resolve().exists():
-                errors.append(f"broken internal link in {source.relative_to(ROOT)}: {target}")
+                errors.append(
+                    f"broken internal link in {source.relative_to(ROOT)}: {target}"
+                )
 
 
-def check_dependency_cycles(documents: dict[str, tuple[Path, list[str]]], errors: list[str]) -> None:
+def check_dependency_cycles(
+    documents: dict[str, tuple[Path, list[str]]], errors: list[str]
+) -> None:
     visiting: set[str] = set()
     visited: set[str] = set()
 
@@ -110,41 +225,45 @@ def main() -> int:
         errors.append(str(error))
         documents = {}
     if len(documents) != 14:
-        errors.append(f"manifest must list 14 normative documents; found {len(documents)}")
+        errors.append(
+            f"manifest must list 14 normative documents; found {len(documents)}"
+        )
+
+    check_governed_metadata(errors)
 
     for identifier, (path, manifest_dependencies) in documents.items():
         if not path.is_file():
-            errors.append(f"manifest path is missing for {identifier}: {path.relative_to(ROOT)}")
+            errors.append(
+                f"manifest path is missing for {identifier}: {path.relative_to(ROOT)}"
+            )
             continue
         try:
             metadata = front_matter(path)
         except ValueError as error:
             errors.append(f"{path.relative_to(ROOT)}: {error}")
             continue
-        missing = REQUIRED_METADATA - metadata.keys()
-        if missing:
-            errors.append(f"{path.relative_to(ROOT)} missing metadata: {', '.join(sorted(missing))}")
         if metadata.get("document_id") != identifier:
-            errors.append(f"{path.relative_to(ROOT)} document_id does not match manifest")
-        if metadata.get("status") != "Accepted" or metadata.get("normative") != "true":
-            errors.append(f"{path.relative_to(ROOT)} is not an Accepted normative document")
-        if metadata.get("baseline") != "KGAID-0.1.0" or metadata.get("version") != "0.1.0":
-            errors.append(f"{path.relative_to(ROOT)} has inconsistent baseline or version")
-        if metadata.get("verification_status") not in VALID_VERIFICATION:
-            errors.append(f"{path.relative_to(ROOT)} has invalid verification_status")
-        try:
-            if list_value(metadata.get("dependencies", "")) != manifest_dependencies:
-                errors.append(f"{path.relative_to(ROOT)} dependencies do not match manifest")
-        except ValueError:
-            errors.append(f"{path.relative_to(ROOT)} has invalid dependencies metadata")
+            errors.append(
+                f"{path.relative_to(ROOT)} document_id does not match manifest"
+            )
+        if metadata.get("status") != "accepted":
+            errors.append(
+                f"{path.relative_to(ROOT)} is not an Accepted normative document"
+            )
+        if metadata.get("version") != "0.1.0":
+            errors.append(f"{path.relative_to(ROOT)} has inconsistent version")
 
         body = path.read_text(encoding="utf-8")
         if re.search(r"\b(?:KDD|Knowledge-Driven Development)\b", body, re.IGNORECASE):
-            errors.append(f"legacy KDD name in normative document: {path.relative_to(ROOT)}")
+            errors.append(
+                f"legacy KDD name in normative document: {path.relative_to(ROOT)}"
+            )
         if re.search(r"\b(?:must|should|may)\b", body):
             errors.append(f"lower-case normative keyword in {path.relative_to(ROOT)}")
 
-    principles = (ROOT / "docs/00-foundations/02-principles.md").read_text(encoding="utf-8")
+    principles = (ROOT / "docs/00-foundations/02-principles.md").read_text(
+        encoding="utf-8"
+    )
     for keyword in ("**MUST**", "**SHOULD**", "**MAY**"):
         if keyword not in principles:
             errors.append(f"KGAID Principles does not define {keyword}")
@@ -160,21 +279,34 @@ def main() -> int:
         content = path.read_text(encoding="utf-8")
         for status in VALID_VERIFICATION:
             if status not in content:
-                errors.append(f"canonical verification status {status} missing from {path.relative_to(ROOT)}")
-    legacy_statuses = ("partially-verified", "unverified", "not-required", "| **limited**")
+                errors.append(
+                    f"canonical verification status {status} missing from {path.relative_to(ROOT)}"
+                )
+    legacy_statuses = (
+        "partially-verified",
+        "unverified",
+        "not-required",
+        "| **limited**",
+    )
     for path in (ROOT / "docs").rglob("*.md"):
         if path.name.startswith("AUD-"):
             continue
         content = path.read_text(encoding="utf-8")
         for legacy in legacy_statuses:
             if legacy in content:
-                errors.append(f"legacy verification status {legacy!r} in {path.relative_to(ROOT)}")
+                errors.append(
+                    f"legacy verification status {legacy!r} in {path.relative_to(ROOT)}"
+                )
 
     if errors:
         print("Repository controls failed:")
         print("\n".join(f"- {error}" for error in errors))
         return 1
-    print(f"Repository controls passed: {len(documents)} normative documents checked.")
+    print(
+        "Repository controls passed: "
+        f"{len(managed_markdown_documents())} governed Markdown documents and "
+        f"{len(documents)} normative baseline documents checked."
+    )
     return 0
 
 

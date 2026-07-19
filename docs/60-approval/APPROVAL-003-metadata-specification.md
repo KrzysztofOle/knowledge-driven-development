@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-003
+title: Metadata Specification
+
+document_type: contract
+status: proposed
+version: 1.0
+
+owner: Architecture
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-003 — Metadata Specification
 
 - **Status:** Proposed
@@ -102,8 +117,9 @@ one from another.
 
 | Information | Level | Requirement |
 | --- | --- | --- |
-| `status` or knowledge status | Required | Uses the KGAID knowledge lifecycle taxonomy. |
-| `approval_status` | Required | Describes the approval case for this revision. |
+| `status` | Required | Uses the KGAID governed document lifecycle taxonomy. |
+| `approval_status` | Required | Front-matter projection: `pending` or `approved` for this exact revision. |
+| `case_status` | Conditional | Richer workflow state when a complete Approval Center case record exists. |
 | Implementation status | Conditional | Recorded when the artifact has a realization claim. |
 | Verification status | Conditional | Recorded with exact evidence scope and limitations. |
 | Effective period | Conditional | States when accepted knowledge applies, if time-bounded. |
@@ -146,7 +162,7 @@ AI contribution is recorded as provenance and never as human acceptance.
 | Readiness findings | Conditional | Passed, open, waived or not-applicable conditions. |
 | Review findings | Conditional | Comments, questions, conflicts and recommendations. |
 | Finding disposition | Conditional | Resolution, response, waiver or continued blocker. |
-| Case status | Conditional | Current approval status from the process taxonomy. |
+| `case_status` | Conditional | Current workflow state from the approval-case process taxonomy. |
 | Cancellation actor and reason | Conditional | Required when a case is cancelled. |
 
 Approval rules are captured by identity or stable reference so later policy
@@ -162,7 +178,7 @@ changes do not rewrite the meaning of an earlier decision.
 | Decision scope | Conditional | What the decision includes and excludes. |
 | Decision authority | Conditional | Human role under which the action was taken. |
 | Decision actor | Conditional | Human who performed the action. |
-| `approval_date` or decision time | Conditional | Effective recorded time of the decision. |
+| `approved_at` or decision time | Conditional | Effective recorded time of the decision. |
 | Rationale | Conditional | Why the decision was made. |
 | Conditions | Conditional | Obligations attached to the decision. |
 | Limitations | Conditional | Boundaries that the decision does not cross. |
@@ -170,7 +186,7 @@ changes do not rewrite the meaning of an earlier decision.
 | Waivers | Conditional | Departures, authority, rationale and expiry. |
 | Follow-up obligations | Conditional | Owned actions resulting from the decision. |
 
-`approved_by` and `approval_date` are projections of a complete decision
+`approved_by` and `approved_at` are projections of a complete decision
 record, not substitutes for it. A project may use concise rationale for a
 low-risk change, but the actor, authority, subject and scope remain mandatory.
 

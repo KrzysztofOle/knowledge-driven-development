@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-005
+title: Approval Center Architecture
+
+document_type: architecture
+status: proposed
+version: 1.0
+
+owner: Architecture
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-005 — Approval Center Architecture
 
 - **Status:** Proposed

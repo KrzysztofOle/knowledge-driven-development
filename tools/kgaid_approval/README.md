@@ -56,6 +56,13 @@ matter i ma jawne pole:
 ---
 document_id: REQ-001
 title: Utworzenie faktury roboczej
+
+document_type: requirement
+status: proposed
+version: 1.0
+
+owner: Product
+
 approval_status: pending
 approved_by:
 approved_at:
@@ -65,7 +72,12 @@ approved_at:
 Dokument bez `approval_status` oraz dokument ze statusem `approved` nie trafia
 do kolejki. Po użyciu przycisku **Akceptuj** narzędzie zapisuje `approved`,
 wartość `--approver` i lokalny czas ISO 8601 z przesunięciem strefy. Zachowuje
-pozostałe pola i treść poniżej front matter.
+pozostałe pola i treść poniżej front matter. Logika zatwierdzania interpretuje
+i zmienia wyłącznie `approval_status`, `approved_by` i `approved_at`; pola
+tożsamości i tytułu służą prezentacji, a pola typu, stanu merytorycznego,
+wersji i właściciela są dla procesu zatwierdzania przezroczyste.
+Pełny standard opisuje [KGAID Governed Document Metadata
+Profile](../../docs/50-governance/metadata-profile.md).
 
 ## Pilotaż 3ksef
 

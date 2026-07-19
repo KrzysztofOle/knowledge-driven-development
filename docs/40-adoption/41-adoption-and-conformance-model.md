@@ -1,17 +1,16 @@
 ---
 document_id: KGAID-ADP-001
 title: KGAID Adoption and Conformance Model
-status: Accepted
+
+document_type: governance
+status: accepted
 version: 0.1.0
-baseline: KGAID-0.1.0
-normative: true
-maintainer: Krzysztof Olejnik — KGAID Methodology Maintainer
-last_reviewed: 2026-07-19
-dependencies: [KGAID-FND-001, KGAID-FND-002, KGAID-KA-001, KGAID-MTH-001, KGAID-QLT-001]
-supersedes: null
-superseded_by: null
-verification_status: verified
-change_control: docs/50-governance/governance-and-release-model.md
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
 ---
 
 # KGAID Adoption and Conformance Model

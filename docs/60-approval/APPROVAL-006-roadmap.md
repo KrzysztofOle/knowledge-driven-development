@@ -1,3 +1,18 @@
+---
+document_id: APPROVAL-006
+title: Approval Center Roadmap
+
+document_type: capability
+status: proposed
+version: 1.0
+
+owner: Product
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # APPROVAL-006 — Approval Center Roadmap
 
 - **Status:** Proposed

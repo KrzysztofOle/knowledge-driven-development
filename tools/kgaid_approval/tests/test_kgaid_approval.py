@@ -63,6 +63,9 @@ def test_approval_preserves_existing_yaml_and_markdown_body(tmp_path: Path) -> N
     source = """---
 document_id: DOC-1
 title: Tytuł
+document_type: requirement
+status: proposed
+version: 1.0
 owner: zespół dokumentacji
 tags: [alpha, beta]
 approval_status: pending
@@ -79,6 +82,9 @@ Nie zmieniaj tej treści.
     repository.approve("pending.md", "Krzysztof Olejnik")
 
     updated = path.read_text(encoding="utf-8")
+    assert "document_type: requirement\n" in updated
+    assert "status: proposed\n" in updated
+    assert "version: 1.0\n" in updated
     assert "owner: zespół dokumentacji\n" in updated
     assert "tags: [alpha, beta]\n" in updated
     assert "approval_status: approved\n" in updated

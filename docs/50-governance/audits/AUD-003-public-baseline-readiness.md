@@ -1,3 +1,18 @@
+---
+document_id: AUD-003
+title: AUD-003 — KGAID First Public Baseline Readiness Review
+
+document_type: governance
+status: accepted
+version: 1.0
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # AUD-003 — KGAID First Public Baseline Readiness Review
 
 **Status:** Complete  
@@ -21,7 +36,7 @@ CC BY 4.0 was selected for the documentation methodology because it permits use,
 
 ## 4. Baseline and metadata completeness
 
-`docs/50-governance/baselines/KGAID-0.1.0.yaml` lists exactly fourteen Accepted normative documents, their status, classification, dependencies, and historical migration evidence. All fourteen normative documents use the required metadata profile with stable ID, version, baseline, maintainer, review date, dependency, supersession, verification, and change-control fields.
+`docs/50-governance/baselines/KGAID-0.1.0.yaml` lists exactly fourteen Accepted normative documents, their status, classification, dependencies, and historical migration evidence. All fourteen normative documents use the governed front-matter profile with stable identity, title, type, lifecycle status, version, owner and approval fields. Baseline membership, normative classification and dependencies remain authoritative in the manifest; supersession and verification information remain in the governed document content and baseline records.
 
 ## 5. Normative and verification consistency
 
