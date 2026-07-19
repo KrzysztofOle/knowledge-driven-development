@@ -13,6 +13,7 @@
       "name": "KGAID: Documentation Approval MVP",
       "type": "debugpy",
       "request": "launch",
+      "python": "${workspaceFolder}/tools/kgaid_approval/.venv/bin/python",
       "module": "kgaid_approval.cli",
       "cwd": "${workspaceFolder}/tools/kgaid_approval",
       "args": [
@@ -26,7 +27,12 @@
         "8765"
       ],
       "console": "integratedTerminal",
-      "justMyCode": true
+      "justMyCode": true,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "KGAID Documentation Approval: (https?://[^\\s]+)",
+        "uriFormat": "%s"
+      }
     }
   ]
 }
