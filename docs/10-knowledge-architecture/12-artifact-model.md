@@ -71,7 +71,7 @@ every paragraph, note, AI conversation or implementation task.
 | `PRN` | Principle | A governing and durable project rule. |
 | `VIS` | Vision | Product problem, purpose, audience, outcomes and boundaries. |
 | `TERM` | Term | One authoritative definition in the project language. |
-| `BR` | Business Rule | A durable business or domain rule. |
+| `BR` | Business Rule | An independently normative, durable business, domain or regulatory rule. |
 | `ASM` | Assumption | A claim that requires confirmation. |
 | `RISK` | Risk | Uncertainty, possible impact and treatment. |
 | `CAP` | Capability | A product ability that provides value. |
@@ -91,6 +91,131 @@ every paragraph, note, AI conversation or implementation task.
 
 A project profile MAY introduce additional artifact types when it defines their
 authority and relationships without changing the meanings above.
+
+### 4.1 Business Rule (`BR`)
+
+A Business Rule states a truth, invariant, prohibition, permission or
+obligation that governs the represented business domain. It captures a rule
+that remains meaningful independently of any particular system, interface or
+implementation. A `BR` belongs to Domain Knowledge and is owned by the Domain
+Authority.
+
+A `BR` is responsible for the normative business meaning of the rule. It is
+not responsible for specifying how a system detects, prevents, stores,
+communicates or verifies compliance. Those obligations belong to downstream
+requirements, architecture, contracts, implementation and evidence.
+
+A `BR` MUST NOT describe:
+
+- implementation, API, architecture or user-interface design;
+- a use-case or scenario flow;
+- acceptance criteria or a test procedure; or
+- a system-specific mechanism for enforcing the rule.
+
+For example, the following statements have different owners:
+
+```text
+BR-001: An invoice with an assigned KSeF number MUST NOT be changed.
+
+REQ-024: The system MUST prevent editing an invoice with an assigned KSeF
+number.
+```
+
+The `BR` describes the applicable business truth. The `REQ` describes the
+observable system obligation that follows from it.
+
+### 4.2 Business Rule qualification
+
+A rule is recorded as a separate `BR` when it is durable, independently
+normative within its declared scope, and at least one of the following applies:
+
+- it follows from law, regulation, a binding agreement or a mandatory standard;
+- it follows from an applicable external specification or regulatory system;
+- it protects business-data integrity or state consistency;
+- it defines a security, authorization or entitlement boundary in the domain;
+- more than one requirement, capability, contract or decision relies on it; or
+- it is a stable domain invariant whose violation changes the meaning or
+  validity of a business fact.
+
+A qualifying rule MAY support only one current requirement when its source,
+durability or consequence warrants independent ownership. Conversely, repeated
+references alone do not turn a local condition into a `BR`.
+
+A condition remains part of a `REQ`, use case, scenario or acceptance criterion
+when it is local to that system obligation, has no independent business meaning,
+is not expected to constrain other knowledge, and can change together with that
+obligation without changing the domain. A formatting detail, workflow step,
+error message, API precondition or test expectation is not a `BR` solely
+because it uses normative language.
+
+### 4.3 Business Rule relationships
+
+A `BR` uses `TERM` artifacts and a domain model for its vocabulary and scope.
+Downstream artifacts reference the `BR` only when the rule materially constrains
+their meaning:
+
+- a `CAP` depends on a `BR` when the capability operates under that rule;
+- a domain model depends on or is constrained by a `BR` when the rule limits
+  valid domain state or transition;
+- a `REQ` depends on a `BR` when it expresses a system obligation derived from
+  the rule;
+- an `ADR` depends on or is constrained by a `BR` when the rule affects the
+  accepted architectural decision; and
+- `EVD` verifies a `REQ`, contract or other exact claim; it does not make the
+  test procedure the owner of the `BR`.
+
+No `REQ` is required to reference a `BR`. The link is used only after the
+qualification criteria in Section 4.2 are met.
+
+### 4.4 Business Rule template
+
+Each material `BR` uses the standard artifact metadata from Section 7 and
+records the following content. Projects MAY choose Markdown, front matter or a
+structured representation, provided that the fields retain these meanings.
+
+```yaml
+id: BR-NNN
+type: business-rule
+title: Concise rule name
+
+knowledge_status: proposed
+implementation_status: not-applicable
+verification_status: planned
+
+scope: Business context, entities, events and jurisdictions to which the rule applies
+owner: domain-owner
+decision_authority: domain-authority
+
+normative_statement: The business rule stated without a solution mechanism
+rationale: Why the rule exists and the consequence it protects
+domain_terms:
+  - TERM-NNN
+exceptions:
+  - Declared exception, or none
+sources_of_obligation:
+  - kind: law | regulation | external-specification | domain-policy
+    reference: Stable source, version or locator
+    applicability: Why and where the source applies
+
+depends_on:
+  - TERM-NNN
+constrained_by: []
+supersedes: null
+
+created_at: YYYY-MM-DD
+accepted_at: null
+last_reviewed_at: YYYY-MM-DD
+
+provenance:
+  proposed_by: human-ai-collaboration
+  accepted_by: null
+```
+
+`normative_statement` is the authoritative rule content. `rationale` explains
+the rule but does not narrow or replace it. `exceptions` are part of the rule's
+scope and MUST be explicit; an absent exception is recorded as `none`.
+`sources_of_obligation` identifies why the rule applies. A business-originated
+rule records its authoritative policy or Domain Authority decision there.
 
 ## 5. Primary knowledge flow
 

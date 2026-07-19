@@ -227,10 +227,16 @@ Required knowledge MAY include:
 Requirements MUST:
 
 - relate to accepted upstream purpose or obligation;
+- reference an applicable `BR` when a qualifying durable business, domain or
+  regulatory rule is the source of the system obligation;
 - identify their scope and owner;
 - distinguish mandatory behavior from preference;
 - be verifiable at a declared boundary;
 - avoid embedding unnecessary implementation choices.
+
+Not every requirement needs a `BR`. A condition that is local to one system
+obligation remains in the requirement unless it qualifies as independently
+normative Domain Knowledge under the [Business Rule criteria](../10-knowledge-architecture/12-artifact-model.md#42-business-rule-qualification).
 
 **Exit condition:** Requirements and acceptance criteria are accepted for the intended increment, material conflicts are resolved, and a viable verification approach exists.
 

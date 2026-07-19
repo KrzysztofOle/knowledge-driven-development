@@ -41,8 +41,10 @@ The fundamental rule is:
 ```mermaid
 flowchart TD
     V["VIS: vision"] --> C["CAP: capability"]
+    B["BR: business rule"] --> C
+    B --> R["REQ / QR / CON"]
     C --> U["UC / SCN"]
-    U --> R["REQ / QR / CON"]
+    U --> R
     R --> A["ARC / ADR"]
     A --> T["CTR: contract"]
     T --> I["INC: realization"]
@@ -129,13 +131,14 @@ creating two independent sources.
 
 | Artifact | Typical upstream or related knowledge |
 | --- | --- |
+| `BR` | `TERM`, domain model and applicable source of obligation. |
 | `CAP` | `VIS`, `BR` and applicable `CON`. |
 | `UC` | `CAP`, `TERM` and `BR`. |
 | `SCN` | `UC`, `REQ` and acceptance criteria. |
 | `REQ` | `CAP`, `UC`, `BR` and `CON`. |
 | `QR` | `VIS`, `CAP`, `CON` and risks. |
 | `ARC` | `REQ`, `QR`, `CON` and `PRN`. |
-| `ADR` | Problem, requirements, constraints and previous decisions. |
+| `ADR` | Problem, requirements, applicable `BR`, constraints and previous decisions. |
 | `CTR` | `ARC`, `ADR`, `REQ` and `QR`. |
 | `RFC` | Requirements, risks, decisions and unresolved questions. |
 | `INC` | `REQ`, `CTR`, `ADR` and scenarios. |
@@ -147,9 +150,45 @@ This table does not require every possible relationship. Projects maintain the
 relationships needed to justify decisions, implementation and claims without
 creating administrative link noise.
 
+### 6.1 Business Rule traceability
+
+`BR` is a first-class traceability target. Relationships retain the standard
+downstream-to-upstream direction and are recorded only when they have material
+meaning:
+
+```text
+CAP → BR       capability operates under a rule
+Domain Model → BR
+               valid domain state or transition is constrained by a rule
+REQ → BR       system obligation derives from a rule
+ADR → BR       architecture decision is affected by a rule
+Test / EVD → REQ
+               evidence verifies the requirement claim, not the rule by itself
+```
+
+The domain model MAY also be upstream vocabulary for the `BR`; the applicable
+relationship direction follows the dependency being recorded. A `REQ` does not
+need a `BR` link unless the rule satisfies the Business Rule qualification
+criteria in the [Artifact Model](12-artifact-model.md#42-business-rule-qualification).
+
 ## 7. Minimum traceability records
 
-### 7.1 Requirement
+### 7.1 Business Rule
+
+```yaml
+id: BR-007
+type: business-rule
+knowledge_status: accepted
+
+depends_on:
+  - TERM-012
+
+sources_of_obligation:
+  - kind: external-specification
+    reference: authoritative-specification@version
+```
+
+### 7.2 Requirement
 
 ```yaml
 id: REQ-004
@@ -164,7 +203,7 @@ constrained_by:
   - CON-003
 ```
 
-### 7.2 Contract
+### 7.3 Contract
 
 ```yaml
 id: CTR-006
@@ -184,7 +223,7 @@ constrained_by:
   - CON-003
 ```
 
-### 7.3 Implementation increment
+### 7.4 Implementation increment
 
 ```yaml
 id: INC-012
@@ -205,7 +244,7 @@ implementation_ref:
     - src/component
 ```
 
-### 7.4 Evidence
+### 7.5 Evidence
 
 ```yaml
 id: EVD-014

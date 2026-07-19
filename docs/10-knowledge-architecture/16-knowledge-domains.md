@@ -194,6 +194,22 @@ not originate in that representation.
 
 Typical owner: Domain Authority.
 
+### 5.5 Business Rules
+
+A `BR` is a first-class Domain Knowledge artifact. It states a durable business,
+domain or regulatory truth independently of a particular system realization.
+It has one owner, a declared scope and an explicit source of obligation.
+
+The Domain Authority creates a separate `BR` only when the rule meets the
+qualification criteria in the [Artifact Model](12-artifact-model.md#42-business-rule-qualification).
+This keeps Domain Knowledge focused on durable meaning instead of turning every
+local requirement condition into a domain artifact.
+
+A `BR` can constrain valid domain state, state transitions, permissions or
+business facts. It does not define an API, architecture, user interface,
+scenario, acceptance criterion or enforcement mechanism. Requirements turn an
+applicable `BR` into observable system obligations.
+
 ## 6. Domain 3 — Requirements and Acceptance
 
 ### 6.1 Questions
@@ -235,6 +251,12 @@ This domain does not define:
 
 Requirements describe obligations and expected results, not accidental
 properties of the current implementation.
+
+An applicable `BR` is upstream knowledge for a requirement, not a substitute
+for it. A requirement identifies what the system MUST do to honour the rule;
+it does not redefine the rule or its source of obligation. A requirement MAY
+have no `BR` when its condition is local and does not meet the Business Rule
+qualification criteria.
 
 ### 6.4 Authority
 
@@ -538,6 +560,19 @@ Requirement:
 
 A domain rule states meaning or an invariant. A requirement creates an
 obligation for the system.
+
+The distinction also applies to regulated business facts:
+
+```text
+Business Rule:
+"An invoice with an assigned KSeF number MUST NOT be changed."
+
+Requirement:
+"The system MUST prevent editing an invoice with an assigned KSeF number."
+```
+
+The Business Rule is a Domain Knowledge artifact. The Requirement is a
+system obligation derived from it; the system is not the source of the rule.
 
 ### 14.3 Requirements and Architecture
 
