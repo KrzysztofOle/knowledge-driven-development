@@ -69,6 +69,17 @@ Governance evidence records reviews and decisions about the methodology itself. 
 - [Governance, Versioning, and Release Model](docs/50-governance/governance-and-release-model.md) — methodology change authority, versioning, baseline, and release rules.
 - [Prepared KGAID-0.1.0 manifest](docs/50-governance/baselines/KGAID-0.1.0.yaml) — first baseline membership and dependencies; publication remains pending.
 
+### 60 — Approval Center
+
+Approval Center is a proposed, technology-neutral KGAID capability for
+reviewing exact document revisions, recording human decisions, and exposing
+change history and traceability. Its design is informative and is not part of
+the current normative baseline.
+
+- [Approval Center design](docs/60-approval/README.md) — index of the vision,
+  approval process, metadata requirements, future user interface, conceptual
+  architecture, and staged roadmap.
+
 ## Core dependency
 
 ~~~text
