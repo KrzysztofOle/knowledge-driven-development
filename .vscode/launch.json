@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "kgaidApprovalApprover",
+      "type": "promptString",
+      "description": "Osoba zatwierdzająca dokumentację",
+      "default": "Krzysztof Olejnik"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "KGAID: Documentation Approval MVP",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "kgaid_approval.cli",
+      "cwd": "${workspaceFolder}/tools/kgaid_approval",
+      "args": [
+        "--docs-dir",
+        "${workspaceFolder}/docs",
+        "--approver",
+        "${input:kgaidApprovalApprover}",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8765"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

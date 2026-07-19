@@ -35,6 +35,13 @@ Domyślny adres lokalnego interfejsu to `http://127.0.0.1:8765`. Zmień go przez
 `--host` i `--port`; `--docs-dir` jest jedynym katalogiem, w którym narzędzie
 może wyszukiwać i modyfikować pliki.
 
+## VS Code
+
+Repozytorium zawiera konfigurację **KGAID: Documentation Approval MVP** w
+`.vscode/launch.json`. Po wybraniu jej w panelu Run and Debug i uruchomieniu
+VS Code poprosi o nazwę osoby zatwierdzającej, a następnie otworzy narzędzie
+dla katalogu `docs` pod adresem `http://127.0.0.1:8765`.
+
 Po instalacji projekt konsumencki powinien zapisać wybrany tag lub commit w
 swoim pliku zależności albo instrukcji deweloperskiej. Dzięki temu używa
 powtarzalnej wersji narzędzia, a aktualizacja KGAID jest jawną zmianą zależności
