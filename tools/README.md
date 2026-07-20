@@ -28,3 +28,6 @@ projektom technologii ani nie miesza narzędzi KGAID z ich domeną biznesową.
   kolejka, podgląd i ręczna akceptacja dokumentów Markdown z front matter.
 - [KGAID Documentation Archive](kgaid_docs_archive/README.md) — tworzy archiwum
   całego katalogu `docs/` o nazwie `docs_RRRR-MM-DD_hhmm.zip`.
+- [KGAID Project Review](kgaid_project_review/README.md) — niezależny,
+  działający wyłącznie w trybie odczytu raport zdrowia dokumentacji projektu;
+  wspiera przegląd człowieka, ale nie podejmuje decyzji o baseline ani gotowości.

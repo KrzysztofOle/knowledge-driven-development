@@ -10,6 +10,17 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools" / "kgaid_project_review"))
+
+from kgaid_project_review.profile import (  # noqa: E402
+    APPROVAL_STATUSES as VALID_APPROVAL_STATUSES,
+    DOCUMENT_TYPES as VALID_DOCUMENT_TYPES,
+    OWNERS as VALID_OWNERS,
+    REQUIRED_FIELDS as REQUIRED_METADATA,
+    STATUSES as VALID_STATUSES,
+    is_valid_version,
+)
+
 MANIFEST = ROOT / "docs/50-governance/baselines/KGAID-0.1.0.yaml"
 REQUIRED_FILES = [
     "CONTRIBUTING.md",
@@ -21,43 +32,6 @@ REQUIRED_FILES = [
     "docs/50-governance/governance-and-release-model.md",
     "docs/50-governance/metadata-profile.md",
 ]
-REQUIRED_METADATA = {
-    "document_id",
-    "title",
-    "document_type",
-    "status",
-    "version",
-    "owner",
-    "approval_status",
-    "approved_by",
-    "approved_at",
-}
-VALID_DOCUMENT_TYPES = {
-    "vision",
-    "capability",
-    "business-process",
-    "business-rule",
-    "requirement",
-    "glossary",
-    "domain-model",
-    "adr",
-    "architecture",
-    "contract",
-    "verification",
-    "operations",
-    "governance",
-    "knowledge",
-}
-VALID_STATUSES = {"draft", "proposed", "accepted", "deprecated", "superseded"}
-VALID_OWNERS = {
-    "Product",
-    "Business",
-    "Architecture",
-    "Quality",
-    "Operations",
-    "Governance",
-}
-VALID_APPROVAL_STATUSES = {"pending", "approved"}
 VALID_VERIFICATION = {
     "not-planned",
     "planned",
@@ -133,7 +107,7 @@ def check_governed_metadata(errors: list[str]) -> None:
             errors.append(f"{relative} has invalid document_type")
         if metadata.get("status") not in VALID_STATUSES:
             errors.append(f"{relative} has invalid status")
-        if not re.fullmatch(r"[0-9]+(?:\.[0-9]+){0,2}", metadata.get("version", "")):
+        if not is_valid_version(metadata.get("version", "")):
             errors.append(f"{relative} has invalid version")
         if metadata.get("owner") not in VALID_OWNERS:
             errors.append(f"{relative} has invalid owner")
@@ -175,7 +149,7 @@ def manifest_documents() -> dict[str, tuple[Path, list[str]]]:
 def check_links(errors: list[str]) -> None:
     markdown_link = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
     for source in ROOT.rglob("*.md"):
-        if ".git" in source.parts:
+        if {".git", ".venv", "venv", "node_modules", "__pycache__"} & set(source.parts):
             continue
         for target in markdown_link.findall(source.read_text(encoding="utf-8")):
             target = target.strip().split(" ", 1)[0]

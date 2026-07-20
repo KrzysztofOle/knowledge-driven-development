@@ -84,6 +84,9 @@ the current normative baseline.
 
 - [KGAID tools](tools/README.md) — reusable developer tools maintained in this
   repository and installed by adopting projects without copying their code.
+- [KGAID Project Review](tools/kgaid_project_review/README.md) — a read-only,
+  repeatable documentation health report for an adopting project's explicitly
+  selected documentation directory; it does not make Human Authority decisions.
 
 ## Core dependency
 

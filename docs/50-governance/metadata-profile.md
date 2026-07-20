@@ -30,6 +30,11 @@ subject to lifecycle management and human approval. Navigation files such as a
 directory `README.md`, repository policies and tool instructions are not
 governed documents unless they are explicitly assigned an identifier.
 
+The reusable executable vocabulary for this profile is maintained in
+`tools/kgaid_project_review/kgaid_project_review/profile.py`. Repository
+controls and KGAID review tooling use that single vocabulary; it does not make
+approval or baseline decisions.
+
 Baseline membership, normative classification, dependencies, supersession and
 verification evidence remain in their authoritative manifests or document
 content. They are not parallel front-matter fields.
