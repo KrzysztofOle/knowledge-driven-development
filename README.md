@@ -4,6 +4,10 @@ Knowledge-Governed AI-Assisted Development (KGAID) is an open, technology-indepe
 
 KGAID treats knowledge as the primary project asset. Code is a realization of accepted knowledge rather than its sole source. Product and business understanding guide architecture, architecture guides implementation, explicit contracts precede the code that realizes them, and verification evidence limits completion claims. AI supports the work; humans retain decision authority and accountability.
 
+> [KGAID overview website — English and Polish](https://krzysztofole.github.io/kgaid-methodology/)
+>
+> **Early-stage notice:** KGAID is at the beginning of its development. The current repository is a first structured draft of the concept, developed in parallel with real projects that use it. Accepted documents are authoritative only within the current experimental baseline and do not imply an established industry standard or certification scheme.
+
 ## Methodology structure
 
 ~~~mermaid

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="KGAID — Knowledge-Governed AI-Assisted Development.">
+  <title>KGAID — Choose language</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    (function () {
+      var language = (navigator.language || "en").toLowerCase();
+      window.location.replace(language.startsWith("pl") ? "pl/" : "en/");
+    }());
+  </script>
+</head>
+<body>
+  <main class="hero">
+    <div class="shell" style="max-width: 760px; text-align: center;">
+      <p class="eyebrow">Knowledge-Governed AI-Assisted Development</p>
+      <h1>KGAID</h1>
+      <p class="hero-copy" style="margin-left: auto; margin-right: auto;">Choose a language · Wybierz język</p>
+      <div class="button-row" style="justify-content: center;">
+        <a class="button button-primary" href="en/">English</a>
+        <a class="button button-secondary" href="pl/">Polski</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

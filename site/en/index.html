@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KGAID is an early-stage, human-governed methodology for knowledge-governed, AI-assisted software development.">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:title" content="KGAID — Knowledge-Governed AI-Assisted Development">
+  <meta property="og:description" content="Knowledge governs the work. AI assists the work. Humans authorize the work.">
+  <meta property="og:type" content="website">
+  <title>KGAID — Knowledge-Governed AI-Assisted Development</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="KGAID home">
+        <span class="brand-mark">K</span>
+        <span>KGAID</span>
+      </a>
+      <div class="header-actions">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#idea">Idea</a>
+          <a href="#model">Collaboration</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#principles">Principles</a>
+          <a href="#status">Status</a>
+        </nav>
+        <div class="language-switch" aria-label="Language">
+          <a href="./" lang="en" aria-current="page">EN</a>
+          <a href="../pl/" lang="pl">PL</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">An early methodology for human–AI software development</p>
+          <h1>KGAID<span class="hero-title-small">Knowledge-Governed AI-Assisted Development</span></h1>
+          <p class="hero-copy">An open, technology-independent concept for developing software through explicit knowledge, bounded AI assistance, human authority, traceable decisions, and evidence-based completion claims.</p>
+          <p class="proposition">Knowledge governs the work. AI assists the work. Humans authorize the work.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://github.com/KrzysztofOle/kgaid-methodology">Read the methodology on GitHub</a>
+            <a class="button button-secondary" href="#workflow">See the working model</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-labelledby="early-title">
+          <div class="status-pill"><span class="status-dot"></span> Early concept · draft 0.1</div>
+          <h2 id="early-title">This is the beginning, not a finished standard.</h2>
+          <p>KGAID is currently a first structured draft of a methodology. It is being developed while it is used in real software projects, so practical findings can challenge and improve the concept.</p>
+          <ul class="mini-list">
+            <li>No certification scheme</li>
+            <li>No claim of industry maturity</li>
+            <li>No fixed toolchain or AI provider</li>
+            <li>Repository documents remain the source of truth</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <div class="shell">
+      <div class="notice">
+        <p><strong>Development status:</strong> KGAID is experimental and actively evolving. Some documents in the repository are accepted within the current 0.1 baseline, but the methodology as a whole is still being discovered, tested, corrected, and generalized.</p>
+      </div>
+    </div>
+
+    <section id="idea">
+      <div class="shell">
+        <p class="section-kicker">Why KGAID exists</p>
+        <h2 class="section-heading">Software can now be produced faster than shared understanding.</h2>
+        <p class="section-intro">AI can accelerate analysis, design, implementation, and review. It can also accelerate hidden assumptions, inconsistent decisions, and confident claims that exceed the available evidence. KGAID starts from the idea that project knowledge must govern this speed.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Code is not the whole truth</h3>
+            <p>Product intent, business rules, architectural decisions, contracts, risks, and evidence carry meaning that implementation alone cannot preserve.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>AI needs bounded authority</h3>
+            <p>AI may analyze, propose, implement, test, and review. It must not silently define product meaning, accept risk, or approve its own proposals.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Completion needs evidence</h3>
+            <p>A build, test, review, or deployment proves only what it actually examined. “Done” must be connected to a scoped claim and proportionate evidence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="model">
+      <div class="shell">
+        <p class="section-kicker">Human–AI collaboration</p>
+        <h2 class="section-heading">Execution capability does not grant decision authority.</h2>
+        <p class="section-intro">The current KGAID reference workflow separates authority, knowledge work, and execution. One person or one AI tool may support several roles, but their meanings remain distinct.</p>
+
+        <div class="grid-3">
+          <article class="card role-card">
+            <p class="role-label">Human authority</p>
+            <h3>Sets purpose and accepts consequences</h3>
+            <p>Humans own product direction, authoritative business meaning, significant decisions, risk acceptance, baselines, releases, and final acceptance.</p>
+          </article>
+          <article class="card role-card">
+            <p class="role-label">Knowledge &amp; review AI</p>
+            <h3>Builds context and challenges gaps</h3>
+            <p>AI helps structure knowledge, compare sources, identify contradictions, prepare bounded tasks, review outputs, and explain evidence and limitations.</p>
+          </article>
+          <article class="card role-card">
+            <p class="role-label">Execution AI</p>
+            <h3>Realizes an authorized task</h3>
+            <p>AI changes code, tests, documentation, or configuration within accepted knowledge, explicit scope, allowed actions, and mandatory escalation boundaries.</p>
+          </article>
+        </div>
+
+        <p class="section-intro" style="margin-top: 28px; margin-bottom: 0;">A practical workflow may use a human, ChatGPT as a knowledge and review partner, and Codex as an execution partner. KGAID itself is independent of those products and providers.</p>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="shell">
+        <p class="section-kicker">Dependency of meaning</p>
+        <h2 class="section-heading">From product stimulus to operational learning.</h2>
+        <p class="section-intro">The sequence below is not a mandatory waterfall. Work may overlap and iterate, but downstream commitments should not silently redefine missing upstream knowledge.</p>
+
+        <div class="flow" aria-label="KGAID workflow">
+          <div class="flow-step"><span>PM-1</span><strong>Orient</strong></div>
+          <div class="flow-step"><span>PM-2</span><strong>Frame product or change</strong></div>
+          <div class="flow-step"><span>PM-3</span><strong>Discover business and domain</strong></div>
+          <div class="flow-step"><span>PM-4</span><strong>Define requirements and quality</strong></div>
+          <div class="flow-step"><span>PM-5</span><strong>Shape architecture</strong></div>
+          <div class="flow-step"><span>PM-6</span><strong>Establish contracts</strong></div>
+          <div class="flow-step"><span>PM-7</span><strong>Realize increment</strong></div>
+          <div class="flow-step"><span>PM-8</span><strong>Verify and baseline</strong></div>
+          <div class="flow-step"><span>PM-9</span><strong>Operate and learn</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles">
+      <div class="shell">
+        <p class="section-kicker">Core principles</p>
+        <h2 class="section-heading">Twelve principles, summarized into six practical themes.</h2>
+        <p class="section-intro">The repository contains the complete normative wording. This page presents a compact orientation, not a substitute for the source documents.</p>
+
+        <div class="principle-grid">
+          <article class="principle">
+            <h3>Knowledge before coordinated action</h3>
+            <p>Important purpose, meaning, decisions, constraints, contracts, and evidence should be explicit enough to discover, review, and use.</p>
+          </article>
+          <article class="principle">
+            <h3>Purpose before solution</h3>
+            <p>Product outcomes and business meaning guide architecture; architecture guides implementation; contracts define observable obligations.</p>
+          </article>
+          <article class="principle">
+            <h3>Authority stays visible</h3>
+            <p>A proposal, observation, assumption, decision, and accepted artifact must not appear equally authoritative.</p>
+          </article>
+          <article class="principle">
+            <h3>Trace intent to evidence</h3>
+            <p>Material work should remain navigable from purpose and rules through decisions, code, verification, and operational learning.</p>
+          </article>
+          <article class="principle">
+            <h3>Claims do not exceed evidence</h3>
+            <p>Every meaningful claim is limited by its subject, version, environment, method, data, boundary, and known exclusions.</p>
+          </article>
+          <article class="principle">
+            <h3>Rigor follows risk</h3>
+            <p>Low-risk reversible work can stay lightweight. High-impact, regulated, long-lived, or difficult-to-reverse work needs stronger controls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="quote-panel">
+          <blockquote>“A claim must not exceed its evidence.”</blockquote>
+          <div>
+            <p>KGAID begins verification with the claim, not with the tool that happens to be available.</p>
+            <ul class="check-list">
+              <li>A successful build does not prove functional correctness.</li>
+              <li>A unit test does not prove integration or production behavior.</li>
+              <li>A deployment does not prove release readiness or product value.</li>
+              <li>AI confidence is neither authority nor evidence.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="shell">
+        <p class="section-kicker">How the concept is growing</p>
+        <h2 class="section-heading">The methodology and its reference projects evolve together.</h2>
+        <p class="section-intro">KGAID is being extracted and generalized from practical work rather than designed only as theory. Current learning sources include KSeF_2 and 3ksef. These projects provide experience and feedback; they are not normative authorities for the methodology.</p>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <small>1 · Observe</small>
+            <h3>Use the concept on real work</h3>
+            <p>Apply the current baseline to product, domain, architecture, implementation, and verification decisions.</p>
+          </article>
+          <article class="timeline-item">
+            <small>2 · Record</small>
+            <h3>Capture friction and missing concepts</h3>
+            <p>Do not silently rewrite the methodology inside a project. Record gaps, contradictions, and useful local experiments.</p>
+          </article>
+          <article class="timeline-item">
+            <small>3 · Evaluate</small>
+            <h3>Separate local need from universal rule</h3>
+            <p>Review whether an observation belongs to one project, one profile, or the methodology core.</p>
+          </article>
+          <article class="timeline-item">
+            <small>4 · Govern</small>
+            <h3>Accept and version changes deliberately</h3>
+            <p>Only explicit human decisions can change normative knowledge and future baselines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell grid-2">
+        <article class="card">
+          <p class="section-kicker">KGAID is</p>
+          <ul class="check-list">
+            <li>A knowledge-centered software-development methodology</li>
+            <li>A model for bounded, accountable human–AI collaboration</li>
+            <li>A way to connect intent, decisions, contracts, code, and evidence</li>
+            <li>Technology-, architecture-, provider-, and team-size independent</li>
+            <li>Tailorable in proportion to risk and uncertainty</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="section-kicker">KGAID is not</p>
+          <ul class="cross-list">
+            <li>A programming framework or prescribed architecture</li>
+            <li>A fixed sequence of ceremonies</li>
+            <li>A prompt library or documentation generator</li>
+            <li>A system for autonomous AI decision-making</li>
+            <li>A quality certificate or guarantee</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="cta">
+          <p class="section-kicker">Source of truth</p>
+          <h2>Explore the working methodology.</h2>
+          <p>The GitHub repository contains the current scope, principles, knowledge architecture, process model, collaboration rules, verification model, adoption model, and governance evidence.</p>
+          <div class="button-row" style="justify-content: center;">
+            <a class="button button-primary" href="https://github.com/KrzysztofOle/kgaid-methodology">Open the repository</a>
+            <a class="button button-secondary" href="https://github.com/KrzysztofOle/kgaid-methodology/blob/main/README.md">Read the overview</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>KGAID · Knowledge-Governed AI-Assisted Development</p>
+      <p>Early concept under active development · <a href="https://github.com/KrzysztofOle/kgaid-methodology">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>
