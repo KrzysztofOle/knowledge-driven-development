@@ -131,6 +131,19 @@ def _replace_or_append_field(raw: str, key: str, value: str, newline: str) -> st
     return "".join(result)
 
 
+def _yaml_scalar(value: str) -> str:
+    """Serialize one string as a YAML scalar without a document end marker."""
+    serialized = yaml.safe_dump(
+        [value],
+        allow_unicode=True,
+        default_flow_style=True,
+        width=2**31 - 1,
+    ).strip()
+    if not serialized.startswith("[") or not serialized.endswith("]"):
+        raise ApprovalError("Nie można bezpiecznie zserializować wartości YAML.")
+    return serialized[1:-1]
+
+
 def update_front_matter(front_matter: FrontMatter, approver: str, approved_at: str) -> str:
     """Update only approval fields, retaining every other YAML line and body."""
     raw = front_matter.raw
@@ -138,7 +151,7 @@ def update_front_matter(front_matter: FrontMatter, approver: str, approved_at: s
     raw = _replace_or_append_field(
         raw,
         "approved_by",
-        yaml.safe_dump(approver, allow_unicode=True).strip(),
+        _yaml_scalar(approver),
         front_matter.newline,
     )
     raw = _replace_or_append_field(raw, "approved_at", approved_at, front_matter.newline)

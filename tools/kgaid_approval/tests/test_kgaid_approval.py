@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from kgaid_approval import ApprovalError, DocumentationRepository
+from kgaid_approval.repository import parse_front_matter
 from kgaid_approval.web import document_page, queue_page, render_markdown
 
 
@@ -128,43 +129,86 @@ def test_markdown_does_not_allow_arbitrary_html_or_javascript() -> None:
     assert '<a href="https://example.com" title="tytuł">bezpieczny link</a>' in rendered
 
 
-def test_approval_preserves_existing_yaml_and_markdown_body(tmp_path: Path) -> None:
-    source = """---
+@pytest.mark.parametrize("trailing_newline", [True, False])
+def test_approval_writes_valid_front_matter_without_yaml_end_marker(
+    tmp_path: Path, trailing_newline: bool
+) -> None:
+    body = """# Nagłówek
+
+Wielowierszowa treść z legalnym separatorem YAML:
+...
+
+```yaml
+...
+```
+
+Nie zmieniaj tej treści.
+"""
+    source = (
+        """---
 document_id: DOC-1
-title: Tytuł
+title: "Tytuł: żółć"
 document_type: requirement
 status: proposed
 version: 1.0
-owner: zespół dokumentacji
+owner: "zespół: dokumentacji"
 tags: [alpha, beta]
 approval_status: pending
 approved_by:
 approved_at:
 ---
-# Nagłówek
-
-Nie zmieniaj tej treści.
 """
+        + body
+    )
+    if not trailing_newline:
+        source = source.rstrip("\n")
     path = write_document(tmp_path, "pending.md", source)
     repository = DocumentationRepository(tmp_path)
 
-    repository.approve("pending.md", "Krzysztof Olejnik")
+    repository.approve("pending.md", 'Krzysztof Olejnik: "KGAID"')
 
     updated = path.read_text(encoding="utf-8")
-    assert "document_type: requirement\n" in updated
-    assert "status: proposed\n" in updated
-    assert "version: 1.0\n" in updated
-    assert "owner: zespół dokumentacji\n" in updated
-    assert "tags: [alpha, beta]\n" in updated
-    assert "approval_status: approved\n" in updated
-    assert "approved_by: Krzysztof Olejnik\n" in updated
+    updated_front_matter = parse_front_matter(updated)
+    source_front_matter = parse_front_matter(source)
+
+    assert updated_front_matter is not None
+    assert source_front_matter is not None
+    assert updated.startswith("---\n")
+    assert updated.count("---\n") == 2
+    assert "...\n" not in updated_front_matter.raw
+    assert updated_front_matter.body == source_front_matter.body
+    assert {
+        key: value
+        for key, value in updated_front_matter.metadata.items()
+        if key not in {"approval_status", "approved_by", "approved_at"}
+    } == {
+        key: value
+        for key, value in source_front_matter.metadata.items()
+        if key not in {"approval_status", "approved_by", "approved_at"}
+    }
+    assert updated_front_matter.metadata["approval_status"] == "approved"
+    assert updated_front_matter.metadata["approved_by"] == 'Krzysztof Olejnik: "KGAID"'
+    assert "document_type: requirement\n" in updated_front_matter.raw
+    assert 'title: "Tytuł: żółć"\n' in updated_front_matter.raw
+    assert 'owner: "zespół: dokumentacji"\n' in updated_front_matter.raw
+    assert "tags: [alpha, beta]\n" in updated_front_matter.raw
+    assert "approval_status: approved\n" in updated_front_matter.raw
+    assert "approved_by: 'Krzysztof Olejnik: \"KGAID\"'\n" in updated_front_matter.raw
     approved_at = next(
         line.removeprefix("approved_at: ")
         for line in updated.splitlines()
         if line.startswith("approved_at: ")
     )
     assert datetime.fromisoformat(approved_at).tzinfo is not None
-    assert updated.split("---\n", 2)[2] == source.split("---\n", 2)[2]
+    assert updated_front_matter.metadata["approved_at"] == datetime.fromisoformat(approved_at)
+    assert (
+        updated_front_matter.raw.replace(
+            "approval_status: approved\n", "approval_status: pending\n"
+        )
+        .replace("approved_by: 'Krzysztof Olejnik: \"KGAID\"'\n", "approved_by:\n")
+        .replace(f"approved_at: {approved_at}\n", "approved_at:\n")
+        == source_front_matter.raw
+    )
     assert repository.pending_documents() == []
 
 
