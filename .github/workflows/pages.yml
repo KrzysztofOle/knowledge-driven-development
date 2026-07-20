@@ -28,6 +28,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Inject analytics bootstrap
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          script = '  <script src="../assets/analytics.js"></script>\n'
+          for path in (Path("site/en/index.html"), Path("site/pl/index.html")):
+              content = path.read_text(encoding="utf-8")
+              if "../assets/analytics.js" in content:
+                  continue
+              if "</body>" not in content:
+                  raise SystemExit(f"Missing </body> marker in {path}")
+              path.write_text(content.replace("</body>", f"{script}</body>"), encoding="utf-8")
+          PY
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
