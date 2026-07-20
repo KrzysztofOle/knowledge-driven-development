@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import html
-from urllib.parse import quote
+from pathlib import Path
 
 from bleach.css_sanitizer import CSSSanitizer
 from bleach.sanitizer import Cleaner
@@ -12,6 +12,7 @@ from mdit_py_plugins.anchors import anchors_plugin
 from mdit_py_plugins.tasklists import tasklists_plugin
 
 from .repository import Document
+from .routes import PATH_PARAMETER
 
 _MARKDOWN = (
     MarkdownIt("gfm-like", {"html": False}).use(tasklists_plugin).use(anchors_plugin, max_level=6)
@@ -74,7 +75,14 @@ def render_markdown(markdown: str) -> str:
     return _MARKDOWN_CLEANER.clean(_MARKDOWN.render(markdown))
 
 
-def page(title: str, content: str, message: str | None = None, error: str | None = None) -> str:
+def page(
+    title: str,
+    content: str,
+    *,
+    queue_url: str,
+    message: str | None = None,
+    error: str | None = None,
+) -> str:
     notice = ""
     if message:
         notice = f'<p class="notice success">{html.escape(message)}</p>'
@@ -101,11 +109,17 @@ button {{ background: #087f5b; color: white; border: 0; border-radius: .25rem; p
 .document .task-list-item {{ list-style: none; }}
 .document .task-list-item input {{ margin: 0 .4rem 0 -1.4rem; }}
 code {{ background: #f1f3f5; padding: .1rem .25rem; }}
-</style></head><body><header><p><a href="/">Kolejka akceptacji</a></p><h1>{html.escape(title)}</h1></header>{notice}{content}</body></html>"""
+</style></head><body><header><p><a href="{html.escape(queue_url, quote=True)}">Kolejka akceptacji</a></p><h1>{html.escape(title)}</h1></header>{notice}{content}</body></html>"""
 
 
 def queue_page(
-    documents: list[Document], message: str | None = None, error: str | None = None
+    documents: list[Document],
+    *,
+    queue_url: str,
+    preview_urls: dict[Path, str],
+    approve_url: str,
+    message: str | None = None,
+    error: str | None = None,
 ) -> str:
     if not documents:
         content = "<p>Brak dokumentów oczekujących na akceptację.</p>"
@@ -113,15 +127,15 @@ def queue_page(
         rows = []
         for document in documents:
             path = document.relative_path.as_posix()
-            preview_url = f"/document?path={quote(path)}"
+            preview_url = preview_urls[document.relative_path]
             rows.append(
                 "<tr>"
                 f"<td>{html.escape(document.document_id or '—')}</td>"
                 f"<td>{html.escape(document.title)}</td>"
                 f"<td><code>{html.escape(path)}</code></td>"
-                f'<td><a href="{preview_url}">Podgląd</a></td>'
-                '<td><form method="post" action="/approve">'
-                f'<input type="hidden" name="path" value="{html.escape(path)}">'
+                f'<td><a href="{html.escape(preview_url, quote=True)}">Podgląd</a></td>'
+                f'<td><form method="post" action="{html.escape(approve_url, quote=True)}">'
+                f'<input type="hidden" name="{PATH_PARAMETER}" value="{html.escape(path)}">'
                 '<button type="submit">Akceptuj</button></form></td>'
                 "</tr>"
             )
@@ -131,17 +145,24 @@ def queue_page(
             + "".join(rows)
             + "</tbody></table>"
         )
-    return page("Kolejka akceptacji", content, message, error)
+    return page("Kolejka akceptacji", content, queue_url=queue_url, message=message, error=error)
 
 
-def document_page(document: Document, message: str | None = None, error: str | None = None) -> str:
+def document_page(
+    document: Document,
+    *,
+    queue_url: str,
+    approve_url: str,
+    message: str | None = None,
+    error: str | None = None,
+) -> str:
     path = document.relative_path.as_posix()
     content = (
         f"<p><strong>ID:</strong> {html.escape(document.document_id or 'brak')}<br>"
         f"<strong>Ścieżka:</strong> <code>{html.escape(path)}</code></p>"
-        '<form method="post" action="/approve">'
-        f'<input type="hidden" name="path" value="{html.escape(path)}">'
+        f'<form method="post" action="{html.escape(approve_url, quote=True)}">'
+        f'<input type="hidden" name="{PATH_PARAMETER}" value="{html.escape(path)}">'
         '<button type="submit">Akceptuj</button></form><hr>'
         f'<article class="document">{render_markdown(document.body)}</article>'
     )
-    return page(document.title, content, message, error)
+    return page(document.title, content, queue_url=queue_url, message=message, error=error)

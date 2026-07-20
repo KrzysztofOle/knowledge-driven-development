@@ -1,13 +1,57 @@
 from __future__ import annotations
 
 from datetime import datetime
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
 from kgaid_approval import ApprovalError, DocumentationRepository
+from kgaid_approval.app import create_app
 from kgaid_approval.repository import parse_front_matter
-from kgaid_approval.web import document_page, queue_page, render_markdown
+from kgaid_approval.routes import PATH_PARAMETER
+from kgaid_approval.web import render_markdown
+
+
+class NavigationParser(HTMLParser):
+    """Collect application links, form actions, and hidden form fields from a page."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.links: list[str] = []
+        self.form_actions: list[str] = []
+        self.hidden_values: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "a" and attributes.get("href"):
+            self.links.append(attributes["href"])
+        if tag == "form" and attributes.get("action"):
+            self.form_actions.append(attributes["action"])
+        if tag == "input" and attributes.get("type") == "hidden" and attributes.get("value"):
+            self.hidden_values.append(attributes["value"])
+
+
+def navigation(response_text: str) -> NavigationParser:
+    parser = NavigationParser()
+    parser.feed(response_text)
+    return parser
+
+
+def make_app(tmp_path: Path, document_count: int = 3):
+    for index in range(1, document_count + 1):
+        write_document(
+            tmp_path,
+            f"nested/document-{index}.md",
+            "---\n"
+            f"document_id: DOC-{index}\n"
+            f"title: Dokument {index}\n"
+            "approval_status: pending\n"
+            "---\n"
+            f"# Dokument {index}\n",
+        )
+    return create_app(DocumentationRepository(tmp_path), "Krzysztof Olejnik")
 
 
 def write_document(root: Path, relative_path: str, content: str) -> Path:
@@ -41,27 +85,102 @@ def test_scans_only_documents_explicitly_pending(tmp_path: Path) -> None:
     ] == [("DOC-1", "Oczekujący", "nested/pending.md")]
 
 
-def test_preview_includes_document_content_and_approval_action(tmp_path: Path) -> None:
-    write_document(
-        tmp_path,
-        "pending.md",
-        "---\ndocument_id: DOC-1\ntitle: Tytuł dokumentu\napproval_status: pending\n---\n# Nagłówek\n\nTreść **do przeglądu**.\n",
+def test_navigation_links_support_repeated_queue_preview_cycles(tmp_path: Path) -> None:
+    app = make_app(tmp_path)
+    client = app.test_client()
+
+    queue_response = client.get("/")
+
+    assert queue_response.status_code == 200
+    queue_navigation = navigation(queue_response.text)
+    assert queue_navigation.links[0] == "/"
+    assert len(queue_navigation.links[1:]) == 3
+    assert queue_navigation.form_actions == ["/approve"] * 3
+
+    for preview_url in queue_navigation.links[1:]:
+        preview_response = client.get(preview_url)
+        assert preview_response.status_code == 200
+        assert "Akceptuj" in preview_response.text
+        assert ".document table { width: 100%; border-collapse: collapse;" in preview_response.text
+        assert ".document tbody tr:nth-child(even)" in preview_response.text
+        assert ".document tbody tr:hover" in preview_response.text
+        assert (
+            ".document pre { background: #f6f8fa; border-radius: .375rem;" in preview_response.text
+        )
+
+        preview_navigation = navigation(preview_response.text)
+        assert preview_navigation.links == ["/"]
+        assert preview_navigation.form_actions == ["/approve"]
+        assert client.get(preview_navigation.links[0]).status_code == 200
+
+
+def test_all_generated_application_urls_are_registered_and_directly_accessible(
+    tmp_path: Path,
+) -> None:
+    app = make_app(tmp_path)
+    client = app.test_client()
+
+    queue_response = client.get("/")
+    queue_navigation = navigation(queue_response.text)
+
+    assert set(rule.endpoint for rule in app.url_map.iter_rules()) >= {
+        "queue",
+        "document",
+        "approve",
+    }
+    assert all(client.get(url).status_code == 200 for url in queue_navigation.links)
+    assert queue_navigation.form_actions == ["/approve"] * 3
+    assert queue_navigation.hidden_values == [
+        "nested/document-1.md",
+        "nested/document-2.md",
+        "nested/document-3.md",
+    ]
+    for preview_url in queue_navigation.links[1:]:
+        query = parse_qs(urlsplit(preview_url).query)
+        assert query[PATH_PARAMETER]
+        preview_navigation = navigation(client.get(preview_url).text)
+        assert all(client.get(url).status_code == 200 for url in preview_navigation.links)
+        assert preview_navigation.form_actions == ["/approve"]
+
+
+def test_approval_action_redirects_to_the_named_queue_endpoint(tmp_path: Path) -> None:
+    app = make_app(tmp_path, document_count=1)
+    client = app.test_client()
+    preview_url = navigation(client.get("/").text).links[1]
+    preview_response = client.get(preview_url)
+    preview_navigation = navigation(preview_response.text)
+
+    approval_response = client.post(
+        preview_navigation.form_actions[0],
+        data={PATH_PARAMETER: preview_navigation.hidden_values[0]},
     )
-    repository = DocumentationRepository(tmp_path)
-    document = repository.pending_document("pending.md")
 
-    preview = document_page(document)
-    queue = queue_page(repository.pending_documents())
+    assert approval_response.status_code == 303
+    returned_queue = client.get(approval_response.headers["Location"])
+    assert returned_queue.status_code == 200
+    assert "Zaakceptowano nested/document-1.md" in returned_queue.text
+    assert "Brak dokumentów oczekujących" in returned_queue.text
 
-    assert "Nagłówek" in preview
-    assert "Akceptuj" in preview
-    assert "pending.md" in preview
-    assert "Podgląd" in queue
-    assert "Akceptuj" in queue
-    assert ".document table { width: 100%; border-collapse: collapse;" in preview
-    assert ".document tbody tr:nth-child(even)" in preview
-    assert ".document tbody tr:hover" in preview
-    assert ".document pre { background: #f6f8fa; border-radius: .375rem;" in preview
+
+def test_urls_include_script_name_prefix_and_remain_navigable(tmp_path: Path) -> None:
+    app = make_app(tmp_path, document_count=2)
+    client = app.test_client()
+    script_name = "/approval"
+    request_options = {"environ_overrides": {"SCRIPT_NAME": script_name}}
+
+    queue_response = client.get("/", **request_options)
+    queue_navigation = navigation(queue_response.text)
+
+    assert queue_response.status_code == 200
+    assert all(url.startswith(script_name) for url in queue_navigation.links)
+    assert all(url.startswith(script_name) for url in queue_navigation.form_actions)
+    for preview_url in queue_navigation.links[1:]:
+        path_without_prefix = preview_url.removeprefix(script_name)
+        preview_response = client.get(path_without_prefix, **request_options)
+        assert preview_response.status_code == 200
+        preview_navigation = navigation(preview_response.text)
+        assert preview_navigation.links == [f"{script_name}/"]
+        assert preview_navigation.form_actions == [f"{script_name}/approve"]
 
 
 def test_markdown_renders_github_style_document_features() -> None:

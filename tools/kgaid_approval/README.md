@@ -35,6 +35,10 @@ Domyślny adres lokalnego interfejsu to `http://127.0.0.1:8765`. Zmień go przez
 `--host` i `--port`; `--docs-dir` jest jedynym katalogiem, w którym narzędzie
 może wyszukiwać i modyfikować pliki.
 
+Interfejs jest aplikacją Flask. Wewnętrzne adresy kolejki, podglądu i akceptacji
+są budowane przez `url_for()`, dlatego zachowują poprawny prefiks po wdrożeniu
+aplikacji pod `SCRIPT_NAME` (na przykład `/approval`).
+
 ## VS Code
 
 Repozytorium zawiera konfigurację **KGAID: Documentation Approval MVP** w
