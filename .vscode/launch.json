@@ -33,6 +33,18 @@
         "pattern": "KGAID Documentation Approval: (https?://[^\\s]+)",
         "uriFormat": "%s"
       }
+    },
+    {
+      "name": "KGAID: Archive documentation",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "kgaid_docs_archive",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/tools/kgaid_docs_archive"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": true
     }
   ]
 }

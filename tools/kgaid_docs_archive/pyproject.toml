@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kgaid-docs-archive"
+version = "0.1.0"
+description = "Create timestamped ZIP archives of project documentation."
+readme = "README.md"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+kgaid-docs-archive = "kgaid_docs_archive.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kgaid_docs_archive*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

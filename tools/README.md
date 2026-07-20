@@ -26,3 +26,5 @@ projektom technologii ani nie miesza narzędzi KGAID z ich domeną biznesową.
 
 - [KGAID Documentation Approval MVP](kgaid_approval/README.md) — lokalna
   kolejka, podgląd i ręczna akceptacja dokumentów Markdown z front matter.
+- [KGAID Documentation Archive](kgaid_docs_archive/README.md) — tworzy archiwum
+  całego katalogu `docs/` o nazwie `docs_RRRR-MM-DD_hhmm.zip`.
