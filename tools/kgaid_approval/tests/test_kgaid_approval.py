@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, quote, urlsplit
 
 import pytest
 
@@ -11,7 +11,7 @@ from kgaid_approval import ApprovalError, DocumentationRepository
 from kgaid_approval.app import create_app
 from kgaid_approval.repository import parse_front_matter
 from kgaid_approval.routes import PATH_PARAMETER
-from kgaid_approval.web import render_markdown
+from kgaid_approval.web import render_markdown, resolve_document_href
 
 
 class NavigationParser(HTMLParser):
@@ -59,6 +59,195 @@ def write_document(root: Path, relative_path: str, content: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
     return path
+
+
+def pending_document(title: str, body: str) -> str:
+    return f"---\ntitle: {title}\napproval_status: pending\n---\n# {title}\n\n{body}\n"
+
+
+@pytest.mark.parametrize(
+    ("current_document", "href", "expected"),
+    [
+        ("area/source.md", "target.md", "preview:area/target.md"),
+        ("area/source.md", "subdir/target.md", "preview:area/subdir/target.md"),
+        ("area/deep/source.md", "../target.md", "preview:area/target.md"),
+        ("area/source.md", "docs/other/target.md", "preview:other/target.md"),
+        (
+            "area/source.md",
+            "target.md#section-name",
+            "preview:area/target.md#section-name",
+        ),
+        ("area/source.md", "#section-name", "#section-name"),
+        ("area/source.md", "target%20name.md", "preview:area/target name.md"),
+        ("area/source.md", "extensionless", "extensionless"),
+        ("area/source.md", "https://example.com/docs/a.md", "https://example.com/docs/a.md"),
+        ("area/source.md", "http://example.com/a.md", "http://example.com/a.md"),
+        ("area/source.md", "mailto:docs@example.com", "mailto:docs@example.com"),
+        ("area/source.md", "image.png", "image.png"),
+        ("area/source.md", "/absolute.md", "/absolute.md"),
+        ("area/source.md", "../../outside.md", "../../outside.md"),
+        ("area/source.md", "%2e%2e/%2e%2e/outside.md", "%2e%2e/%2e%2e/outside.md"),
+        ("area/source.md", "%252e%252e/%252e%252e/outside.md", "%252e%252e/%252e%252e/outside.md"),
+    ],
+)
+def test_resolves_only_safe_local_markdown_links(
+    tmp_path: Path, current_document: str, href: str, expected: str
+) -> None:
+    docs = tmp_path / "docs"
+    docs.mkdir()
+
+    resolved = resolve_document_href(
+        Path(current_document), href, docs, lambda path: f"preview:{path}"
+    )
+
+    assert resolved == expected
+
+
+def test_local_document_links_render_through_preview_route_and_are_navigable(
+    tmp_path: Path,
+) -> None:
+    write_document(
+        tmp_path,
+        "10-knowledge-architecture/11-overview.md",
+        pending_document(
+            "Overview",
+            "See [Artifact Model](12-artifact-model.md) and "
+            "[relationship](12-artifact-model.md#relationship-semantics).",
+        ),
+    )
+    write_document(
+        tmp_path,
+        "10-knowledge-architecture/12-artifact-model.md",
+        pending_document("Artifact Model", "## Relationship semantics\n\nExpected target body."),
+    )
+    client = create_app(DocumentationRepository(tmp_path), "Reviewer").test_client()
+
+    source_response = client.get("/document?path=10-knowledge-architecture/11-overview.md")
+    links = navigation(source_response.text).links
+    document_links = links[1:]
+
+    assert source_response.status_code == 200
+    assert document_links == [
+        "/document?path=10-knowledge-architecture/12-artifact-model.md",
+        "/document?path=10-knowledge-architecture/12-artifact-model.md#relationship-semantics",
+    ]
+    target_response = client.get(document_links[0])
+    assert target_response.status_code == 200
+    assert "Artifact Model" in target_response.text
+    assert "Expected target body." in target_response.text
+
+
+def test_nested_parent_subdirectory_and_encoded_document_links(tmp_path: Path) -> None:
+    write_document(
+        tmp_path,
+        "area/deep/source.md",
+        pending_document(
+            "Source",
+            "[Parent](../parent.md) [Child](subdir/child.md) [Encoded](subdir/document%20żółć.md)",
+        ),
+    )
+    for relative_path, title in [
+        ("area/parent.md", "Parent"),
+        ("area/deep/subdir/child.md", "Child"),
+        ("area/deep/subdir/document żółć.md", "Encoded"),
+    ]:
+        write_document(tmp_path, relative_path, pending_document(title, f"Body {title}"))
+    client = create_app(DocumentationRepository(tmp_path), "Reviewer").test_client()
+
+    response = client.get("/document?path=area/deep/source.md")
+    document_links = navigation(response.text).links[1:]
+
+    assert response.status_code == 200
+    assert [parse_qs(urlsplit(link).query)[PATH_PARAMETER][0] for link in document_links] == [
+        "area/parent.md",
+        "area/deep/subdir/child.md",
+        "area/deep/subdir/document żółć.md",
+    ]
+    assert all(client.get(link).status_code == 200 for link in document_links)
+
+
+def test_markdown_document_link_preserves_script_name(tmp_path: Path) -> None:
+    write_document(tmp_path, "source.md", pending_document("Source", "[Target](target.md)"))
+    write_document(tmp_path, "target.md", pending_document("Target", "Target body"))
+    client = create_app(DocumentationRepository(tmp_path), "Reviewer").test_client()
+    request_options = {"environ_overrides": {"SCRIPT_NAME": "/approval"}}
+
+    response = client.get("/document?path=source.md", **request_options)
+    target_link = navigation(response.text).links[1]
+
+    assert target_link == "/approval/document?path=target.md"
+    assert client.get(target_link.removeprefix("/approval"), **request_options).status_code == 200
+
+
+def test_fragment_external_mailto_and_non_document_resources_are_not_rewritten(
+    tmp_path: Path,
+) -> None:
+    markdown = (
+        "[Section](#section) [Web](https://example.com/a.md) "
+        "[Email](mailto:docs@example.com) [Asset](diagram.svg) ![Image](image.png)"
+    )
+
+    rendered = render_markdown(
+        markdown,
+        current_document=Path("source.md"),
+        documentation_dir=tmp_path,
+        document_url=lambda path: f"preview:{path}",
+    )
+
+    assert 'href="#section"' in rendered
+    assert 'href="https://example.com/a.md"' in rendered
+    assert 'href="mailto:docs@example.com"' in rendered
+    assert 'href="diagram.svg"' in rendered
+    assert "<img" not in rendered
+
+
+def test_missing_markdown_document_has_controlled_not_found_page(tmp_path: Path) -> None:
+    write_document(tmp_path, "source.md", pending_document("Source", "[Missing](missing.md)"))
+    client = create_app(DocumentationRepository(tmp_path), "Reviewer").test_client()
+
+    source_response = client.get("/document?path=source.md")
+    missing_link = navigation(source_response.text).links[1]
+    missing_response = client.get(missing_link)
+
+    assert missing_link == "/document?path=missing.md"
+    assert missing_response.status_code == 404
+    assert "Nie znaleziono" in missing_response.text
+    assert navigation(missing_response.text).links == ["/"]
+
+
+@pytest.mark.parametrize(
+    "path",
+    ["../outside.md", "%2e%2e/outside.md", "%252e%252e/outside.md", "/absolute.md"],
+)
+def test_preview_route_never_reads_outside_documentation_directory(
+    tmp_path: Path, path: str
+) -> None:
+    docs = tmp_path / "docs"
+    docs.mkdir()
+    write_document(tmp_path, "outside.md", pending_document("Secret", "outside secret"))
+    client = create_app(DocumentationRepository(docs), "Reviewer").test_client()
+
+    response = client.get(f"/document?path={quote(path, safe='%/')}")
+
+    assert response.status_code == 404
+    assert "outside secret" not in response.text
+
+
+def test_approved_link_target_can_be_read_but_not_approved_again(tmp_path: Path) -> None:
+    write_document(tmp_path, "source.md", pending_document("Source", "[Target](target.md)"))
+    write_document(
+        tmp_path,
+        "target.md",
+        "---\ntitle: Approved target\napproval_status: approved\n---\n# Approved target\n",
+    )
+    client = create_app(DocumentationRepository(tmp_path), "Reviewer").test_client()
+
+    source_response = client.get("/document?path=source.md")
+    target_response = client.get(navigation(source_response.text).links[1])
+
+    assert target_response.status_code == 200
+    assert "Approved target" in target_response.text
+    assert navigation(target_response.text).form_actions == []
 
 
 def test_scans_only_documents_explicitly_pending(tmp_path: Path) -> None:

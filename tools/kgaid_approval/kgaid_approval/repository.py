@@ -65,6 +65,7 @@ class Document:
     document_id: str | None
     title: str
     body: str
+    approval_status: str | None = None
 
 
 def _line_ending(text: str) -> str:
@@ -211,20 +212,27 @@ class DocumentationRepository:
                     document_id=_string_metadata(front_matter.metadata, "document_id", "id"),
                     title=_document_title(front_matter.metadata, front_matter.body, resolved.stem),
                     body=front_matter.body,
+                    approval_status="pending",
                 )
             )
         return sorted(documents, key=lambda document: document.relative_path.as_posix())
 
     def pending_document(self, relative_path: str | Path) -> Document:
+        document = self.document(relative_path)
+        if document.approval_status != "pending":
+            raise ApprovalError("Dokument nie oczekuje na akceptację.")
+        return document
+
+    def document(self, relative_path: str | Path) -> Document:
+        """Read one Markdown document safely from below the configured root."""
         target = self._resolve_document(relative_path)
         front_matter = self._read_front_matter(target)
-        if front_matter.metadata.get("approval_status") != "pending":
-            raise ApprovalError("Dokument nie oczekuje na akceptację.")
         return Document(
             relative_path=target.relative_to(self.root),
             document_id=_string_metadata(front_matter.metadata, "document_id", "id"),
             title=_document_title(front_matter.metadata, front_matter.body, target.stem),
             body=front_matter.body,
+            approval_status=_string_metadata(front_matter.metadata, "approval_status"),
         )
 
     def approve(self, relative_path: str | Path, approver: str) -> Document:
@@ -246,6 +254,7 @@ class DocumentationRepository:
             document_id=_string_metadata(front_matter.metadata, "document_id", "id"),
             title=_document_title(front_matter.metadata, front_matter.body, target.stem),
             body=front_matter.body,
+            approval_status="approved",
         )
 
     @staticmethod

@@ -38,6 +38,9 @@ może wyszukiwać i modyfikować pliki.
 Interfejs jest aplikacją Flask. Wewnętrzne adresy kolejki, podglądu i akceptacji
 są budowane przez `url_for()`, dlatego zachowują poprawny prefiks po wdrożeniu
 aplikacji pod `SCRIPT_NAME` (na przykład `/approval`).
+Lokalne linki do dokumentów Markdown w podglądanej treści są rozwiązywane
+względem katalogu dokumentu źródłowego i otwierane w tym samym interfejsie;
+fragmenty nagłówków oraz prefiks `SCRIPT_NAME` są zachowywane.
 
 ## VS Code
 

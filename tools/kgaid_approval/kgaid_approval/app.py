@@ -44,15 +44,15 @@ def create_app(repository: DocumentationRepository, approver: str) -> Flask:
     @app.get(DOCUMENT_ROUTE, endpoint=Endpoint.DOCUMENT)
     def document() -> tuple[str, int] | str:
         try:
-            pending_document = repository.pending_document(
-                _required_request_parameter(PATH_PARAMETER)
-            )
+            selected_document = repository.document(_required_request_parameter(PATH_PARAMETER))
         except ApprovalError as error:
-            return _error_page(error, HTTPStatus.BAD_REQUEST)
+            return _error_page(error, HTTPStatus.NOT_FOUND, title="Nie znaleziono")
         return document_page(
-            pending_document,
+            selected_document,
             queue_url=url_for(Endpoint.QUEUE),
             approve_url=url_for(Endpoint.APPROVE),
+            documentation_dir=repository.root,
+            document_url=lambda path: url_for(Endpoint.DOCUMENT, **{PATH_PARAMETER: path}),
         )
 
     @app.post(APPROVE_ROUTE, endpoint=Endpoint.APPROVE)
@@ -85,10 +85,12 @@ def _required_request_parameter(name: str) -> str:
     return value
 
 
-def _error_page(error: ApprovalError, status: HTTPStatus) -> tuple[str, int]:
+def _error_page(
+    error: ApprovalError, status: HTTPStatus, *, title: str = "Błąd"
+) -> tuple[str, int]:
     return (
         page(
-            "Błąd",
+            title,
             "<p>Dokument nie został zmieniony.</p>",
             queue_url=url_for(Endpoint.QUEUE),
             error=str(error),

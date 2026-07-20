@@ -2,11 +2,17 @@
 
 All notable changes to KGAID are recorded here. The format follows Keep a Changelog and versions follow the governance model.
 
+## [0.2.3] — 2026-07-20
+
+### Fixed
+
+- Resolve local Markdown document links relative to their source document through the named Flask preview route, preserving fragments and `SCRIPT_NAME` while rejecting targets outside the configured documentation directory.
+
 ## [0.2.2] — 2026-07-20
 
 ### Fixed
 
-- Rebuilt KGAID Documentation Approval routing on Flask named endpoints and `url_for()`, so queue, document preview, approval actions, redirects, and `SCRIPT_NAME` prefixes remain consistent.
+- Rebuilt KGAID Documentation Approval interface routing on Flask named endpoints and `url_for()`, so queue, document preview, approval actions, redirects, and `SCRIPT_NAME` prefixes remain consistent.
 
 ## [0.1.0] — 2026-07-19
 
