@@ -20,7 +20,7 @@ projektu konsumenckiego.
    ```bash
    git clone https://github.com/KrzysztofOle/kgaid-methodology.git /tmp/kgaid-methodology
    # Opcjonalnie po opublikowaniu wydania:
-   # git -C /tmp/kgaid-methodology checkout kgaid-approval-v0.4.0
+   # git -C /tmp/kgaid-methodology checkout kgaid-approval-v0.5.0
    ```
 
 2. Z katalogu głównego projektu skopiuj wyłącznie wersjonowane pliki

@@ -253,13 +253,13 @@ def _validate_metadata(
     approval_status = record.metadata.get("approval_status", "")
     approved_by = record.metadata.get("approved_by", "")
     approved_at = record.metadata.get("approved_at", "")
-    if approval_status == "pending" and (approved_by or approved_at):
+    if approval_status in {"draft", "pending"} and (approved_by or approved_at):
         _find(
             findings,
             "META010",
             "error",
             record.path,
-            "Pending approval requires empty approved_by and approved_at.",
+            "Draft or pending approval requires empty approved_by and approved_at.",
         )
     if approval_status == "approved":
         if not approved_by or not approved_at:

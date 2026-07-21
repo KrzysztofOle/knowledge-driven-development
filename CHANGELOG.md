@@ -2,6 +2,18 @@
 
 All notable changes to KGAID are recorded here. The format follows Keep a Changelog and versions follow the governance model.
 
+## [Unreleased]
+
+### Added
+
+- The governed-document approval vocabulary now includes `draft` for work that
+  has not yet been submitted for approval. Documents move explicitly from
+  `draft` to `pending`; only `pending` documents enter the Human Authority
+  queue.
+
+Changes accepted after the prepared baseline and before a release are recorded
+here.
+
 ## [0.2.3] — 2026-07-20
 
 ### Fixed
@@ -27,7 +39,3 @@ All notable changes to KGAID are recorded here. The format follows Keep a Change
 
 - Verification status vocabulary is aligned to the Verification and Evidence Model.
 - The post-audit maintainer title in AUD-001 now uses KGAID terminology; historical KDD audit evidence is retained.
-
-## [Unreleased]
-
-Changes accepted after the prepared baseline and before a release are recorded here.

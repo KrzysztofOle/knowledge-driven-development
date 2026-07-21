@@ -6,6 +6,22 @@ a wersje stosują [Semantic Versioning](https://semver.org/lang/pl/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-21
+
+### Added
+
+- Dodano obsługę statusu `approval_status: draft` dla dokumentów roboczych.
+
+### Changed
+
+- Kolejka Human Authority i akcja akceptacji obsługują wyłącznie dokumenty ze
+  statusem `pending`; dokumenty `draft` są pomijane do czasu jawnego przejścia
+  `draft` → `pending`.
+
+### Tests
+
+- Dodano testy dokumentów `draft` w kolejce i przy próbie akceptacji.
+
 ## [0.4.0] - 2026-07-21
 
 ### Added

@@ -22,7 +22,9 @@ Opcje:
 
 Po uruchomieniu otwórz adres wypisany w terminalu. Kolejka zawiera wyłącznie
 poprawne dokumenty Markdown (`.md` lub `.markdown`) z jawnym statusem
-`approval_status: pending`.
+`approval_status: pending`. Dokument z `approval_status: draft` jest roboczy,
+nie pojawia się w kolejce i nie może zostać zaakceptowany. Właściciel zgłasza
+gotową rewizję do Human Authority, zmieniając status z `draft` na `pending`.
 
 ## Wymagany front matter
 
@@ -54,8 +56,8 @@ approved_at: 2026-07-21T12:34:56+02:00
 ```
 
 Pozostały front matter i treść dokumentu nie są przeformatowywane. Dokument ze
-statusem `approved` można oglądać przez link w innym dokumencie, lecz nie można
-go zatwierdzić drugi raz.
+statusem `draft` albo `approved` można oglądać przez link w innym dokumencie,
+lecz nie można go zatwierdzić.
 
 ## Bezpieczeństwo i ograniczenia
 

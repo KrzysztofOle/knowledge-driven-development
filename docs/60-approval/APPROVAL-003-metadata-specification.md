@@ -118,7 +118,7 @@ one from another.
 | Information | Level | Requirement |
 | --- | --- | --- |
 | `status` | Required | Uses the KGAID governed document lifecycle taxonomy. |
-| `approval_status` | Required | Front-matter projection: `pending` or `approved` for this exact revision. |
+| `approval_status` | Required | Front-matter projection: `draft`, `pending` or `approved` for this exact revision. `draft` is not submitted; only `pending` enters the Human Authority queue. |
 | `case_status` | Conditional | Richer workflow state when a complete Approval Center case record exists. |
 | Implementation status | Conditional | Recorded when the artifact has a realization claim. |
 | Verification status | Conditional | Recorded with exact evidence scope and limitations. |

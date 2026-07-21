@@ -117,8 +117,8 @@ def check_governed_metadata(errors: list[str]) -> None:
         approved_at = metadata.get("approved_at", "")
         if approval_status not in VALID_APPROVAL_STATUSES:
             errors.append(f"{relative} has invalid approval_status")
-        elif approval_status == "pending" and (approved_by or approved_at):
-            errors.append(f"{relative} has approval details while pending")
+        elif approval_status in {"draft", "pending"} and (approved_by or approved_at):
+            errors.append(f"{relative} has approval details while {approval_status}")
         elif approval_status == "approved":
             if not approved_by or not approved_at:
                 errors.append(f"{relative} has incomplete approval details")

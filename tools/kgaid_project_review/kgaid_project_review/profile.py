@@ -49,7 +49,7 @@ DOCUMENT_TYPES = frozenset(
 )
 STATUSES = frozenset({"draft", "proposed", "accepted", "deprecated", "superseded"})
 OWNERS = frozenset({"Product", "Business", "Architecture", "Quality", "Operations", "Governance"})
-APPROVAL_STATUSES = frozenset({"pending", "approved"})
+APPROVAL_STATUSES = frozenset({"draft", "pending", "approved"})
 VERSION_PATTERN = re.compile(r"[0-9]+(?:\.[0-9]+){0,2}\Z")
 
 

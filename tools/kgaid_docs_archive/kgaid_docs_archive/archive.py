@@ -33,7 +33,9 @@ def create_archive(
         raise FileExistsError(f"Archiwum już istnieje: {archive_path}")
 
     files = sorted(
-        path for path in docs_dir.rglob("*") if path.is_file() and path.name != ".DS_Store"
+        path
+        for path in docs_dir.rglob("*")
+        if path.is_file() and path.name != ".DS_Store"
     )
 
     with ZipFile(archive_path, "w", compression=ZIP_DEFLATED) as archive:

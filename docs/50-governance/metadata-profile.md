@@ -55,7 +55,7 @@ version: 1.0
 
 owner: Product
 
-approval_status: pending
+approval_status: draft
 approved_by:
 approved_at:
 ---
@@ -69,9 +69,9 @@ approved_at:
 | `status` | Current content lifecycle state; it is independent of approval processing. |
 | `version` | Governed document version. Existing version schemes remain valid; new methodology documents use semantic versions. |
 | `owner` | Accountable owner category from the project-wide vocabulary. |
-| `approval_status` | Technical approval state: `pending` or `approved`. |
-| `approved_by` | Human approver identity; empty while approval is pending. |
-| `approved_at` | ISO 8601 approval date or timestamp; empty while approval is pending. New approvals SHOULD include time and timezone offset. |
+| `approval_status` | Technical approval state: `draft`, `pending` or `approved`. |
+| `approved_by` | Human approver identity; empty while approval is `draft` or `pending`. |
+| `approved_at` | ISO 8601 approval date or timestamp; empty while approval is `draft` or `pending`. New approvals SHOULD include time and timezone offset. |
 
 ## Document types
 
@@ -130,20 +130,26 @@ remain one of these six categories.
 `approval_status` records only whether the exact current document revision has
 been approved through the supported approval mechanism:
 
-- `pending` — no approval is recorded for the current revision;
+- `draft` — document roboczy, który nie został jeszcze zgłoszony do
+  akceptacji; nie trafia do kolejki Human Authority;
+- `pending` — no approval is recorded for the current revision and the document
+  is submitted for Human Authority review;
 - `approved` — a human approval is recorded for the current revision, and both
   `approved_by` and `approved_at` are populated.
 
-A new or materially changed governed document starts with `pending` and empty
-approval details. The `kgaid-doc-approval` application discovers that value and,
-after an explicit human action, changes only `approval_status`, `approved_by`
-and `approved_at`. All other front-matter fields and Markdown content are
+A new governed document starts with `draft` and empty approval details. When
+its owner judges the exact revision ready for Human Authority review, the owner
+changes `approval_status` from `draft` to `pending`; only `pending` documents
+enter the Human Authority queue in `kgaid-doc-approval`. After an explicit
+human action, the application changes only `approval_status`, `approved_by` and
+`approved_at`. All other front-matter fields and Markdown content are
 transparent to the application and MUST remain unchanged.
 
 An approval is bound to the reviewed revision. A later content or governed
-metadata change MUST return the document to `pending` and clear `approved_by`
-and `approved_at` before renewed approval. Git history preserves the earlier
-decision record.
+metadata change MUST return the document to `draft` and clear `approved_by`
+and `approved_at`. The owner explicitly transitions `draft` to `pending` when
+the revised document is ready for renewed Human Authority review. Git history
+preserves the earlier decision record.
 
 ## `status` and `approval_status`
 

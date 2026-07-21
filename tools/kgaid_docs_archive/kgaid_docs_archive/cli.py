@@ -13,10 +13,15 @@ def parser() -> argparse.ArgumentParser:
         description="Tworzy archiwum ZIP katalogu docs/ z nazwą zawierającą datę i czas."
     )
     command.add_argument(
-        "--root", type=Path, default=Path.cwd(), help="Katalog główny projektu (domyślnie: bieżący)."
+        "--root",
+        type=Path,
+        default=Path.cwd(),
+        help="Katalog główny projektu (domyślnie: bieżący).",
     )
     command.add_argument(
-        "--output-dir", type=Path, help="Katalog zapisu archiwum (domyślnie: katalog projektu)."
+        "--output-dir",
+        type=Path,
+        help="Katalog zapisu archiwum (domyślnie: katalog projektu).",
     )
     return command
 

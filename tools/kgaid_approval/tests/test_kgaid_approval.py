@@ -67,6 +67,10 @@ def pending_document(title: str, body: str) -> str:
     return f"---\ntitle: {title}\napproval_status: pending\n---\n# {title}\n\n{body}\n"
 
 
+def draft_document(title: str, body: str) -> str:
+    return f"---\ntitle: {title}\napproval_status: draft\n---\n# {title}\n\n{body}\n"
+
+
 @pytest.mark.parametrize(
     ("current_document", "href", "expected"),
     [
@@ -312,6 +316,21 @@ def test_approved_link_target_can_be_read_but_not_approved_again(tmp_path: Path)
     assert navigation(target_response.text).form_actions == []
 
 
+def test_draft_document_is_not_queued_and_cannot_be_approved(tmp_path: Path) -> None:
+    path = write_document(tmp_path, "draft.md", draft_document("Roboczy", "Jeszcze niegotowy."))
+    repository = DocumentationRepository(tmp_path)
+    client = create_app(repository, "Reviewer").test_client()
+
+    queue_response = client.get("/")
+    approval_response = client.post("/approve", data={PATH_PARAMETER: "draft.md"})
+
+    assert repository.pending_documents() == []
+    assert "Brak dokumentów oczekujących" in queue_response.text
+    assert approval_response.status_code == 400
+    assert "Dokument nie oczekuje na akceptację" in approval_response.text
+    assert path.read_text(encoding="utf-8") == draft_document("Roboczy", "Jeszcze niegotowy.")
+
+
 def test_scans_only_documents_explicitly_pending(tmp_path: Path) -> None:
     write_document(
         tmp_path,
@@ -322,6 +341,7 @@ def test_scans_only_documents_explicitly_pending(tmp_path: Path) -> None:
     write_document(
         tmp_path, "approved.md", "---\ntitle: Gotowy\napproval_status: approved\n---\n# Treść\n"
     )
+    write_document(tmp_path, "draft.md", draft_document("Roboczy", "Treść robocza"))
     write_document(
         tmp_path,
         "invalid.md",

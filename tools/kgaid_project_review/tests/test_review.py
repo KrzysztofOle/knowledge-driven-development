@@ -78,6 +78,14 @@ def test_front_matter_errors_and_missing_fields(tmp_path: Path) -> None:
 
 
 def test_controlled_values_and_approval_consistency(tmp_path: Path) -> None:
+    write_document(tmp_path, "draft.md", valid_metadata("REQ-005", approval_status="draft"))
+    write_document(
+        tmp_path,
+        "draft-with-details.md",
+        valid_metadata(
+            "REQ-006", approval_status="draft", approved_by="Person", approved_at="2026-07-20"
+        ),
+    )
     write_document(
         tmp_path,
         "invalid.md",

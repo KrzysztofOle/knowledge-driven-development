@@ -4,10 +4,13 @@
 
 | Wersja narzędzia | Wersje metodyki KGAID | Status |
 | --- | --- | --- |
+| 0.5.x | KGAID-0.1.x | wspierana |
 | 0.3.x | KGAID-0.1.x | wspierana |
 
 Kompatybilność dotyczy metadanych dokumentu wymaganych przez narzędzie:
-`approval_status`, `approved_by` i `approved_at`. Narzędzie zachowuje
+`approval_status`, `approved_by` i `approved_at`. Wersja 0.5.x rozpoznaje
+`draft`, `pending` i `approved`; do kolejki oraz akceptacji kwalifikuje tylko
+`pending`. Narzędzie zachowuje
 pozostałe pola KGAID bez interpretowania ich znaczenia, dlatego projekt może
 stosować rozszerzony profil metadanych, o ile nie zmienia semantyki tych trzech
 pól.

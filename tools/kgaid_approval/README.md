@@ -70,7 +70,7 @@ instalacji w terminalu, po czym kończy działanie bez uruchamiania serwera.
 
 Narzędzie ma własne wersje SemVer, niezależne od wersji projektu, w którym
 zostało skopiowane, oraz niezależne od wersji metodyki KGAID. Bieżąca wersja
-to **0.4.0** i jej źródłem prawdy jest `pyproject.toml`.
+to **0.5.0** i jej źródłem prawdy jest `pyproject.toml`.
 
 - **MAJOR** — niekompatybilna zmiana publicznej komendy, formatu konfiguracji
   lub zachowania akceptacji;
