@@ -1,113 +1,59 @@
-# KGAID Documentation Approval MVP
+# KGAID Documentation Approval
 
-To niezależne, lokalne narzędzie deweloperskie do przeglądania i ręcznego
-akceptowania dokumentacji Markdown. Jego kod źródłowy należy do repozytorium
-KGAID Methodology. Projekty przyjmujące KGAID, takie jak 3ksef, używają tego
-pakietu jako zewnętrznego narzędzia i nie kopiują jego implementacji do własnej
-domeny.
+Samodzielne narzędzie Python do lokalnego przeglądu i ręcznej akceptacji
+dokumentów Markdown zgodnych z metodyką KGAID. Jest pierwszym oficjalnym
+narzędziem ekosystemu KGAID: może być kopiowane do dowolnego projektu
+korzystającego z metodyki, nie zawiera pojęć ani zależności domeny projektu
+konsumenckiego.
 
-To jest MVP proponowanego Approval Center, a nie implementacja pełnego
-Approval Framework ani normatywne rozszerzenie metodyki.
+Narzędzie udostępnia lokalną kolejkę dokumentów oczekujących na akceptację,
+bezpieczny podgląd Markdown i jednorazową akceptację. Zmienia wyłącznie pola
+`approval_status`, `approved_by` i `approved_at` w YAML front matter, a zapis
+pliku wykonuje atomowo.
 
-## Instalacja i uruchomienie
-
-### Z lokalnego klonu KGAID
-
-W projekcie korzystającym z narzędzia:
+## Szybki start
 
 ```bash
-python -m pip install \
-  -e /ścieżka/do/kgaid-methodology/tools/kgaid_approval
-kgaid-doc-approval --docs-dir docs --approver "Imię i nazwisko"
+cd tools/kgaid_approval
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/kgaid-doc-approval --docs-dir ../../docs --approver "Imię i nazwisko"
 ```
 
-### Z repozytorium KGAID
+Interfejs jest domyślnie dostępny pod `http://127.0.0.1:8765`.
 
-Wersję należy przypiąć do tagu wydania albo niezmiennego commita KGAID:
+## Dokumentacja
 
-```bash
-python -m pip install \
-  "kgaid-documentation-approval @ git+ssh://git@github.com/KrzysztofOle/kgaid-methodology.git@<tag-lub-commit>#subdirectory=tools/kgaid_approval"
-kgaid-doc-approval --docs-dir docs --approver "Imię i nazwisko"
-```
+- [Instalacja w projekcie](docs/installation.md)
+- [Użycie narzędzia](docs/usage.md)
+- [Aktualizacja w istniejącym projekcie](docs/update.md)
+- [Architektura](docs/architecture.md)
+- [Kompatybilność z metodyką KGAID](docs/compatibility.md)
+- [Historia zmian](CHANGELOG.md)
 
-Domyślny adres lokalnego interfejsu to `http://127.0.0.1:8765`. Zmień go przez
-`--host` i `--port`; `--docs-dir` jest jedynym katalogiem, w którym narzędzie
-może wyszukiwać i modyfikować pliki.
+## Versioning
 
-Interfejs jest aplikacją Flask. Wewnętrzne adresy kolejki, podglądu i akceptacji
-są budowane przez `url_for()`, dlatego zachowują poprawny prefiks po wdrożeniu
-aplikacji pod `SCRIPT_NAME` (na przykład `/approval`).
-Lokalne linki do dokumentów Markdown w podglądanej treści są rozwiązywane
-względem katalogu dokumentu źródłowego i otwierane w tym samym interfejsie;
-fragmenty nagłówków oraz prefiks `SCRIPT_NAME` są zachowywane.
+Narzędzie ma własne wersje SemVer, niezależne od wersji projektu, w którym
+zostało skopiowane, oraz niezależne od wersji metodyki KGAID. Bieżąca wersja
+to **0.3.0** i jej źródłem prawdy jest `pyproject.toml`.
 
-## VS Code
+- **MAJOR** — niekompatybilna zmiana publicznej komendy, formatu konfiguracji
+  lub zachowania akceptacji;
+- **MINOR** — wstecznie kompatybilna funkcja;
+- **PATCH** — wstecznie kompatybilna poprawka lub zmiana dokumentacji.
 
-Repozytorium zawiera konfigurację **KGAID: Documentation Approval MVP** w
-`.vscode/launch.json`. Po wybraniu jej w panelu Run and Debug i uruchomieniu
-VS Code poprosi o nazwę osoby zatwierdzającej, a następnie otworzy narzędzie
-dla katalogu `docs` pod adresem `http://127.0.0.1:8765`.
+Wydanie narzędzia powinno otrzymać tag `kgaid-approval-v<wersja>` i wpis w
+lokalnym `CHANGELOG.md`. Przed aktualizacją projekt konsumencki powinien
+sprawdzić [macierz kompatybilności](docs/compatibility.md) i przypiąć dokładną
+wersję lub commit źródła.
 
-Po instalacji projekt konsumencki powinien zapisać wybrany tag lub commit w
-swoim pliku zależności albo instrukcji deweloperskiej. Dzięki temu używa
-powtarzalnej wersji narzędzia, a aktualizacja KGAID jest jawną zmianą zależności
-z własnymi testami i akceptacją.
+## Granice narzędzia
 
-## Wymagane metadane
+Narzędzie nie zapewnia logowania, ról, odrzucania, komentarzy, historii
+decyzji, diffów, traceability, automatycznego unieważniania, integracji Git ani
+zewnętrznego API. Działa wyłącznie na katalogu podanym przez `--docs-dir`.
 
-Do kolejki trafia wyłącznie dokument Markdown, który zaczyna się od YAML front
-matter i ma jawne pole:
-
-```yaml
----
-document_id: REQ-001
-title: Utworzenie faktury roboczej
-
-document_type: requirement
-status: proposed
-version: 1.0
-
-owner: Product
-
-approval_status: pending
-approved_by:
-approved_at:
----
-```
-
-Dokument bez `approval_status` oraz dokument ze statusem `approved` nie trafia
-do kolejki. Po użyciu przycisku **Akceptuj** narzędzie zapisuje `approved`,
-wartość `--approver` i lokalny czas ISO 8601 z przesunięciem strefy. Zachowuje
-pozostałe pola i treść poniżej front matter. Logika zatwierdzania interpretuje
-i zmienia wyłącznie `approval_status`, `approved_by` i `approved_at`; pola
-tożsamości i tytułu służą prezentacji, a pola typu, stanu merytorycznego,
-wersji i właściciela są dla procesu zatwierdzania przezroczyste.
-Pełny standard opisuje [KGAID Governed Document Metadata
-Profile](../../docs/50-governance/metadata-profile.md).
-
-## Pilotaż 3ksef
-
-Pierwszym konsumentem jest 3ksef. Pilotaż obejmuje dwa istniejące Requirements
-z `CAP-003`: `REQ-001-utworzenie-faktury-roboczej.md` i
-`REQ-005-walidacja-faktury.md`. Ich front matter oznacza oczekiwanie na
-świadomą decyzję człowieka; 3ksef nie zawiera kodu narzędzia ani zależności
-biznesowych z nim związanych.
-
-## Granice MVP
-
-MVP oferuje kolejkę, podgląd i jednorazową akceptację pojedynczego dokumentu.
-Nie oferuje logowania, ról, odrzucania, komentarzy, historii decyzji, diffów,
-traceability, automatycznego unieważniania, integracji z GitHubem ani API dla
-klientów zewnętrznych. Nie wykonuje też żadnych poleceń Git.
-
-Zapis jest atomowy w katalogu docelowym. Nieprawidłowy lub niejednoznaczny YAML
-jest pomijany w kolejce i blokuje zapis, a ścieżka poza skonfigurowanym
-katalogiem jest odrzucana.
-
-## Rozwój narzędzia
-
-Uruchom kontrole z katalogu tego narzędzia:
+## Rozwój
 
 ```bash
 python -m pip install -e ".[dev]"

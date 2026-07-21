@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kgaid-documentation-approval"
-version = "0.2.3"
-description = "Local KGAID tool for reviewing and approving Markdown documentation."
+version = "0.3.0"
+description = "Standalone KGAID tool for reviewing and approving Markdown documentation."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -25,8 +25,11 @@ dev = [
 [project.scripts]
 kgaid-doc-approval = "kgaid_approval.cli:main"
 
+[tool.setuptools.package-dir]
+"" = "src"
+
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["kgaid_approval*"]
 
 [tool.pytest.ini_options]

@@ -8,8 +8,10 @@ testy narzędzia pozostają tutaj.
 ## Zasada korzystania
 
 Każde narzędzie jest samodzielnym pakietem w `tools/<nazwa>/` z własnym
-`pyproject.toml`, instrukcją uruchomienia i testami. Projekt konsumencki ma
-dwa wspierane sposoby użycia:
+`pyproject.toml`, wersją SemVer, `CHANGELOG.md`, dokumentacją, instrukcją
+uruchomienia i testami. Katalog jest przygotowany do rozbudowy o kolejne
+narzędzia, na przykład walidator dokumentacji, generator traceability lub
+generator szablonów. Projekt konsumencki ma dwa wspierane sposoby użycia:
 
 1. podczas lokalnego rozwoju instaluje pakiet editable z lokalnego klonu
    `kgaid-methodology`;
@@ -24,8 +26,9 @@ projektom technologii ani nie miesza narzędzi KGAID z ich domeną biznesową.
 
 ## Dostępne narzędzia
 
-- [KGAID Documentation Approval MVP](kgaid_approval/README.md) — lokalna
-  kolejka, podgląd i ręczna akceptacja dokumentów Markdown z front matter.
+- [KGAID Documentation Approval](kgaid_approval/README.md) — pierwsze
+  oficjalne narzędzie ekosystemu KGAID: lokalna kolejka, podgląd i ręczna
+  akceptacja dokumentów Markdown z front matter.
 - [KGAID Documentation Archive](kgaid_docs_archive/README.md) — tworzy archiwum
   całego katalogu `docs/` o nazwie `docs_RRRR-MM-DD_hhmm.zip`.
 - [KGAID Project Review](kgaid_project_review/README.md) — niezależny,
