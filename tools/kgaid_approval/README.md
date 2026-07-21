@@ -17,10 +17,14 @@ pliku wykonuje atomowo.
 cd tools/kgaid_approval
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/kgaid-doc-approval --version
 .venv/bin/kgaid-doc-approval --docs-dir ../../docs --approver "Imię i nazwisko"
 ```
 
-Interfejs jest domyślnie dostępny pod `http://127.0.0.1:8765`.
+Interfejs jest domyślnie dostępny pod `http://127.0.0.1:8765`. Polecenie
+`--version` pokazuje wersję oraz ścieżki interpretera, modułu i instalacji,
+a zwijany panel „Diagnostics” na stronie głównej uzupełnia je o konfigurację
+bieżącego uruchomienia.
 
 ## Dokumentacja
 

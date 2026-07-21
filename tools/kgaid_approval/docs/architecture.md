@@ -19,6 +19,8 @@ katalogu roboczego zamiast z instalowanej dystrybucji.
 ## Komponenty
 
 - `cli.py` odczytuje argumenty i uruchamia lokalny serwer Flask.
+- `diagnostics.py` identyfikuje wersję, instalację i środowisko uruchomieniowe
+  bez wywoływania poleceń Git.
 - `app.py` tworzy aplikację Flask i definiuje kolejkę, podgląd oraz akcję
   akceptacji.
 - `repository.py` bezpiecznie skanuje katalog dokumentacji, interpretuje YAML

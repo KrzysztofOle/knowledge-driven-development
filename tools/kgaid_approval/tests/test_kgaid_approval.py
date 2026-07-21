@@ -9,6 +9,8 @@ import pytest
 
 from kgaid_approval import ApprovalError, DocumentationRepository
 from kgaid_approval.app import create_app
+from kgaid_approval.cli import build_parser
+from kgaid_approval.diagnostics import Diagnostics
 from kgaid_approval.repository import parse_front_matter
 from kgaid_approval.routes import PATH_PARAMETER
 from kgaid_approval.web import render_markdown, resolve_document_href
@@ -101,6 +103,66 @@ def test_resolves_only_safe_local_markdown_links(
     )
 
     assert resolved == expected
+
+
+def test_directory_link_resolves_to_its_readme(tmp_path: Path) -> None:
+    docs = tmp_path / "docs"
+    write_document(docs, "area/README.md", pending_document("Area", "Area body"))
+
+    resolved = resolve_document_href(
+        Path("source.md"), "area/", docs, lambda path: f"preview:{path}"
+    )
+
+    assert resolved == "preview:area/README.md"
+
+
+def test_directory_link_without_readme_is_not_rewritten(tmp_path: Path) -> None:
+    docs = tmp_path / "docs"
+    (docs / "empty").mkdir(parents=True)
+
+    resolved = resolve_document_href(
+        Path("source.md"), "empty/", docs, lambda path: f"preview:{path}"
+    )
+
+    assert resolved == "empty/"
+
+
+def test_version_option_prints_runtime_diagnostics(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as exit_info:
+        build_parser().parse_args(["--version"])
+
+    output = capsys.readouterr().out
+    assert exit_info.value.code == 0
+    assert "Version:" in output
+    assert "Module path:" in output
+    assert "Python executable:" in output
+    assert "Package location:" in output
+
+
+def test_home_page_contains_correct_diagnostics(tmp_path: Path) -> None:
+    app = make_app(tmp_path, document_count=0)
+    diagnostics = app.config["KGAID_DIAGNOSTICS"]
+
+    assert isinstance(diagnostics, Diagnostics)
+    assert diagnostics.version
+    assert diagnostics.python_executable.is_absolute()
+    assert diagnostics.package_location.is_dir()
+    assert diagnostics.docs_root == tmp_path.resolve()
+    assert diagnostics.approver == "Krzysztof Olejnik"
+    assert diagnostics.working_directory.is_absolute()
+
+    response = app.test_client().get("/")
+    for label in (
+        "Version",
+        "Python executable",
+        "Package location",
+        "Docs root",
+        "Approver",
+        "Working directory",
+    ):
+        assert label in response.text
+    assert str(tmp_path.resolve()) in response.text
+    assert "Krzysztof Olejnik" in response.text
 
 
 def test_local_document_links_render_through_preview_route_and_are_navigable(

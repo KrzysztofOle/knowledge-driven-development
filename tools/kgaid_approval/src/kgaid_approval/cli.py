@@ -6,11 +6,20 @@ import argparse
 from pathlib import Path
 
 from .app import create_app
+from .diagnostics import collect_diagnostics, format_cli_diagnostics
 from .repository import ApprovalError, DocumentationRepository
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Lokalna kolejka akceptacji dokumentacji KGAID.")
+    parser = argparse.ArgumentParser(
+        description="Lokalna kolejka akceptacji dokumentacji KGAID.",
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=format_cli_diagnostics(collect_diagnostics(module_path=Path(__file__))),
+    )
     parser.add_argument(
         "--docs-dir", type=Path, required=True, help="Katalog dokumentacji do przeglądu."
     )

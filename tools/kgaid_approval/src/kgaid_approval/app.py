@@ -6,6 +6,7 @@ from http import HTTPStatus
 
 from flask import Flask, redirect, request, url_for
 
+from .diagnostics import collect_diagnostics
 from .repository import ApprovalError, DocumentationRepository
 from .routes import (
     APPROVE_ROUTE,
@@ -22,6 +23,8 @@ from .web import document_page, page, queue_page
 def create_app(repository: DocumentationRepository, approver: str) -> Flask:
     """Create the local approval application bound to one repository and approver."""
     app = Flask(__name__)
+    diagnostics = collect_diagnostics(docs_root=repository.root, approver=approver)
+    app.config["KGAID_DIAGNOSTICS"] = diagnostics
 
     @app.get(QUEUE_ROUTE, endpoint=Endpoint.QUEUE)
     def queue() -> str:
@@ -37,6 +40,7 @@ def create_app(repository: DocumentationRepository, approver: str) -> Flask:
             queue_url=url_for(Endpoint.QUEUE),
             preview_urls=preview_urls,
             approve_url=url_for(Endpoint.APPROVE),
+            diagnostics=diagnostics,
             message=request.args.get(MESSAGE_PARAMETER),
             error=request.args.get(ERROR_PARAMETER),
         )

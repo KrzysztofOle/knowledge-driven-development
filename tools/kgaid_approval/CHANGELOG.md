@@ -4,6 +4,13 @@ Wszystkie istotne zmiany tego narzędzia są dokumentowane w tym pliku.
 Format jest oparty na [Keep a Changelog](https://keepachangelog.com/pl/1.1.0/),
 a wersje stosują [Semantic Versioning](https://semver.org/lang/pl/).
 
+## [Unreleased]
+
+### Added
+
+- Dodano diagnostykę środowiska w `--version` i na stronie głównej aplikacji.
+- Dodano obsługę linków do katalogów zawierających `README.md`.
+
 ## [0.3.0] - 2026-07-21
 
 ### Changed

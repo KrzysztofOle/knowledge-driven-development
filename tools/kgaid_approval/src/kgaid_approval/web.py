@@ -13,6 +13,7 @@ from markdown_it import MarkdownIt
 from mdit_py_plugins.anchors import anchors_plugin
 from mdit_py_plugins.tasklists import tasklists_plugin
 
+from .diagnostics import Diagnostics
 from .repository import Document
 from .routes import PATH_PARAMETER
 
@@ -93,7 +94,7 @@ def resolve_document_href(
     if "\\" in decoded_path:
         return href
     link_path = Path(decoded_path)
-    if link_path.is_absolute() or link_path.suffix.lower() not in {".md", ".markdown"}:
+    if link_path.is_absolute():
         return href
 
     root = documentation_dir.resolve()
@@ -105,6 +106,12 @@ def resolve_document_href(
     resolved = candidate.resolve()
     if not resolved.is_relative_to(root):
         return href
+
+    if link_path.suffix.lower() not in {".md", ".markdown"}:
+        readme = (resolved / "README.md").resolve()
+        if not resolved.is_dir() or not readme.is_relative_to(root) or not readme.is_file():
+            return href
+        resolved = readme
 
     target_url = document_url(resolved.relative_to(root).as_posix())
     if parsed.fragment:
@@ -170,6 +177,9 @@ button {{ background: #087f5b; color: white; border: 0; border-radius: .25rem; p
 .document blockquote {{ margin-left: 0; padding-left: 1rem; border-left: .25rem solid #d0d7de; color: #57606a; }}
 .document .task-list-item {{ list-style: none; }}
 .document .task-list-item input {{ margin: 0 .4rem 0 -1.4rem; }}
+.diagnostics {{ margin-top: 2rem; padding: .7rem 1rem; border: 1px solid #d9e0e6; border-radius: .25rem; color: #57606a; font-size: .85rem; }}
+.diagnostics summary {{ cursor: pointer; font-weight: 600; }} .diagnostics dl {{ display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .2rem .8rem; margin-bottom: 0; }}
+.diagnostics dt {{ font-weight: 600; }} .diagnostics dd {{ margin: 0; overflow-wrap: anywhere; }}
 code {{ background: #f1f3f5; padding: .1rem .25rem; }}
 </style></head><body><header><p><a href="{html.escape(queue_url, quote=True)}">Kolejka akceptacji</a></p><h1>{html.escape(title)}</h1></header>{notice}{content}</body></html>"""
 
@@ -180,6 +190,7 @@ def queue_page(
     queue_url: str,
     preview_urls: dict[Path, str],
     approve_url: str,
+    diagnostics: Diagnostics | None = None,
     message: str | None = None,
     error: str | None = None,
 ) -> str:
@@ -207,7 +218,27 @@ def queue_page(
             + "".join(rows)
             + "</tbody></table>"
         )
+    if diagnostics is not None:
+        content += _diagnostics_panel(diagnostics)
     return page("Kolejka akceptacji", content, queue_url=queue_url, message=message, error=error)
+
+
+def _diagnostics_panel(diagnostics: Diagnostics) -> str:
+    values = (
+        ("Version", diagnostics.version),
+        ("Python executable", diagnostics.python_executable),
+        ("Package location", diagnostics.package_location),
+        ("Docs root", diagnostics.docs_root or "—"),
+        ("Approver", diagnostics.approver or "—"),
+        ("Working directory", diagnostics.working_directory),
+    )
+    if diagnostics.upstream:
+        values += (("Upstream", diagnostics.upstream),)
+    rows = "".join(
+        f"<dt>{html.escape(label)}</dt><dd><code>{html.escape(str(value))}</code></dd>"
+        for label, value in values
+    )
+    return f'<details class="diagnostics"><summary>Diagnostics</summary><dl>{rows}</dl></details>'
 
 
 def document_page(
