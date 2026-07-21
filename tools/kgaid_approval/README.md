@@ -26,6 +26,37 @@ Interfejs jest domyślnie dostępny pod `http://127.0.0.1:8765`. Polecenie
 a zwijany panel „Diagnostics” na stronie głównej uzupełnia je o konfigurację
 bieżącego uruchomienia.
 
+## Przykładowe użycie
+
+Po uruchomieniu wybierz dokument oczekujący na akceptację, sprawdź jego
+wyrenderowaną treść i użyj przycisku **Akceptuj**. Podgląd obsługuje pełny
+Markdown, w tym tabele, oraz bezpiecznie filtruje osadzony HTML. Lokalne linki
+do dokumentów i katalogów zawierających `README.md` otwierają właściwy podgląd
+w aplikacji.
+
+```bash
+# Uruchomienie na innym porcie
+.venv/bin/kgaid-doc-approval \
+  --docs-dir ../../docs \
+  --approver "Anna Kowalska" \
+  --host 127.0.0.1 \
+  --port 9000
+
+# Informacje o zainstalowanej wersji i środowisku
+.venv/bin/kgaid-doc-approval --version
+```
+
+## Diagnostics i wersja
+
+Zwijany panel **Diagnostics** na dole strony głównej pokazuje wersję narzędzia,
+interpreter Python, lokalizację pakietu, katalog dokumentacji, osobę
+zatwierdzającą i katalog roboczy. W kopii narzędzia zawierającej `UPSTREAM.md`
+pokazuje także zapisane źródło. Dane te pomagają rozpoznać używaną instalację;
+panel nie uruchamia poleceń Git ani nie zmienia dokumentów.
+
+Polecenie `kgaid-doc-approval --version` wypisuje wersję i diagnostykę
+instalacji w terminalu, po czym kończy działanie bez uruchamiania serwera.
+
 ## Dokumentacja
 
 - [Instalacja w projekcie](docs/installation.md)
@@ -39,7 +70,7 @@ bieżącego uruchomienia.
 
 Narzędzie ma własne wersje SemVer, niezależne od wersji projektu, w którym
 zostało skopiowane, oraz niezależne od wersji metodyki KGAID. Bieżąca wersja
-to **0.3.0** i jej źródłem prawdy jest `pyproject.toml`.
+to **0.4.0** i jej źródłem prawdy jest `pyproject.toml`.
 
 - **MAJOR** — niekompatybilna zmiana publicznej komendy, formatu konfiguracji
   lub zachowania akceptacji;

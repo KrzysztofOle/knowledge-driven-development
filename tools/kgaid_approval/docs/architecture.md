@@ -42,7 +42,7 @@ Markdown. Warstwa webowa nie zapisuje plików bezpośrednio.
 
 ## Stabilne interfejsy
 
-Wersja 0.3.0 zachowuje dotychczasowe interfejsy dla projektów konsumenckich:
+Wersja 0.4.0 zachowuje dotychczasowe interfejsy dla projektów konsumenckich:
 
 - nazwę dystrybucji `kgaid-documentation-approval`;
 - moduł Python `kgaid_approval`;

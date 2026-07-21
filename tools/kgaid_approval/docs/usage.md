@@ -12,6 +12,8 @@ tools/kgaid_approval/.venv/bin/kgaid-doc-approval \
 
 Opcje:
 
+- `--version` — wypisuje wersję narzędzia, lokalizację instalacji i informacje
+  o interpreterze, po czym kończy działanie bez uruchamiania serwera;
 - `--docs-dir` — wymagany katalog dokumentacji; narzędzie nie odczytuje ani
   nie modyfikuje plików poza nim;
 - `--approver` — wymagana nazwa osoby zatwierdzającej;
@@ -62,3 +64,11 @@ zapisany. Ścieżki wychodzące poza `--docs-dir` oraz niebędące Markdown są
 odrzucane. Podgląd renderuje Markdown z listą dozwolonych elementów HTML;
 lokalne linki do innych dokumentów Markdown są bezpiecznie prowadzone przez
 interfejs narzędzia.
+
+## Panel Diagnostics
+
+Zwijany panel **Diagnostics** na dole strony głównej pokazuje wersję narzędzia,
+interpreter Python, lokalizację pakietu, katalog dokumentacji, osobę
+zatwierdzającą oraz katalog roboczy. Jeżeli instalacja zawiera plik
+`UPSTREAM.md`, panel pokazuje również zapisane źródło kopii. Informacje służą
+wyłącznie do identyfikacji uruchomionej instalacji.

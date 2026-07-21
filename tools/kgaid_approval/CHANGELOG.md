@@ -6,10 +6,28 @@ a wersje stosują [Semantic Versioning](https://semver.org/lang/pl/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-21
+
 ### Added
 
-- Dodano diagnostykę środowiska w `--version` i na stronie głównej aplikacji.
+- Dodano pełny renderer Markdown, w tym obsługę tabel.
+- Dodano bezpieczne renderowanie osadzonego HTML przez filtrowanie dozwolonych
+  elementów, atrybutów i protokołów.
+- Dodano panel **Diagnostics** z wersją, ścieżkami instalacji i konfiguracją
+  bieżącego uruchomienia.
+- Dodano polecenie `--version` pokazujące wersję i diagnostykę środowiska bez
+  uruchamiania serwera.
 - Dodano obsługę linków do katalogów zawierających `README.md`.
+
+### Fixed
+
+- Poprawiono rozwiązywanie względnych linków do dokumentów Markdown, kotwic,
+  parametrów zapytania i zasobów względem bieżącego dokumentu.
+
+### Tests
+
+- Rozszerzono testy renderowania Markdown i HTML, tabel, bezpieczeństwa
+  odnośników, linków katalogowych, diagnostyki oraz polecenia `--version`.
 
 ## [0.3.0] - 2026-07-21
 
