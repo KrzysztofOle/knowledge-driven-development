@@ -50,6 +50,7 @@ The methodology composes accepted knowledge models into an end-to-end way of wor
 - [KGAID Human–AI Collaboration Model](docs/20-methodology/22-human-ai-collaboration.md) — context, delegation, execution, review, escalation, evidence, and the Human–Knowledge AI–Execution AI control pattern.
 - [KGAID AI Execution Task Contract](docs/20-methodology/23-ai-execution-task-contract.md) — the bounded, human-authorized task passed from a Knowledge and Review AI to an Execution AI.
 - [KGAID Delivery Increment Model](docs/20-methodology/24-delivery-increment-model.md) — the governed unit that connects accepted product knowledge, execution tasks, integration, evidence, baseline, and human acceptance.
+- [KGAID Knowledge Base Curation Workflow](docs/20-methodology/25-knowledge-base-curation-workflow.md) — proposed operational workflow for turning staged source materials into governed expert knowledge, maintaining traceability, and preserving human approval authority; it is not part of the current baseline.
 
 ### 30 — Quality
 
