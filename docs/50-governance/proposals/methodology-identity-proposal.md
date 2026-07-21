@@ -1,3 +1,18 @@
+---
+document_id: KGAID-PRP-001
+title: Methodology Identity Proposal
+
+document_type: governance
+status: accepted
+version: 1
+
+owner: Governance
+
+approval_status: approved
+approved_by: Krzysztof Olejnik — KGAID Methodology Owner
+approved_at: 2026-07-18
+---
+
 # Methodology Identity Proposal
 
 **Proposal status:** Accepted  

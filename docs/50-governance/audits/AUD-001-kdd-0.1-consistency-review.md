@@ -1,3 +1,18 @@
+---
+document_id: AUD-001
+title: AUD-001 — KDD 0.1 Cross-Document Consistency Review
+
+document_type: governance
+status: accepted
+version: 1
+
+owner: Governance
+
+approval_status: pending
+approved_by:
+approved_at:
+---
+
 # AUD-001 — KDD 0.1 Cross-Document Consistency Review
 
 **Artifact type:** AUD  
@@ -476,7 +491,7 @@ The repository has a coherent foundation. The next work should normalize and gov
 
 The durable human role is recorded as:
 
-> **Krzysztof Olejnik — KDD Methodology Owner**
+> **Krzysztof Olejnik — KGAID Methodology Maintainer**
 
 The title identifies ownership of methodology decisions. It does not assert infallibility, certification, or personal expert authority.
 

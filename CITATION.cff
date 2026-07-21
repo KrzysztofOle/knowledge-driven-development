@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use KGAID, please cite it using this metadata."
+title: "Knowledge-Governed AI-Assisted Development (KGAID)"
+type: other
+authors:
+  - family-names: Olejnik
+    given-names: Krzysztof
+version: 0.1.0
+date-released: 2026-07-19
+repository-code: "https://github.com/KrzysztofOle/kgaid-methodology"
+url: "https://github.com/KrzysztofOle/kgaid-methodology"
+abstract: "A public, technology-independent methodology for knowledge-governed AI-assisted software development."
+license: CC-BY-4.0
+notes: "Krzysztof Olejnik is the methodology maintainer. Baseline KGAID-0.1.0 is prepared for publication; confirm release date and author details at publication."

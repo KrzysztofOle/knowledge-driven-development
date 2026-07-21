@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "kgaidApprovalApprover",
+      "type": "promptString",
+      "description": "Osoba zatwierdzająca dokumentację",
+      "default": "Krzysztof Olejnik"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "KGAID: Documentation Approval MVP",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/tools/kgaid_approval/.venv/bin/python",
+      "module": "kgaid_approval.cli",
+      "cwd": "${workspaceFolder}/tools/kgaid_approval",
+      "args": [
+        "--docs-dir",
+        "${workspaceFolder}/docs",
+        "--approver",
+        "${input:kgaidApprovalApprover}",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8765"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "KGAID Documentation Approval: (https?://[^\\s]+)",
+        "uriFormat": "%s"
+      }
+    },
+    {
+      "name": "KGAID: Archive documentation",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "kgaid_docs_archive",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/tools/kgaid_docs_archive"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
