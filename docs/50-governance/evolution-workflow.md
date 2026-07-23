@@ -8,7 +8,7 @@ version: 0.1.0
 
 owner: Governance
 
-approval_status: draft
+approval_status: pending
 approved_by:
 approved_at:
 ---
