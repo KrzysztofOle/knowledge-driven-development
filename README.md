@@ -64,6 +64,18 @@ Adoption models define how projects select a KGAID baseline and profile, tailor 
 
 - [KGAID Adoption and Conformance Model](docs/40-adoption/41-adoption-and-conformance-model.md) — invariant core, Minimal and Extended profiles, tailoring, assessment requirements, evidence package, declaration, and adoption paths for KSeF_2, 3ksef, and future projects.
 
+### 45 — Experience
+
+Experience records preserve evidence and observations from real KGAID use
+without automatically changing the methodology or granting reference-project
+status.
+
+- [KGAID experience index](docs/45-experience/README.md) — draft Experience
+  Record model, pilot register, observation-response matrix, feedback lifecycle
+  proposal, and the first record from `3ksef`.
+- [EXP-3KSEF-001](docs/45-experience/reference-projects/3ksef/EXP-3KSEF-001.md)
+  — draft record tied to immutable project and methodology commits.
+
 ### 50 — Governance evidence
 
 Governance evidence records reviews and decisions about the methodology itself. It is informative or evidential unless an artifact explicitly declares normative status.
@@ -73,6 +85,11 @@ Governance evidence records reviews and decisions about the methodology itself. 
 - [Methodology Identity Proposal](docs/50-governance/proposals/methodology-identity-proposal.md) — accepted naming decision and migration basis for Knowledge-Governed AI-Assisted Development (KGAID).
 - [Governance, Versioning, and Release Model](docs/50-governance/governance-and-release-model.md) — methodology change authority, versioning, baseline, and release rules.
 - [Prepared KGAID-0.1.0 manifest](docs/50-governance/baselines/KGAID-0.1.0.yaml) — first baseline membership and dependencies; publication remains pending.
+- [Draft Change Proposals](docs/50-governance/change-proposals/README.md) —
+  lifecycle vocabulary, revision-bound Human Decision, Baseline Manifest v2,
+  and evidence-based methodology evolution.
+- [Open Human Authority decisions](docs/50-governance/decisions/README.md) —
+  unresolved choices recorded without deciding them.
 
 ### 60 — Approval Center
 
