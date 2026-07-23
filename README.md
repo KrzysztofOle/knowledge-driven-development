@@ -84,6 +84,7 @@ Governance evidence records reviews and decisions about the methodology itself. 
 - [AUD-002 — Knowledge-Driven Development Name and Prior-Use Landscape Review](docs/50-governance/audits/AUD-002-knowledge-driven-development-landscape-review.md) — external-source review of earlier terminology, conceptual overlap, distinct Human–AI features, and naming options.
 - [Methodology Identity Proposal](docs/50-governance/proposals/methodology-identity-proposal.md) — accepted naming decision and migration basis for Knowledge-Governed AI-Assisted Development (KGAID).
 - [Governance, Versioning, and Release Model](docs/50-governance/governance-and-release-model.md) — methodology change authority, versioning, baseline, and release rules.
+- [Methodology Evolution Workflow](docs/50-governance/evolution-workflow.md) — end-to-end process connecting reference-project experience, observations, evidence, review, change proposals, human decisions, documentation updates, and new baselines.
 - [Prepared KGAID-0.1.0 manifest](docs/50-governance/baselines/KGAID-0.1.0.yaml) — first baseline membership and dependencies; publication remains pending.
 - [Draft Change Proposals](docs/50-governance/change-proposals/README.md) —
   lifecycle vocabulary, revision-bound Human Decision, Baseline Manifest v2,

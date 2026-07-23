@@ -12,6 +12,8 @@ stosujących KGAID. Nie jest częścią przygotowanego baseline'u
   kompletności reakcji na obserwacje.
 - [Propozycja lifecycle feedbacku](feedback-lifecycle-proposal.md) — roboczy
   model obsługi informacji zwrotnej.
+- [Proces ewolucji metodyki](../50-governance/evolution-workflow.md) — synteza
+  drogi od doświadczenia projektu przez review i decyzję do nowego baseline'u.
 - [EXP-3KSEF-001](reference-projects/3ksef/EXP-3KSEF-001.md) — pierwszy rekord,
   oparty na pilocie `3ksef`.
 
