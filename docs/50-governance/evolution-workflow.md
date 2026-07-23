@@ -17,11 +17,11 @@ approved_at:
 
 ## 1. Cel i zakres
 
-Ten dokument spaja istniejące zasady KGAID w proces, przez który doświadczenia
-z rzeczywistego użycia mogą doprowadzić do kontrolowanej zmiany samej metodyki.
-Opisuje drogę od sygnału z projektu przez obserwację, dowody, przegląd,
-propozycję zmiany i decyzję człowieka do aktualizacji dokumentacji oraz nowego
-baseline'u.
+Ten dokument definiuje obowiązujący proces ewolucji metodyki KGAID, przez
+który doświadczenia z rzeczywistego użycia mogą doprowadzić do kontrolowanej
+zmiany samej metodyki. Określa drogę od sygnału z projektu przez obserwację,
+dowody, przegląd, propozycję zmiany i decyzję człowieka do aktualizacji
+dokumentacji, pozytywnej walidacji oraz wydania nowego baseline'u.
 
 Proces nie opisuje tworzenia oprogramowania w projekcie stosującym KGAID.
 Realizacja, testy i operacje projektu są tu istotne wyłącznie jako źródła
@@ -36,12 +36,13 @@ Dokument:
 - nie rozstrzyga żadnego istniejącego Change Proposal;
 - nie zmienia opublikowanego ani przygotowanego baseline'u.
 
-Jest to informacyjna synteza. Reguły normatywne pozostają w
+Dokument jest normatywny i wraz z regułami zawartymi w
 [Foundations](../00-foundations/01-scope-and-boundaries.md),
 [Knowledge Architecture](../10-knowledge-architecture/11-knowledge-architecture.md),
 [Quality](../30-quality/31-verification-and-evidence-model.md),
 [Adoption](../40-adoption/41-adoption-and-conformance-model.md) oraz
-[Governance, Versioning, and Release Model](governance-and-release-model.md).
+[Governance, Versioning, and Release Model](governance-and-release-model.md)
+stanowi obowiązującą podstawę procesu ewolucji metodyki.
 Modele w obszarze [Experience](../45-experience/README.md) i szczegółowy
 [KGAID-CP-004](change-proposals/CP-004-experience-record-evidence-based-evolution.md)
 pozostają szkicami. Gdy ich treść różni się od zaakceptowanych modeli KGAID,
@@ -67,6 +68,10 @@ Szczegółowość czynności i evidence powinna być proporcjonalna do wpływu,
 niepewności, odwracalności i kosztu proponowanej zmiany. Proces jest
 niezależny od narzędzia, formatu repozytorium i dostawcy AI.
 
+Każda zmiana metodyki KGAID przechodzi przez Evolution Workflow. Zakres
+poszczególnych etapów może być różny w zależności od rodzaju zmiany, ale nie
+istnieje możliwość pominięcia Evolution Workflow.
+
 ## 3. Widok całego procesu
 
 ```mermaid
@@ -78,6 +83,7 @@ flowchart TD
     CP["Change Proposal"]
     HA{"Human Authority"}
     DU["Documentation Update"]
+    VAL["Validation"]
     BL["Baseline Release"]
 
     RP --> OBS
@@ -86,7 +92,8 @@ flowchart TD
     ER --> CP
     CP --> HA
     HA --> DU
-    DU --> BL
+    DU --> VAL
+    VAL --> BL
     BL --> RP
 ```
 
@@ -129,6 +136,9 @@ Kopiowanie całego repozytorium projektu do KGAID nie jest wymagane.
 Discovery rozpoczyna się od triggera opisanego w Knowledge Lifecycle, na
 przykład feedbacku, audytu, review, eksperymentu, incydentu, wyniku
 weryfikacji, zmiany źródła zewnętrznego albo evidence przeczącego założeniu.
+Observation może zgłosić dowolny uczestnik procesu, zarówno człowiek, jak i
+AI. Human Authority pozostaje jedynym podmiotem uprawnionym do autoryzowania
+zmian metodyki.
 Sygnał staje się trwałą Observation, gdy może wpłynąć na interpretację
 metodyki, przyszłą decyzję, ryzyko, claim o skuteczności albo sposób adopcji.
 Materiał roboczy bez takiego wpływu może pozostać przejściowy.
@@ -303,7 +313,8 @@ Zgodnie z obecnym governance i zasadami contribution, CP opisuje:
 - otwarte pytania, wymagane review i właściwą Human Authority.
 
 CP pozostaje nieautorytatywny do jawnej decyzji. Status technicznego approval
-nie zastępuje decyzji o przyjęciu zmiany.
+nie zastępuje decyzji o przyjęciu zmiany. Decyzja `Reject` nie usuwa CP:
+propozycja wraz z uzasadnieniem decyzji pozostaje częścią historii metodyki.
 
 ### 7.3 Kiedy odrzucić
 
@@ -326,8 +337,9 @@ właściwa Human Authority odrzucić CP, gdy po proporcjonalnym review:
 - istniejący zaakceptowany dokument już rozwiązuje problem;
 - koszt i zakres zmiany są nieproporcjonalne do wykazanej wartości.
 
-Odrzucenie zachowuje CP, evidence i rationale. Nie oznacza usunięcia
-Observation ani zakazu ponownego otwarcia po pojawieniu się nowego evidence.
+Odrzucenie zachowuje CP, evidence i rationale jako część historii metodyki.
+Nie oznacza usunięcia Observation ani zakazu ponownego otwarcia po pojawieniu
+się nowego evidence.
 Ponieważ słownik statusów jest przedmiotem otwartego `KGAID-CP-001`, decyzji o
 odrzuceniu nie należy zamieniać automatycznie w nową wartość front matter.
 
@@ -335,10 +347,12 @@ odrzuceniu nie należy zamieniać automatycznie w nową wartość front matter.
 
 ### 8.1 Zakres authority
 
+Human Authority jest odpowiedzialnością przypisaną do określonego obszaru
+wiedzy, a nie konkretną osobą. Jedna osoba może pełnić wiele ról Human
+Authority. Rola może zostać przekazana innej osobie bez zmiany metodyki.
 Authority jest zawsze ograniczona do przedmiotu. Dla zmiany metodyki KGAID
 Methodology Maintainer zachowuje odpowiedzialność za akceptację zmiany oraz
-osobno za autoryzację baseline'u lub release. Review może być delegowane, ale
-delegacja nie przenosi automatycznie tej odpowiedzialności.
+osobno za autoryzację baseline'u lub release.
 
 Authority projektu źródłowego odpowiada za jego lokalną wiedzę, evidence,
 naprawy i decyzje. Nie może sama ustanowić reguły KGAID. Reviewer ocenia
@@ -362,14 +376,14 @@ nowej rewizji i ponownej oceny.
 
 ### 8.3 Możliwe decyzje
 
-W istniejącym Knowledge Lifecycle Human Authority może:
+Human Authority może podjąć jedną z decyzji:
 
-- zaakceptować propozycję;
-- odrzucić ją;
-- zażądać rewizji;
-- ograniczyć scope;
-- odroczyć decyzję;
-- jawnie zaakceptować znane ryzyko, jeżeli ma do tego authority.
+- `Accept`;
+- `Reject`;
+- `Return for revision`.
+
+Decyzja `Reject` nie usuwa Change Proposal. Change Proposal pozostaje częścią
+historii metodyki wraz z uzasadnieniem decyzji.
 
 Akceptacja CP zezwala na przygotowanie odpowiednich zmian dokumentacji. Nie
 powoduje automatycznie:
@@ -486,16 +500,12 @@ metodyki, którego niezmienność i publication status są jawne.
 
 ### 10.3 Zakończenie ścieżki zmiany
 
-Ścieżka normatywna kończy się, gdy decyzja, zmienione dokumenty, ich review,
-manifest i wynik kontroli tworzą odtwarzalny łańcuch, a decyzja o publikacji
-jest wykonana albo jawnie pozostaje niewykonana. Powiązane Observation i
-feedback mogą zostać uznane za obsłużone dopiero po weryfikacji reakcji na
-dokładnej rewizji.
-
-Ścieżka nienormatywna może zakończyć się wcześniej: zapisaniem mocnej strony,
-lokalną naprawą, odrzuceniem, odroczeniem albo kontrolowanym eksperymentem.
-Nie tworzy wtedy Documentation Update ani nowego baseline'u, lecz zachowuje
-traceability i warunek powrotu.
+Evolution Workflow nie kończy się decyzją Human Authority. Kończy się dopiero
+po aktualizacji dokumentacji, pozytywnej walidacji i wydaniu nowego baseline'u.
+Dopiero baseline publikuje zmianę jako obowiązującą część metodyki. Decyzja,
+zmienione dokumenty, ich review, manifest i pozytywny wynik kontroli muszą
+tworzyć odtwarzalny łańcuch. Powiązane Observation i feedback mogą zostać
+uznane za obsłużone dopiero po weryfikacji reakcji na dokładnej rewizji.
 
 ## 11. Zamknięta pętla feedbacku
 
@@ -507,7 +517,8 @@ traceability i warunek powrotu.
 | Experience Review → Change Proposal | Tylko problem należący do metodyki i wymagający zmiany znaczenia przechodzi do CP. |
 | Change Proposal → Human Authority | Dokładna rewizja, warianty, wpływ i evidence stają się przedmiotem jawnej decyzji. |
 | Human Authority → Documentation Update | Akceptacja kierunku uruchamia impact analysis i zwykły lifecycle zmienianych dokumentów. |
-| Documentation Update → Baseline Release | Zaakceptowane rewizje po kontrolach mogą wejść do nowego baseline'u; publikacja pozostaje osobną decyzją. |
+| Documentation Update → Validation | Zmienione rewizje przechodzą wymagane kontrole i muszą uzyskać pozytywny wynik walidacji. |
+| Validation → Baseline Release | Pozytywnie zwalidowane rewizje mogą wejść do nowego baseline'u; publikacja pozostaje osobną decyzją. |
 | Baseline Release → Reference Projects | Projekty przypinają nowy baseline i dostarczają kolejne evidence, które potwierdza, ogranicza albo kwestionuje zmianę. |
 
 Nowe evidence może ponownie otworzyć wcześniejszą Observation, podważyć
@@ -527,6 +538,7 @@ project + methodology ref
 → Change Proposal
 → Human decision
 → changed document revisions
+→ validation result
 → baseline manifest
 → publication decision
 → subsequent project evidence
