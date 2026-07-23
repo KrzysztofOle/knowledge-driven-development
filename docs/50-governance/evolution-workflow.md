@@ -22,6 +22,9 @@ który doświadczenia z rzeczywistego użycia mogą doprowadzić do kontrolowane
 zmiany samej metodyki. Określa drogę od sygnału z projektu przez obserwację,
 dowody, przegląd, propozycję zmiany i decyzję człowieka do aktualizacji
 dokumentacji, pozytywnej walidacji oraz wydania nowego baseline'u.
+Dokument nie wprowadza nowych typów artefaktów, ról ani statusów, lecz
+ustanawia normatywne zasady wykorzystania istniejących elementów KGAID w
+procesie ewolucji metodyki.
 
 Proces nie opisuje tworzenia oprogramowania w projekcie stosującym KGAID.
 Realizacja, testy i operacje projektu są tu istotne wyłącznie jako źródła
