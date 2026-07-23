@@ -8,9 +8,9 @@ version: 0.1.0
 
 owner: Governance
 
-approval_status: pending
-approved_by:
-approved_at:
+approval_status: approved
+approved_by: Krzysztof Olejnik
+approved_at: 2026-07-23T17:54:56+02:00
 ---
 
 # KGAID Scope and Boundaries
