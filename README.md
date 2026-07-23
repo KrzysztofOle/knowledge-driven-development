@@ -91,6 +91,9 @@ Governance evidence records reviews and decisions about the methodology itself. 
   and evidence-based methodology evolution.
 - [Open Human Authority decisions](docs/50-governance/decisions/README.md) —
   unresolved choices recorded without deciding them.
+- [Governance reviews](docs/50-governance/reviews/README.md) — Architecture
+  Impact Review and Baseline Readiness Assessment prepared as decision
+  materials without exercising Human Authority.
 
 ### 60 — Approval Center
 
